@@ -205,7 +205,7 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/vscode,python,windows,linux,jupyternotebooks
 
 # Configured by the user
-*.ipynb
+dev-notebook*.ipynb
 .vscode
 __pycache__
 *.csv
