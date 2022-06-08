@@ -24,7 +24,7 @@ class NPacketsByteFrequency(NFPlugin):
         flow.udps.bidirectional_n_packets_byte_frequency = np.zeros(256) # of ip payload onwards
         flow.udps.src2dst_n_packets_byte_frequency = np.zeros(256) # of ip payload onwards
         flow.udps.dst2src_n_packets_byte_frequency = np.zeros(256) # of ip payload onwards
-      
+
         self.on_update(packet, flow)
 
     def on_update(self, packet, flow):
@@ -80,3 +80,25 @@ class NPacketsByteFrequency(NFPlugin):
     def _add_payload_bytes_frequency(self, payload, container):
         payload_bytes_array = np.frombuffer(payload, dtype='B') # 'B' unsigned byte
         container[payload_bytes_array] += 1
+
+
+    @staticmethod
+    def preprocess(dataframe):
+        ''' 
+        Preprocessing method for the NPacketsByteFrequency features.
+        Converting 'udps.bidirectional_n_packets_byte_frequency', 
+        'udps.src2dst_n_packets_byte_frequency' and 'udps.dst2src_n_packets_byte_frequency' columns from str to 2D-list.
+        '''
+        import ast
+        # validate
+        cols = [
+            'udps.bidirectional_n_packets_byte_frequency',
+            'udps.src2dst_n_packets_byte_frequency',
+            'udps.dst2src_n_packets_byte_frequency'
+        ]
+        for col in cols:
+            if col not in dataframe.columns:
+                continue
+            assert isinstance(dataframe[col].iloc[0], str), f"Values in column {col} are already processed."
+            
+            dataframe[col] = dataframe[col].apply(ast.literal_eval)
