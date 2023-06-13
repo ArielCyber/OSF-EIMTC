@@ -9,10 +9,11 @@ class STNN(NFPlugin):
     wip
     '''
     def __init__(self,n_packets=32):
+        ''' '''
         self.n_packets = n_packets
 
     def on_init(self, packet, flow):
-        
+        ''' '''
         flow.udps.bidirectional_addtional_info = np.full(4,0)
         flow.udps.bidirectional_packets_iat_stats = Statistics()
         flow.udps.bidirectional_packets_size_stats = Statistics()
@@ -34,10 +35,10 @@ class STNN(NFPlugin):
         flow.udps.data_packets_iat_stats = Statistics()
         flow.udps.data_packets_size_stats = Statistics()
 
-
         self.on_update(packet, flow)
 
     def on_update(self, packet, flow):
+        ''' '''
         if flow.bidirectional_packets <= self.n_packets:
             flow.udps.bidirectional_packets_iat_stats.push(packet.delta_time)
             flow.udps.bidirectional_packets_size_stats.push(packet.raw_size)
@@ -63,6 +64,7 @@ class STNN(NFPlugin):
 
 
     def on_expire(self, flow):
+        ''' '''
         matrix = np.empty((5,14))
         bidirectional_duration = 1 if flow.bidirectional_duration_ms == 0 else flow.bidirectional_duration_ms/1000
         flow.udps.bidirectional_addtional_info = [flow.bidirectional_packets,flow.bidirectional_bytes,flow.bidirectional_packets/bidirectional_duration,flow.bidirectional_bytes/bidirectional_duration]

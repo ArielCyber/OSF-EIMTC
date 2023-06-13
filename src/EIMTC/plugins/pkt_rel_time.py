@@ -1,15 +1,39 @@
-from ..stats.stats import IterableStats
+from EIMTC.stats.stats import IterableStats
 from nfstream import NFPlugin
 
 
 class PacketRelativeTime(NFPlugin):
+    ''' PacketRelativeTime |
+    Relative times to the beginning of the flow. This plugin extracts statistics regarding
+    relatve times of packets. 
+    
+    Feature Outputs:
+        - packet_relative_times (list): The relative time of each packet.
+        - Statistics for the above list.
+        
+        Name Format:
+            - udps.[DIR]_[STAT]_packet_relative_times
+        
+        Direction (DIR) Names:
+            - src2dst
+            - dst2src
+            - bidirectional
+        
+        Statistics (STAT) Names:
+            - max
+            - min
+            - mean
+            - stddev
+            - variance
+            - coeff_of_var
+            - skew_from_median
+    '''
     def __init__(self, **kwargs):
+        ''' '''
         super().__init__(**kwargs)
 
     def on_init(self, packet, flow):
-        '''
-        on_init(self, packet, flow): Method called at flow creation.
-        '''
+        ''' '''
         # bidirectional
         flow.udps.bidirectional_packet_relative_times = list()
         flow.udps.bidirectional_min_packet_relative_times              = 0
@@ -41,6 +65,7 @@ class PacketRelativeTime(NFPlugin):
         self.on_update(packet, flow)
 
     def on_update(self, packet, flow):
+        ''' '''
         if packet.direction == 0: # src -> dst
             flow.udps.src2dst_packet_relative_times.append(packet.time
                                     - flow.bidirectional_first_seen_ms)
@@ -53,6 +78,7 @@ class PacketRelativeTime(NFPlugin):
 
         
     def on_expire(self, flow):
+        ''' '''
         # bidirectional
         stats = IterableStats(flow.udps.bidirectional_packet_relative_times)
         flow.udps.bidirectional_min_packet_relative_times              = stats.min()

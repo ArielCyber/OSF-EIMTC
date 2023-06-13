@@ -1,4 +1,4 @@
-from nfstream import NFStreamer, NFPlugin
+from nfstream import NFPlugin
 import numpy as np
 from scapy.all import IP, IPv6, raw
 from pypacker.layer3 import ip
@@ -9,15 +9,30 @@ import ast
 
 
 class NBytes(NFPlugin):
-    '''
-        Extracts the first n_bytes from the flow, the bytes are taken
-        from the transport layer payload (L4). if the flow have less than n_bytes bytes,
-        then the rest of the bytes are zero-valued (padding).
+    ''' NBytes |
+    Extracts the first n_bytes from the flow, the bytes are taken
+    from the transport layer payload (L4). if the flow has less than n_bytes bytes,
+    then the rest of the bytes are zero-valued (padding).
+        
+    Paper:
+        "End-to-end Encrypted Traffic Classification with One-dimensional Convolution Neural Networks".
+
+        By:
+            - Wei Wang.
+            - Ming Zhu.
+            - Jinlin Wang.
+            - Xuewen Zeng.
+            - Zhongzhen Yang.
     '''
     def __init__(self, n=784):
+        '''
+        Args:
+            `n` (int): The number of bytes to extract from the flow's payload.
+        '''
         self.n = n
     
     def on_init(self, packet, flow):
+        ''' '''
         flow.udps.n_bytes_value = self.n
         flow.udps.n_bytes = [] # np.zeros(self.n)
         flow.udps.n_bytes_counted = 0
@@ -25,12 +40,13 @@ class NBytes(NFPlugin):
         self.on_update(packet, flow)
 
     def on_update(self, packet, flow):
+        ''' '''
         remaining_bytes = self.n - flow.udps.n_bytes_counted
         if remaining_bytes >= 0 and packet.protocol in [6, 17]: # TCP or UDP only.
             amount_to_copy = min(remaining_bytes, packet.payload_size)
             if amount_to_copy == 0:
                 return
-           
+
             copied_binary_payload = self.get_payload_as_binary_pypacker(packet)[:amount_to_copy]
             flow.udps.n_bytes.extend(
                 copied_binary_payload
@@ -38,6 +54,7 @@ class NBytes(NFPlugin):
             flow.udps.n_bytes_counted += len(copied_binary_payload)
 
     def on_expire(self, flow):
+        ''' '''
         '''
         Normalize to [0,1]: 
         flow.udps.n_bytes /= 255

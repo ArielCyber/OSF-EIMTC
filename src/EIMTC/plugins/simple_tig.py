@@ -3,36 +3,49 @@ import numpy as np
 
 
 class SimpleTIG(NFPlugin):
-    ''' 
-    # SimpleTIG
-    ## Description:
-    A simple Traffic interaction Graph (TIG) feature extractor.
-    
+    ''' SimpleTIG | A simple Traffic interaction Graph (TIG) feature extractor.
+
     From each packet the plugin extracts the packet size and the packet direction,
     the final feature is a signed packet size (neg size for src2dst, pos size for dst2src).
     
-    output features: 
-    1. `udps.simple_tig_adj`: Adjacency matrix of the graph. Shape of (`n_packets`, `n_packets`). 
-    2. `udps.simple_tig_features`: Node features, a signed packet size. Shape of (`n_packets`, 1).
+    Why simple: The plugin doesnt support any packet/node feature customization.
+    
+    Output Features: 
+        1. `udps.simple_tig_adj`: Adjacency matrix of the graph. Shape of (`n_packets`, `n_packets`). 
+        2. `udps.simple_tig_features`: Node features, a signed packet size. Shape of (`n_packets`, 1).
         
-    ## Paper:
-    "Accurate Decentralized Application Identification via Encrypted Traffic Analysis Using Graph Neural Networks,"
-    ### By:
-    - Meng Shen, 
-    - Jinpeng Zhang, 
-    - Liehuang Zhu, 
-    - Ke Xu, 
-    - Xiaojiang Du.
+    Paper:
+        "Accurate Decentralized Application Identification via Encrypted Traffic Analysis Using Graph Neural Networks."
+        
+        By:
+            - Meng Shen, 
+            - Jinpeng Zhang, 
+            - Liehuang Zhu, 
+            - Ke Xu, 
+            - Xiaojiang Du.
     '''
     def __init__(self, n_packets=10, size_type='raw'):
+        '''
+        Args:
+            `n_packets` (int): The number of packets to process per flow.
+                flows with less than the desired `n_packets` will be padded with 
+                unconnected zero-valued vertices to match `n_packets`.
+            `size_type` (str): The layer of a packet to compute the size from. The options are 
+                "raw", "ip", "transport" or "payload".
+        '''
         self.n_packets = n_packets
         self.size_type = size_type
         
     def on_init(self, packet, flow):
+        '''
+        on_init
+        '''
         flow.udps.simple_tig_values = []
         self.on_update(packet, flow)
 
     def on_update(self, packet, flow):
+        '''on_update
+        '''
         if flow.bidirectional_packets > self.n_packets:
             return
         
@@ -41,6 +54,8 @@ class SimpleTIG(NFPlugin):
         flow.udps.simple_tig_values.append(size * dir)
         
     def on_expire(self, flow):
+        '''on_expire
+        '''
         padding_amount_required = self.n_packets - len(flow.udps.simple_tig_values)
         graph = generate_simple_TIG(flow.udps.simple_tig_values, padding=padding_amount_required)
             
@@ -60,6 +75,26 @@ class SimpleTIG(NFPlugin):
             return packet.payload_size
         
         return None
+    
+    
+    @staticmethod
+    def preprocess(dataframe):
+        ''' 
+        Preprocessing method for the GraphDApp features.
+        Converting 'udps.simple_tig_adj' and 'udps.simple_tig_features' columns from str to 2D-list.
+        '''
+        import ast
+        # validate
+        assert 'udps.simple_tig_adj' in dataframe.columns, "Column 'udps.simple_tig_adj' not found."
+        assert isinstance(dataframe['udps.simple_tig_adj'].iloc[0], str), "Values in column 'udps.simple_tig_adj' are already processed."
+
+        dataframe['udps.simple_tig_adj'] = dataframe['udps.simple_tig_adj'].apply(ast.literal_eval)
+
+        assert 'udps.simple_tig_features' in dataframe.columns, "Column 'udps.simple_tig_features' not found."
+        assert isinstance(dataframe['udps.simple_tig_features'].iloc[0], str), "Values in column 'udps.simple_tig_features' are already processed."
+        
+        dataframe['udps.simple_tig_features'] = dataframe['udps.simple_tig_features'].apply(ast.literal_eval)
+
 
 
 def generate_simple_TIG(values, padding=0):

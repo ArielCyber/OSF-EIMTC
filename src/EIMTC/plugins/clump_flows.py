@@ -1,35 +1,78 @@
 import numpy as np
+import pandas as pd
 from runstats import *
 from nfstream import NFPlugin
 
 
 
-
 class Clump_Flow(NFPlugin):
-    '''
-    Clumps:
-        Description:
-            The plugin 'clumps' the packets of each flow by the direction src2dst or dst2src,
-            for each clump in flow clump starts and end when the next packet change direction or last flow packet.
-            The clumps then extracted stastical information from the clumps groups.
-        INFO:
-            The paper we used as refrence to the clumps is "The Challenge of Only One Flow Problem for Traffic Classification in Identity Obfuscation Environments":
-            In the paper the authors call the clumps as 'subflows' such forward (src2dst) subflows and backward (dst2src) subflows.
-            We used only the subflow features:
-                -PACKET NUMBER (SIZE)
-                -PACKET BYTES (LEN)
-                -BYTES PER PACKET
-            In addition we added few more statistical features to each one of the features above.
+    ''' Clumps | The plugin 'clumps' the packets of each flow by the direction src2dst or dst2src,
+    for each clump in flow clump starts and end when the next packet change direction or last flow packet.
+    The clumps then extract stastical information from the clumps groups.
 
-            the authors of the paper:
-            HONG-YEN CHEN & TSUNG-NAN LIN
+    Output Features:
+        1. Clump's length (bytes). (Inter)
+        2. Clump's size (packets). (Inter)
+        3. IAT between clumps. (Inter)
+        4. Packet size stats of agg clumps. (Inter)
+        5. Packet size inside a clump. (Intra)
+        6. IAT inside a clump. (Intra)
+        
+        Name Format:
+            - Inter-clump (floats): udps.[DIR]_[STAT]_clumps_[FEATURE] 
+            - Intra-clump (lists): udps.[DIR]_[STAT]_clump_[FEATURE]
+        
+        Direction (DIR) Names:
+            - src2dst
+            - dst2src
+            - <None> (for bidirectional)
+        
+        Statistics (STAT) Names:
+            - max
+            - min
+            - mean
+            - stddev
+            - skewness
+            - variance
+            - kurtosis
+            
+        Feature Names:
+            - len
+            - size
+            - interarrival_time
+            - bytes_per_packet
 
-        Coded by Adi Lichy,
-        Edited by Ofek Bader,
-        Ariel University.
+    Paper:
+        The paper we used as refrence to the clumps is "The Challenge of Only One Flow Problem for Traffic Classification in Identity Obfuscation Environments":
+        
+        In the paper the authors call the clumps as 'subflows' such forward (src2dst) subflows and backward (dst2src) subflows.
+        
+        We used only the subflow features:
+            - PACKET NUMBER (SIZE)
+            - PACKET BYTES (LEN)
+            - BYTES PER PACKET
+            
+        In addition we added few more statistical features to each one of the features above.
+
+        By: 
+            - HONG-YEN CHEN. 
+            - TSUNG-NAN LIN.
+
+        
+    Coded by Adi Lichy,
+    Edited by Ofek Bader,
+    Ariel University.
     '''
+    
+    def __init__(self, n_packets=None):
+        '''
+        Args:
+            `n_packets` (int): Number of first packets to process. Default: None (process all).
+        '''
+        self.n_packets = n_packets
 
     def on_init(self, packet, flow):
+        ''' '''
         flow.udps.src2dst_clumps = Clumps()
         flow.udps.dst2src_clumps = Clumps()
         flow.udps.clumps = Clumps()
@@ -38,6 +81,10 @@ class Clump_Flow(NFPlugin):
         self.on_update(packet,flow)
 
     def on_update(self, packet, flow):
+        ''' '''
+        if self.n_packets is not None and flow.bidirectional_packets > self.n_packets :
+            return
+        
         if flow.udps.direction is None or flow.udps.direction != packet.direction:#first packet direction or change of direction
             if flow.udps.clump is not None:#not the first clump
                 if flow.udps.direction == 0:
@@ -64,6 +111,7 @@ class Clump_Flow(NFPlugin):
             flow.udps.clump.update_len(packet.raw_size)
 
     def on_expire(self, flow):
+        ''' '''
         #end of flow closing last clump
         if flow.udps.direction == 0:
             flow.udps.clump.update_bytes_per_packet()
@@ -376,12 +424,217 @@ class Clump_Flow(NFPlugin):
         del flow.udps.dst2src_clumps
         del flow.udps.clumps
 
+    @staticmethod
+    def preprocess(dataframe: pd.DataFrame):
+        '''
+        Preprocessing method for the clumps features.
+        Converting all 'udps.clump' columns from str to 2D-list.
+        '''
+        import ast
+
+        #src2dst
+        #len
+        assert 'udps.src2dst_max_clump_len' in dataframe.columns, "Column 'udps.src2dst_max_clump_len' not found."
+        assert isinstance(dataframe['udps.src2dst_max_clump_len'].iloc[0], str), "Values in column 'udps.src2dst_max_clump_len' are already processed."
+
+        assert 'udps.src2dst_min_clump_len' in dataframe.columns, "Column 'udps.src2dst_min_clump_len' not found."
+        assert isinstance(dataframe['udps.src2dst_min_clump_len'].iloc[0], str), "Values in column 'udps.src2dst_min_clump_len' are already processed."
+
+        assert 'udps.src2dst_mean_clump_len' in dataframe.columns, "Column 'udps.src2dst_mean_clump_len' not found."
+        assert isinstance(dataframe['udps.src2dst_mean_clump_len'].iloc[0], str), "Values in column 'udps.src2dst_mean_clump_len' are already processed."
+        
+        assert 'udps.src2dst_stddev_clump_len' in dataframe.columns, "Column 'udps.src2dst_stddev_clump_len' not found."
+        assert isinstance(dataframe['udps.src2dst_stddev_clump_len'].iloc[0], str), "Values in column 'udps.src2dst_stddev_clump_len' are already processed."
+
+        assert 'udps.src2dst_skewness_clump_len' in dataframe.columns, "Column 'udps.src2dst_skewness_clump_len' not found."
+        assert isinstance(dataframe['udps.src2dst_skewness_clump_len'].iloc[0], str), "Values in column 'udps.src2dst_skewness_clump_len' are already processed."
+
+        assert 'udps.src2dst_variance_clump_len' in dataframe.columns, "Column 'udps.src2dst_variance_clump_len' not found."
+        assert isinstance(dataframe['udps.src2dst_variance_clump_len'].iloc[0], str), "Values in column 'udps.src2dst_variance_clump_len' are already processed."
+
+        assert 'udps.src2dst_kurtosis_clump_len' in dataframe.columns, "Column 'udps.src2dst_kurtosis_clump_len' not found."
+        assert isinstance(dataframe['udps.src2dst_kurtosis_clump_len'].iloc[0], str), "Values in column 'udps.src2dst_kurtosis_clump_len' are already processed."
+
+
+        #interarrival_time
+        assert 'udps.src2dst_max_clump_interarrival_time' in dataframe.columns, "Column 'udps.src2dst_max_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.src2dst_max_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.src2dst_max_clump_interarrival_time' are already processed."
+
+        assert 'udps.src2dst_min_clump_interarrival_time' in dataframe.columns, "Column 'udps.src2dst_min_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.src2dst_min_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.src2dst_min_clump_interarrival_time' are already processed."
+
+        assert 'udps.src2dst_mean_clump_interarrival_time' in dataframe.columns, "Column 'udps.src2dst_mean_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.src2dst_mean_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.src2dst_mean_clump_interarrival_time' are already processed."
+
+        assert 'udps.src2dst_stddev_clump_interarrival_time' in dataframe.columns, "Column 'udps.src2dst_stddev_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.src2dst_stddev_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.src2dst_stddev_clump_interarrival_time' are already processed."
+
+        assert 'udps.src2dst_skewness_clump_interarrival_time' in dataframe.columns, "Column 'udps.src2dst_skewness_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.src2dst_skewness_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.src2dst_skewness_clump_interarrival_time' are already processed."
+
+        assert 'udps.src2dst_variance_clump_interarrival_time' in dataframe.columns, "Column 'udps.src2dst_variance_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.src2dst_variance_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.src2dst_variance_clump_interarrival_time' are already processed."
+
+        assert 'udps.src2dst_kurtosis_clump_interarrival_time' in dataframe.columns, "Column 'udps.src2dst_kurtosis_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.src2dst_kurtosis_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.src2dst_kurtosis_clump_interarrival_time' are already processed."
+
+
+        #dst2src
+        #len
+        assert 'udps.dst2src_max_clump_len' in dataframe.columns, "Column 'udps.dst2src_max_clump_len' not found."
+        assert isinstance(dataframe['udps.dst2src_max_clump_len'].iloc[0], str), "Values in column 'udps.dst2src_max_clump_len' are already processed."
+
+        assert 'udps.dst2src_min_clump_len' in dataframe.columns, "Column 'udps.dst2src_min_clump_len' not found."
+        assert isinstance(dataframe['udps.dst2src_min_clump_len'].iloc[0], str), "Values in column 'udps.dst2src_min_clump_len' are already processed."
+
+        assert 'udps.dst2src_mean_clump_len' in dataframe.columns, "Column 'udps.dst2src_mean_clump_len' not found."
+        assert isinstance(dataframe['udps.dst2src_mean_clump_len'].iloc[0], str), "Values in column 'udps.dst2src_mean_clump_len' are already processed."
+        
+        assert 'udps.dst2src_stddev_clump_len' in dataframe.columns, "Column 'udps.dst2src_stddev_clump_len' not found."
+        assert isinstance(dataframe['udps.dst2src_stddev_clump_len'].iloc[0], str), "Values in column 'udps.dst2src_stddev_clump_len' are already processed."
+
+        assert 'udps.dst2src_skewness_clump_len' in dataframe.columns, "Column 'udps.dst2src_skewness_clump_len' not found."
+        assert isinstance(dataframe['udps.dst2src_skewness_clump_len'].iloc[0], str), "Values in column 'udps.dst2src_skewness_clump_len' are already processed."
+
+        assert 'udps.dst2src_variance_clump_len' in dataframe.columns, "Column 'udps.dst2src_variance_clump_len' not found."
+        assert isinstance(dataframe['udps.dst2src_variance_clump_len'].iloc[0], str), "Values in column 'udps.dst2src_variance_clump_len' are already processed."
+
+        assert 'udps.dst2src_kurtosis_clump_len' in dataframe.columns, "Column 'udps.dst2src_kurtosis_clump_len' not found."
+        assert isinstance(dataframe['udps.dst2src_kurtosis_clump_len'].iloc[0], str), "Values in column 'udps.dst2src_kurtosis_clump_len' are already processed."
+
+
+        #interarrival_time
+        assert 'udps.dst2src_max_clump_interarrival_time' in dataframe.columns, "Column 'udps.dst2src_max_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.dst2src_max_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.dst2src_max_clump_interarrival_time' are already processed."
+
+        assert 'udps.dst2src_min_clump_interarrival_time' in dataframe.columns, "Column 'udps.dst2src_min_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.dst2src_min_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.dst2src_min_clump_interarrival_time' are already processed."
+
+        assert 'udps.dst2src_mean_clump_interarrival_time' in dataframe.columns, "Column 'udps.dst2src_mean_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.dst2src_mean_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.dst2src_mean_clump_interarrival_time' are already processed."
+
+        assert 'udps.dst2src_stddev_clump_interarrival_time' in dataframe.columns, "Column 'udps.dst2src_stddev_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.dst2src_stddev_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.dst2src_stddev_clump_interarrival_time' are already processed."
+
+        assert 'udps.dst2src_skewness_clump_interarrival_time' in dataframe.columns, "Column 'udps.dst2src_skewness_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.dst2src_skewness_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.dst2src_skewness_clump_interarrival_time' are already processed."
+
+        assert 'udps.dst2src_variance_clump_interarrival_time' in dataframe.columns, "Column 'udps.dst2src_variance_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.dst2src_variance_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.dst2src_variance_clump_interarrival_time' are already processed."
+        
+        assert 'udps.dst2src_kurtosis_clump_interarrival_time' in dataframe.columns, "Column 'udps.dst2src_kurtosis_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.dst2src_kurtosis_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.dst2src_kurtosis_clump_interarrival_time' are already processed."
+
+        #bidirectional
+        #len
+        assert 'udps.max_clump_len' in dataframe.columns, "Column 'udps.max_clump_len' not found."
+        assert isinstance(dataframe['udps.max_clump_len'].iloc[0], str), "Values in column 'udps.max_clump_len' are already processed."
+
+        assert 'udps.min_clump_len' in dataframe.columns, "Column 'udps.min_clump_len' not found."
+        assert isinstance(dataframe['udps.min_clump_len'].iloc[0], str), "Values in column 'udps.min_clump_len' are already processed."
+
+        assert 'udps.mean_clump_len' in dataframe.columns, "Column 'udps.mean_clump_len' not found."
+        assert isinstance(dataframe['udps.mean_clump_len'].iloc[0], str), "Values in column 'udps.mean_clump_len' are already processed."
+        
+        assert 'udps.stddev_clump_len' in dataframe.columns, "Column 'udps.stddev_clump_len' not found."
+        assert isinstance(dataframe['udps.stddev_clump_len'].iloc[0], str), "Values in column 'udps.stddev_clump_len' are already processed."
+
+        assert 'udps.skewness_clump_len' in dataframe.columns, "Column 'udps.skewness_clump_len' not found."
+        assert isinstance(dataframe['udps.skewness_clump_len'].iloc[0], str), "Values in column 'udps.skewness_clump_len' are already processed."
+
+        assert 'udps.variance_clump_len' in dataframe.columns, "Column 'udps.variance_clump_len' not found."
+        assert isinstance(dataframe['udps.variance_clump_len'].iloc[0], str), "Values in column 'udps.variance_clump_len' are already processed."
+
+        assert 'udps.kurtosis_clump_len' in dataframe.columns, "Column 'udps.kurtosis_clump_len' not found."
+        assert isinstance(dataframe['udps.kurtosis_clump_len'].iloc[0], str), "Values in column 'udps.kurtosis_clump_len' are already processed."
+
+
+        #interarrival_time
+        assert 'udps.max_clump_interarrival_time' in dataframe.columns, "Column 'udps.max_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.max_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.max_clump_interarrival_time' are already processed."
+
+        assert 'udps.min_clump_interarrival_time' in dataframe.columns, "Column 'udps.min_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.min_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.min_clump_interarrival_time' are already processed."
+
+        assert 'udps.mean_clump_interarrival_time' in dataframe.columns, "Column 'udps.mean_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.mean_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.mean_clump_interarrival_time' are already processed."
+
+        assert 'udps.stddev_clump_interarrival_time' in dataframe.columns, "Column 'udps.stddev_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.stddev_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.stddev_clump_interarrival_time' are already processed."
+
+        assert 'udps.skewness_clump_interarrival_time' in dataframe.columns, "Column 'udps.skewness_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.skewness_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.skewness_clump_interarrival_time' are already processed."
+
+        assert 'udps.variance_clump_interarrival_time' in dataframe.columns, "Column 'udps.variance_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.variance_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.variance_clump_interarrival_time' are already processed."
+        
+        assert 'udps.kurtosis_clump_interarrival_time' in dataframe.columns, "Column 'udps.kurtosis_clump_interarrival_time' not found."
+        assert isinstance(dataframe['udps.kurtosis_clump_interarrival_time'].iloc[0], str), "Values in column 'udps.kurtosis_clump_interarrival_time' are already processed."
+
+        #EVAL
+        #src2dst
+        #len
+        dataframe['udps.src2dst_max_clump_len']         =   dataframe['udps.src2dst_max_clump_len'].apply(ast.literal_eval)
+        dataframe['udps.src2dst_min_clump_len']         =   dataframe['udps.src2dst_min_clump_len'].apply(ast.literal_eval)
+        dataframe['udps.src2dst_mean_clump_len']        =   dataframe['udps.src2dst_mean_clump_len'].apply(ast.literal_eval)
+        dataframe['udps.src2dst_stddev_clump_len']      =   dataframe['udps.src2dst_stddev_clump_len'].apply(ast.literal_eval)
+        dataframe['udps.src2dst_skewness_clump_len']    =   dataframe['udps.src2dst_skewness_clump_len'].apply(ast.literal_eval)
+        dataframe['udps.src2dst_variance_clump_len']    =   dataframe['udps.src2dst_variance_clump_len'].apply(ast.literal_eval)
+        dataframe['udps.src2dst_kurtosis_clump_len']    =   dataframe['udps.src2dst_kurtosis_clump_len'].apply(ast.literal_eval)
+
+        #interarrival_time
+        dataframe['udps.src2dst_max_clump_interarrival_time']         =   dataframe['udps.src2dst_max_clump_interarrival_time'].apply(ast.literal_eval)
+        dataframe['udps.src2dst_min_clump_interarrival_time']         =   dataframe['udps.src2dst_min_clump_interarrival_time'].apply(ast.literal_eval)
+        dataframe['udps.src2dst_mean_clump_interarrival_time']        =   dataframe['udps.src2dst_mean_clump_interarrival_time'].apply(ast.literal_eval)
+        dataframe['udps.src2dst_stddev_clump_interarrival_time']      =   dataframe['udps.src2dst_stddev_clump_interarrival_time'].apply(ast.literal_eval)
+        dataframe['udps.src2dst_skewness_clump_interarrival_time']    =   dataframe['udps.src2dst_skewness_clump_interarrival_time'].apply(ast.literal_eval)
+        dataframe['udps.src2dst_variance_clump_interarrival_time']    =   dataframe['udps.src2dst_variance_clump_interarrival_time'].apply(ast.literal_eval)
+        dataframe['udps.src2dst_kurtosis_clump_interarrival_time']    =   dataframe['udps.src2dst_kurtosis_clump_interarrival_time'].apply(ast.literal_eval)
+
+        #dst2src
+        #len
+        dataframe['udps.dst2src_max_clump_len']         =   dataframe['udps.dst2src_max_clump_len'].apply(ast.literal_eval)
+        dataframe['udps.dst2src_min_clump_len']         =   dataframe['udps.dst2src_min_clump_len'].apply(ast.literal_eval)
+        dataframe['udps.dst2src_mean_clump_len']        =   dataframe['udps.dst2src_mean_clump_len'].apply(ast.literal_eval)
+        dataframe['udps.dst2src_stddev_clump_len']      =   dataframe['udps.dst2src_stddev_clump_len'].apply(ast.literal_eval)
+        dataframe['udps.dst2src_skewness_clump_len']    =   dataframe['udps.dst2src_skewness_clump_len'].apply(ast.literal_eval)
+        dataframe['udps.dst2src_variance_clump_len']    =   dataframe['udps.dst2src_variance_clump_len'].apply(ast.literal_eval)
+        dataframe['udps.dst2src_kurtosis_clump_len']    =   dataframe['udps.dst2src_kurtosis_clump_len'].apply(ast.literal_eval)
+
+        #interarrival_time
+        dataframe['udps.dst2src_max_clump_interarrival_time']         =   dataframe['udps.dst2src_max_clump_interarrival_time'].apply(ast.literal_eval)
+        dataframe['udps.dst2src_min_clump_interarrival_time']         =   dataframe['udps.dst2src_min_clump_interarrival_time'].apply(ast.literal_eval)
+        dataframe['udps.dst2src_mean_clump_interarrival_time']        =   dataframe['udps.dst2src_mean_clump_interarrival_time'].apply(ast.literal_eval)
+        dataframe['udps.dst2src_stddev_clump_interarrival_time']      =   dataframe['udps.dst2src_stddev_clump_interarrival_time'].apply(ast.literal_eval)
+        dataframe['udps.dst2src_skewness_clump_interarrival_time']    =   dataframe['udps.dst2src_skewness_clump_interarrival_time'].apply(ast.literal_eval)
+        dataframe['udps.dst2src_variance_clump_interarrival_time']    =   dataframe['udps.dst2src_variance_clump_interarrival_time'].apply(ast.literal_eval)
+        dataframe['udps.dst2src_kurtosis_clump_interarrival_time']    =   dataframe['udps.dst2src_kurtosis_clump_interarrival_time'].apply(ast.literal_eval)
+
+        #bidirectional
+        #len
+        dataframe['udps.max_clump_len']         =   dataframe['udps.max_clump_len'].apply(ast.literal_eval)
+        dataframe['udps.min_clump_len']         =   dataframe['udps.min_clump_len'].apply(ast.literal_eval)
+        dataframe['udps.mean_clump_len']        =   dataframe['udps.mean_clump_len'].apply(ast.literal_eval)
+        dataframe['udps.stddev_clump_len']      =   dataframe['udps.stddev_clump_len'].apply(ast.literal_eval)
+        dataframe['udps.skewness_clump_len']    =   dataframe['udps.skewness_clump_len'].apply(ast.literal_eval)
+        dataframe['udps.variance_clump_len']    =   dataframe['udps.variance_clump_len'].apply(ast.literal_eval)
+        dataframe['udps.kurtosis_clump_len']    =   dataframe['udps.kurtosis_clump_len'].apply(ast.literal_eval)
+
+        #interarrival_time
+        dataframe['udps.max_clump_interarrival_time']         =   dataframe['udps.max_clump_interarrival_time'].apply(ast.literal_eval)
+        dataframe['udps.min_clump_interarrival_time']         =   dataframe['udps.min_clump_interarrival_time'].apply(ast.literal_eval)
+        dataframe['udps.mean_clump_interarrival_time']        =   dataframe['udps.mean_clump_interarrival_time'].apply(ast.literal_eval)
+        dataframe['udps.stddev_clump_interarrival_time']      =   dataframe['udps.stddev_clump_interarrival_time'].apply(ast.literal_eval)
+        dataframe['udps.skewness_clump_interarrival_time']    =   dataframe['udps.skewness_clump_interarrival_time'].apply(ast.literal_eval)
+        dataframe['udps.variance_clump_interarrival_time']    =   dataframe['udps.variance_clump_interarrival_time'].apply(ast.literal_eval)
+        dataframe['udps.kurtosis_clump_interarrival_time']    =   dataframe['udps.kurtosis_clump_interarrival_time'].apply(ast.literal_eval)
 
 
 #Clump class
 class Clump:
 
     def __init__(self,direction):
+        '''' '''
         self.direction = direction
         self.size = 0
         self.len = 0
@@ -392,6 +645,7 @@ class Clump:
         self.previous_time = 0
 
     def get_time_stats(self):
+        '''' '''
         stats = {}
         stats['maximum'] = self.interarrival_time_stats.maximum() if self.interarrival_time_stats._count > 0 else 0
         stats['minimum'] = self.interarrival_time_stats.minimum() if self.interarrival_time_stats._count > 0 else 0
@@ -403,6 +657,7 @@ class Clump:
         return stats
     
     def get_len_stats(self):
+        '''' '''
         stats = {}
         stats['maximum'] = self.len_stats.maximum() if self.len_stats._count > 0 else 0
         stats['minimum'] = self.len_stats.minimum() if self.len_stats._count > 0 else 0
@@ -415,18 +670,22 @@ class Clump:
 
 
     def update(self,size,time,len,bytes_per_packet):
+        '''' '''
         self.update_size(size)
         self.update_time(time)
         self.update_len(len)
         self.update_bytes_per_packet(bytes_per_packet)
 
     def update_size(self,value):
+        '''' '''
         self.size += value
 
     def update_time(self,value):
+        '''' '''
         self.interarrival_time = value
 
     def update_clump_time_stats(self,value):
+        '''' '''
         if self.previous_time == 0:
             self.previous_time = value
             value = 0.0
@@ -437,22 +696,28 @@ class Clump:
         self.interarrival_time_stats.push(value)
 
     def update_len(self,value):
+        '''' '''
         self.len_stats.push(value)
         self.len += value
 
     def update_bytes_per_packet(self):
+        '''' '''
         self.bytes_per_packet = self.len_stats.mean()
     
     def get_size(self):
+        '''' '''
         return self.size
 
     def get_time(self):
+        '''' '''
         return self.interarrival_time
 
     def get_len(self):
+        '''' '''
         return self.len
 
     def get_bytes_per_packet(self):
+        '''' '''
         return self.bytes_per_packet
 
     #Clump class END
@@ -461,6 +726,7 @@ class Clump:
 class Clumps:
     
     def __init__(self):
+        '''' '''
         self.clumps = []
         self.size = Statistics() # number of packets
         self.len = Statistics() # bytes
@@ -468,30 +734,38 @@ class Clumps:
         self.interarrival_time = Statistics()# interarrival_time
 
     def add_clump(self,clump):
+        '''' '''
         self.clumps.append(clump)
 
     def update(self,size,len,bytes_per_packet,time):
+        '''' '''
         self.update_size(size)
         self.update_len(len)
         self.update_bytes_per_packet(bytes_per_packet)
         self.update_time(time)
 
     def update_size(self,value):
+        '''' '''
         self.size.push(value)
 
     def update_time(self,value):
+        '''' '''
         self.interarrival_time.push(value)
 
     def update_len(self,value):
+        '''' '''
         self.len.push(value)
 
     def update_bytes_per_packet(self,value):
+        '''' '''
         self.bytes_per_packet.push(value)
 
     def get_clumps(self):
+        '''' '''
         return self.clumps
 
     def get_size_stats(self):
+        '''' '''
         stats = {}
         stats['maximum'] = self.size.maximum() if self.size._count > 0 else 0
         stats['minimum'] = self.size.minimum() if self.size._count > 0 else 0
@@ -502,8 +776,9 @@ class Clumps:
         stats['kurtosis'] = self.size.kurtosis() if stats['stddev'] != 0 else 0
         return stats
 
-  
+
     def get_time_stats(self):
+        '''' '''
         stats = {}
         stats['maximum'] = self.interarrival_time.maximum() if self.interarrival_time._count > 0 else 0
         stats['minimum'] = self.interarrival_time.minimum() if self.interarrival_time._count > 0 else 0
@@ -515,6 +790,7 @@ class Clumps:
         return stats
 
     def get_len_stats(self):
+        '''' '''
         stats = {}
         stats['maximum'] = self.len.maximum() if self.len._count > 0 else 0
         stats['minimum'] = self.len.minimum() if self.len._count > 0 else 0
@@ -526,6 +802,7 @@ class Clumps:
         return stats
 
     def get_bytes_per_packet_stats(self):
+        '''' '''
         stats = {}
         stats['maximum'] = self.bytes_per_packet.maximum() if self.bytes_per_packet._count > 0 else 0
         stats['minimum'] = self.bytes_per_packet.minimum() if self.bytes_per_packet._count > 0 else 0
