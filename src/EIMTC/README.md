@@ -1,4 +1,4 @@
-# PCAP Feature Extractor - WORK IN PROGRESS
+# PCAP Feature Extractor
 
 ![PyPi Badge](https://img.shields.io/pypi/v/osf-eimtc.svg)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/osf-eimtc)
