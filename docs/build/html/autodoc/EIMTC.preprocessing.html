@@ -1,0 +1,2101 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EIMTC.preprocessing package &mdash; OSF-EIMTC pre-release documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="EIMTC.selection package" href="EIMTC.selection.html" />
+    <link rel="prev" title="EIMTC.plugins package" href="EIMTC.plugins.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> OSF-EIMTC
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="EIMTC.html">EIMTC package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="EIMTC.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.metrics.html">EIMTC.metrics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.models.html">EIMTC.models package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.plugins.html">EIMTC.plugins package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">EIMTC.preprocessing package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.preprocessing">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.selection.html">EIMTC.selection package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.stats.html">EIMTC.stats package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.tests.html">EIMTC.tests package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.third_party.html">EIMTC.third_party package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#eimtc-cli-module">EIMTC.cli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#module-EIMTC.extractor">EIMTC.extractor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#eimtc-temp-pipelines-module">EIMTC.temp_pipelines module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#module-EIMTC.tls_tshark_entry">EIMTC.tls_tshark_entry module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#module-EIMTC.utils">EIMTC.utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#module-EIMTC">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OSF-EIMTC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="EIMTC.html">EIMTC package</a> &raquo;</li>
+      <li>EIMTC.preprocessing package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/autodoc/EIMTC.preprocessing.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="eimtc-preprocessing-package">
+<h1>EIMTC.preprocessing package<a class="headerlink" href="#eimtc-preprocessing-package" title="Permalink to this headline"></a></h1>
+<div class="section" id="module-EIMTC.preprocessing">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-EIMTC.preprocessing" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.M1CNNPreprocessing">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">M1CNNPreprocessing</span></span><a class="headerlink" href="#EIMTC.preprocessing.M1CNNPreprocessing" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.M1CNNPreprocessing.preprocess_features">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">preprocess_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.M1CNNPreprocessing.preprocess_features" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.DistillerPreprocessing">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">DistillerPreprocessing</span></span><a class="headerlink" href="#EIMTC.preprocessing.DistillerPreprocessing" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.DistillerPreprocessing.preprocess_features">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">preprocess_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.DistillerPreprocessing.preprocess_features" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MalDistPreprocessing">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">MalDistPreprocessing</span></span><a class="headerlink" href="#EIMTC.preprocessing.MalDistPreprocessing" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MalDistPreprocessing.preprocess_features">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">preprocess_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.MalDistPreprocessing.preprocess_features" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OneHotEncoderEIMTC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">OneHotEncoderEIMTC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.OneHotEncoderEIMTC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OneHotEncoderEIMTC.infrequent_categories_">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">infrequent_categories_</span></span><a class="headerlink" href="#EIMTC.preprocessing.OneHotEncoderEIMTC.infrequent_categories_" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OneHotEncoderEIMTC.categories_">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">categories_</span></span><a class="headerlink" href="#EIMTC.preprocessing.OneHotEncoderEIMTC.categories_" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OneHotEncoderEIMTC.drop_idx_">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">drop_idx_</span></span><a class="headerlink" href="#EIMTC.preprocessing.OneHotEncoderEIMTC.drop_idx_" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OneHotEncoderEIMTC.n_features_in_">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_features_in_</span></span><a class="headerlink" href="#EIMTC.preprocessing.OneHotEncoderEIMTC.n_features_in_" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OneHotEncoderEIMTC.feature_names_in_">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">feature_names_in_</span></span><a class="headerlink" href="#EIMTC.preprocessing.OneHotEncoderEIMTC.feature_names_in_" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OneHotEncoderEIMTC.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.OneHotEncoderEIMTC.fit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OneHotEncoderEIMTC.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.OneHotEncoderEIMTC.fit_transform" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OneHotEncoderEIMTC.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.OneHotEncoderEIMTC.transform" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OneHotEncoderEIMTC.inverse_transform">
+<span class="sig-name descname"><span class="pre">inverse_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.OneHotEncoderEIMTC.inverse_transform" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OneHotEncoderEIMTC.get_feature_names_out">
+<span class="sig-name descname"><span class="pre">get_feature_names_out</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.OneHotEncoderEIMTC.get_feature_names_out" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.FilenameBasedLabelling">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">FilenameBasedLabelling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eimtc_default_label1'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.FilenameBasedLabelling" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>General Purpose</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.DirectoryBasedLabelling">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">DirectoryBasedLabelling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.DirectoryBasedLabelling" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>General Purpose</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.add_dummy_feature">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">add_dummy_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.add_dummy_feature" title="Permalink to this definition"></a></dt>
+<dd><p>Augment dataset with an additional dummy feature.</p>
+<p>This is useful for fitting an intercept term with implementations which
+cannot otherwise fit it directly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>{array-like</em><em>, </em><em>sparse matrix} of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – Data.</p></li>
+<li><p><strong>value</strong> (<em>float</em>) – Value to use for the dummy feature.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X</strong> – Same data with dummy feature added as first column.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>{ndarray, sparse matrix} of shape (n_samples, n_features + 1)</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">add_dummy_feature</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add_dummy_feature</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="go">array([[1., 0., 1.],</span>
+<span class="go">       [1., 1., 0.]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.FunctionTransformer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">FunctionTransformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse_func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accept_sparse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_inverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kw_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inv_kw_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.FunctionTransformer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code></p>
+<p>Constructs a transformer from an arbitrary callable.</p>
+<p>A FunctionTransformer forwards its X (and optionally y) arguments to a
+user-defined function or function object and returns the result of this
+function. This is useful for stateless transformations such as taking the
+log of frequencies, doing custom scaling, etc.</p>
+<p>Note: If a lambda is used as the function, then the resulting
+transformer will not be pickleable.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.17.</span></p>
+</div>
+<p>Read more in the <span class="xref std std-ref">User Guide</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>func</strong> (<em>callable</em><em>, </em><em>default=None</em>) – The callable to use for the transformation. This will be passed
+the same arguments as transform, with args and kwargs forwarded.
+If func is None, then func will be the identity function.</p></li>
+<li><p><strong>inverse_func</strong> (<em>callable</em><em>, </em><em>default=None</em>) – The callable to use for the inverse transformation. This will be
+passed the same arguments as inverse transform, with args and
+kwargs forwarded. If inverse_func is None, then inverse_func
+will be the identity function.</p></li>
+<li><p><strong>validate</strong> (<em>bool</em><em>, </em><em>default=False</em>) – <p>Indicate that the input X array should be checked before calling
+<code class="docutils literal notranslate"><span class="pre">func</span></code>. The possibilities are:</p>
+<ul>
+<li><p>If False, there is no input validation.</p></li>
+<li><p>If True, then X will be converted to a 2-dimensional NumPy array or
+sparse matrix. If the conversion is not possible an exception is
+raised.</p></li>
+</ul>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.22: </span>The default of <code class="docutils literal notranslate"><span class="pre">validate</span></code> changed from True to False.</p>
+</div>
+</p></li>
+<li><p><strong>accept_sparse</strong> (<em>bool</em><em>, </em><em>default=False</em>) – Indicate that func accepts a sparse matrix as input. If validate is
+False, this has no effect. Otherwise, if accept_sparse is false,
+sparse matrix inputs will cause an exception to be raised.</p></li>
+<li><p><strong>check_inverse</strong> (<em>bool</em><em>, </em><em>default=True</em>) – <p>Whether to check that or <code class="docutils literal notranslate"><span class="pre">func</span></code> followed by <code class="docutils literal notranslate"><span class="pre">inverse_func</span></code> leads to
+the original inputs. It can be used for a sanity check, raising a
+warning when the condition is not fulfilled.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.20.</span></p>
+</div>
+</p></li>
+<li><p><strong>kw_args</strong> (<em>dict</em><em>, </em><em>default=None</em>) – <p>Dictionary of additional keyword arguments to pass to func.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.18.</span></p>
+</div>
+</p></li>
+<li><p><strong>inv_kw_args</strong> (<em>dict</em><em>, </em><em>default=None</em>) – <p>Dictionary of additional keyword arguments to pass to inverse_func.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.18.</span></p>
+</div>
+</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">FunctionTransformer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transformer</span> <span class="o">=</span> <span class="n">FunctionTransformer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">array([[0.       , 0.6931...],</span>
+<span class="go">       [1.0986..., 1.3862...]])</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.FunctionTransformer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.FunctionTransformer.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Fit transformer by checking X.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">validate</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">X</span></code> will be checked.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – Input array.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.FunctionTransformer.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.FunctionTransformer.transform" title="Permalink to this definition"></a></dt>
+<dd><p>Transform X using the forward function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – Input array.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_out</strong> – Transformed input.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like, shape (n_samples, n_features)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.FunctionTransformer.inverse_transform">
+<span class="sig-name descname"><span class="pre">inverse_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.FunctionTransformer.inverse_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Transform X using the inverse function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – Input array.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_out</strong> – Transformed input.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like, shape (n_samples, n_features)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.label_binarize">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">label_binarize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neg_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sparse_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.label_binarize" title="Permalink to this definition"></a></dt>
+<dd><p>Binarize labels in a one-vs-all fashion.</p>
+<p>Several regression and binary classification algorithms are
+available in scikit-learn. A simple way to extend these algorithms
+to the multi-class classification case is to use the so-called
+one-vs-all scheme.</p>
+<p>This function makes it possible to compute this transformation for a
+fixed set of class labels known ahead of time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>array-like</em>) – Sequence of integer labels or multilabel data to encode.</p></li>
+<li><p><strong>classes</strong> (<em>array-like of shape</em><em> (</em><em>n_classes</em><em>,</em><em>)</em>) – Uniquely holds the label for each class.</p></li>
+<li><p><strong>neg_label</strong> (<em>int</em><em>, </em><em>default=0</em>) – Value with which negative labels must be encoded.</p></li>
+<li><p><strong>pos_label</strong> (<em>int</em><em>, </em><em>default=1</em>) – Value with which positive labels must be encoded.</p></li>
+<li><p><strong>sparse_output</strong> (<em>bool</em><em>, </em><em>default=False</em><em>,</em>) – Set to true if output binary array is desired in CSR sparse format.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>Y</strong> – Shape will be (n_samples, 1) for binary problems. Sparse matrix will
+be of CSR format.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>{ndarray, sparse matrix} of shape (n_samples, n_classes)</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">label_binarize</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">label_binarize</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="go">array([[1, 0, 0, 0],</span>
+<span class="go">       [0, 0, 0, 1]])</span>
+</pre></div>
+</div>
+<p>The class ordering is preserved:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">label_binarize</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="go">array([[1, 0, 0, 0],</span>
+<span class="go">       [0, 1, 0, 0]])</span>
+</pre></div>
+</div>
+<p>Binary targets transform to a column vector</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">label_binarize</span><span class="p">([</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">,</span> <span class="s1">&#39;yes&#39;</span><span class="p">],</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;no&#39;</span><span class="p">,</span> <span class="s1">&#39;yes&#39;</span><span class="p">])</span>
+<span class="go">array([[1],</span>
+<span class="go">       [0],</span>
+<span class="go">       [0],</span>
+<span class="go">       [1]])</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">LabelBinarizer</span></code></dt><dd><p>Class used to wrap the functionality of label_binarize and allow for fitting to classes independently of the transform operation.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.KernelCenterer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">KernelCenterer</span></span><a class="headerlink" href="#EIMTC.preprocessing.KernelCenterer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code></p>
+<p>Center a kernel matrix.</p>
+<p>Let K(x, z) be a kernel defined by phi(x)^T phi(z), where phi is a
+function mapping x to a Hilbert space. KernelCenterer centers (i.e.,
+normalize to have zero mean) the data without explicitly computing phi(x).
+It is equivalent to centering phi(x) with
+sklearn.preprocessing.StandardScaler(with_std=False).</p>
+<p>Read more in the <span class="xref std std-ref">User Guide</span>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.KernelCenterer.K_fit_rows_">
+<span class="sig-name descname"><span class="pre">K_fit_rows_</span></span><a class="headerlink" href="#EIMTC.preprocessing.KernelCenterer.K_fit_rows_" title="Permalink to this definition"></a></dt>
+<dd><p>Average of each column of kernel matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>array of shape (n_samples,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.KernelCenterer.K_fit_all_">
+<span class="sig-name descname"><span class="pre">K_fit_all_</span></span><a class="headerlink" href="#EIMTC.preprocessing.KernelCenterer.K_fit_all_" title="Permalink to this definition"></a></dt>
+<dd><p>Average of kernel matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">KernelCenterer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">pairwise_kernels</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span> <span class="o">-</span><span class="mf">2.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span> <span class="mf">4.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">K</span> <span class="o">=</span> <span class="n">pairwise_kernels</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">K</span>
+<span class="go">array([[  9.,   2.,  -2.],</span>
+<span class="go">       [  2.,  14., -13.],</span>
+<span class="go">       [ -2., -13.,  21.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transformer</span> <span class="o">=</span> <span class="n">KernelCenterer</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transformer</span>
+<span class="go">KernelCenterer()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+<span class="go">array([[  5.,   0.,  -5.],</span>
+<span class="go">       [  0.,  14., -14.],</span>
+<span class="go">       [ -5., -14.,  19.]])</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.KernelCenterer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.KernelCenterer.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Fit KernelCenterer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>K</strong> (<em>ndarray of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_samples</em><em>)</em>) – Kernel matrix.</p></li>
+<li><p><strong>y</strong> (<em>None</em>) – Ignored.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> – Fitted transformer.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.KernelCenterer.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.KernelCenterer.transform" title="Permalink to this definition"></a></dt>
+<dd><p>Center kernel matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>K</strong> (<em>ndarray of shape</em><em> (</em><em>n_samples1</em><em>, </em><em>n_samples2</em><em>)</em>) – Kernel matrix.</p></li>
+<li><p><strong>copy</strong> (<em>bool</em><em>, </em><em>default=True</em>) – Set to False to perform inplace computation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>K_new</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_samples1, n_samples2)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.LabelEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">LabelEncoder</span></span><a class="headerlink" href="#EIMTC.preprocessing.LabelEncoder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code></p>
+<p>Encode target labels with value between 0 and n_classes-1.</p>
+<p>This transformer should be used to encode target values, <em>i.e.</em> <cite>y</cite>, and
+not the input <cite>X</cite>.</p>
+<p>Read more in the <span class="xref std std-ref">User Guide</span>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.12.</span></p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.LabelEncoder.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#EIMTC.preprocessing.LabelEncoder.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>Holds the label for each class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_classes,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<p><cite>LabelEncoder</cite> can be used to normalize labels.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">le</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">le</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="go">LabelEncoder()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span>
+<span class="go">array([1, 2, 6])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="go">array([0, 0, 1, 2]...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">le</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="go">array([1, 1, 2, 6])</span>
+</pre></div>
+</div>
+<p>It can also be used to transform non-numerical labels (as long as they are
+hashable and comparable) to numerical labels.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">le</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">le</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="s2">&quot;paris&quot;</span><span class="p">,</span> <span class="s2">&quot;paris&quot;</span><span class="p">,</span> <span class="s2">&quot;tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;amsterdam&quot;</span><span class="p">])</span>
+<span class="go">LabelEncoder()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="go">[&#39;amsterdam&#39;, &#39;paris&#39;, &#39;tokyo&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="s2">&quot;tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;paris&quot;</span><span class="p">])</span>
+<span class="go">array([2, 2, 1]...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">le</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+<span class="go">[&#39;tokyo&#39;, &#39;tokyo&#39;, &#39;paris&#39;]</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#EIMTC.preprocessing.OrdinalEncoder" title="EIMTC.preprocessing.OrdinalEncoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OrdinalEncoder</span></code></a></dt><dd><p>Encode categorical features using an ordinal encoding scheme.</p>
+</dd>
+<dt><a class="reference internal" href="#EIMTC.preprocessing.OneHotEncoder" title="EIMTC.preprocessing.OneHotEncoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OneHotEncoder</span></code></a></dt><dd><p>Encode categorical features as a one-hot numeric array.</p>
+</dd>
+</dl>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.LabelEncoder.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.LabelEncoder.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Fit label encoder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>y</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em>) – Target values.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>returns an instance of self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.LabelEncoder.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.LabelEncoder.fit_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Fit label encoder and return encoded labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>y</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em>) – Target values.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>y</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like of shape (n_samples,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.LabelEncoder.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.LabelEncoder.transform" title="Permalink to this definition"></a></dt>
+<dd><p>Transform labels to normalized encoding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>y</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em>) – Target values.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>y</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like of shape (n_samples,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.LabelEncoder.inverse_transform">
+<span class="sig-name descname"><span class="pre">inverse_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.LabelEncoder.inverse_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Transform labels back to original encoding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>y</strong> (<em>ndarray of shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em>) – Target values.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>y</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_samples,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.maxabs_scale">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">maxabs_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.maxabs_scale" title="Permalink to this definition"></a></dt>
+<dd><p>Scale each feature to the [-1, 1] range without breaking the sparsity.</p>
+<p>This estimator scales each feature individually such
+that the maximal absolute value of each feature in the
+training set will be 1.0.</p>
+<p>This scaler can also be applied to sparse CSR or CSC matrices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>{array-like</em><em>, </em><em>sparse matrix} of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data.</p></li>
+<li><p><strong>axis</strong> (<em>int</em><em>, </em><em>default=0</em>) – axis used to scale along. If 0, independently scale each feature,
+otherwise (if 1) scale each sample.</p></li>
+<li><p><strong>copy</strong> (<em>bool</em><em>, </em><em>default=True</em>) – Set to False to perform inplace scaling and avoid a copy (if the input
+is already a numpy array).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>X_tr</strong> (<em>{ndarray, sparse matrix} of shape (n_samples, n_features)</em>) – The transformed data.</p></li>
+<li><p><em>.. warning:: Risk of data leak</em> – Do not use <code class="xref py py-func docutils literal notranslate"><span class="pre">maxabs_scale()</span></code> unless you know what
+you are doing. A common mistake is to apply it to the entire data
+<em>before</em> splitting into training and test sets. This will bias the
+model evaluation because information would have leaked from the test
+set to the training set.
+In general, we recommend using
+<code class="xref py py-class docutils literal notranslate"><span class="pre">MaxAbsScaler</span></code> within a
+<span class="xref std std-ref">Pipeline</span> in order to prevent most risks of data
+leaking: <cite>pipe = make_pipeline(MaxAbsScaler(), LogisticRegression())</cite>.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#EIMTC.preprocessing.MaxAbsScaler" title="EIMTC.preprocessing.MaxAbsScaler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MaxAbsScaler</span></code></a></dt><dd><p>Performs scaling to the [-1, 1] range using the Transformer API (e.g. as part of a preprocessing <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>).</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>NaNs are treated as missing values: disregarded to compute the statistics,
+and maintained during the data transformation.</p>
+<p>For a comparison of the different scalers, transformers, and normalizers,
+see <span class="xref std std-ref">examples/preprocessing/plot_all_scaling.py</span>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MaxAbsScaler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">MaxAbsScaler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.MaxAbsScaler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code></p>
+<p>Scale each feature by its maximum absolute value.</p>
+<p>This estimator scales and translates each feature individually such
+that the maximal absolute value of each feature in the
+training set will be 1.0. It does not shift/center the data, and
+thus does not destroy any sparsity.</p>
+<p>This scaler can also be applied to sparse CSR or CSC matrices.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.17.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>copy</strong> (<em>bool</em><em>, </em><em>default=True</em>) – Set to False to perform inplace scaling and avoid a copy (if the input
+is already a numpy array).</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MaxAbsScaler.scale_">
+<span class="sig-name descname"><span class="pre">scale_</span></span><a class="headerlink" href="#EIMTC.preprocessing.MaxAbsScaler.scale_" title="Permalink to this definition"></a></dt>
+<dd><p>Per feature relative scaling of the data.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.17: </span><em>scale_</em> attribute.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MaxAbsScaler.max_abs_">
+<span class="sig-name descname"><span class="pre">max_abs_</span></span><a class="headerlink" href="#EIMTC.preprocessing.MaxAbsScaler.max_abs_" title="Permalink to this definition"></a></dt>
+<dd><p>Per feature maximum absolute value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MaxAbsScaler.n_samples_seen_">
+<span class="sig-name descname"><span class="pre">n_samples_seen_</span></span><a class="headerlink" href="#EIMTC.preprocessing.MaxAbsScaler.n_samples_seen_" title="Permalink to this definition"></a></dt>
+<dd><p>The number of samples processed by the estimator. Will be reset on
+new calls to fit, but increments across <code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> calls.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MaxAbsScaler</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span> <span class="mf">2.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transformer</span> <span class="o">=</span> <span class="n">MaxAbsScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transformer</span>
+<span class="go">MaxAbsScaler()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">array([[ 0.5, -1. ,  1. ],</span>
+<span class="go">       [ 1. ,  0. ,  0. ],</span>
+<span class="go">       [ 0. ,  1. , -0.5]])</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#EIMTC.preprocessing.maxabs_scale" title="EIMTC.preprocessing.maxabs_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maxabs_scale</span></code></a></dt><dd><p>Equivalent function without the estimator API.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>NaNs are treated as missing values: disregarded in fit, and maintained in
+transform.</p>
+<p>For a comparison of the different scalers, transformers, and normalizers,
+see <span class="xref std std-ref">examples/preprocessing/plot_all_scaling.py</span>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MaxAbsScaler.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.MaxAbsScaler.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the maximum absolute value to be used for later scaling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>{array-like</em><em>, </em><em>sparse matrix} of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data used to compute the per-feature minimum and maximum
+used for later scaling along the features axis.</p></li>
+<li><p><strong>y</strong> (<em>None</em>) – Ignored.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> – Fitted scaler.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MaxAbsScaler.partial_fit">
+<span class="sig-name descname"><span class="pre">partial_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.MaxAbsScaler.partial_fit" title="Permalink to this definition"></a></dt>
+<dd><p>Online computation of max absolute value of X for later scaling.</p>
+<p>All of X is processed as a single batch. This is intended for cases
+when <a class="reference internal" href="#EIMTC.preprocessing.MaxAbsScaler.fit" title="EIMTC.preprocessing.MaxAbsScaler.fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fit()</span></code></a> is not feasible due to very large number of
+<cite>n_samples</cite> or because X is read from a continuous stream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>{array-like</em><em>, </em><em>sparse matrix} of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data used to compute the mean and standard deviation
+used for later scaling along the features axis.</p></li>
+<li><p><strong>y</strong> (<em>None</em>) – Ignored.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> – Fitted scaler.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MaxAbsScaler.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.MaxAbsScaler.transform" title="Permalink to this definition"></a></dt>
+<dd><p>Scale the data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>{array-like</em><em>, </em><em>sparse matrix} of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data that should be scaled.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_tr</strong> – Transformed array.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>{ndarray, sparse matrix} of shape (n_samples, n_features)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MaxAbsScaler.inverse_transform">
+<span class="sig-name descname"><span class="pre">inverse_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.MaxAbsScaler.inverse_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Scale back the data to the original representation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>{array-like</em><em>, </em><em>sparse matrix} of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data that should be transformed back.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_tr</strong> – Transformed array.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>{ndarray, sparse matrix} of shape (n_samples, n_features)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.minmax_scale">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">minmax_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.minmax_scale" title="Permalink to this definition"></a></dt>
+<dd><p>Transform features by scaling each feature to a given range.</p>
+<p>This estimator scales and translates each feature individually such
+that it is in the given range on the training set, i.e. between
+zero and one.</p>
+<p>The transformation is given by (when <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X_std</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">X</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">X</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">X_std</span> <span class="o">*</span> <span class="p">(</span><span class="nb">max</span> <span class="o">-</span> <span class="nb">min</span><span class="p">)</span> <span class="o">+</span> <span class="nb">min</span>
+</pre></div>
+</div>
+<p>where min, max = feature_range.</p>
+<p>The transformation is calculated as (when <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scale</span> <span class="o">*</span> <span class="n">X</span> <span class="o">+</span> <span class="nb">min</span> <span class="o">-</span> <span class="n">X</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span>
+<span class="n">where</span> <span class="n">scale</span> <span class="o">=</span> <span class="p">(</span><span class="nb">max</span> <span class="o">-</span> <span class="nb">min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">X</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This transformation is often used as an alternative to zero mean,
+unit variance scaling.</p>
+<p>Read more in the <span class="xref std std-ref">User Guide</span>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.17: </span><em>minmax_scale</em> function interface
+to <code class="xref py py-class docutils literal notranslate"><span class="pre">MinMaxScaler</span></code>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data.</p></li>
+<li><p><strong>feature_range</strong> (<em>tuple</em><em> (</em><em>min</em><em>, </em><em>max</em><em>)</em><em>, </em><em>default=</em><em>(</em><em>0</em><em>, </em><em>1</em><em>)</em>) – Desired range of transformed data.</p></li>
+<li><p><strong>axis</strong> (<em>int</em><em>, </em><em>default=0</em>) – Axis used to scale along. If 0, independently scale each feature,
+otherwise (if 1) scale each sample.</p></li>
+<li><p><strong>copy</strong> (<em>bool</em><em>, </em><em>default=True</em>) – Set to False to perform inplace scaling and avoid a copy (if the input
+is already a numpy array).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>X_tr</strong> (<em>ndarray of shape (n_samples, n_features)</em>) – The transformed data.</p></li>
+<li><p><em>.. warning:: Risk of data leak</em> – Do not use <code class="xref py py-func docutils literal notranslate"><span class="pre">minmax_scale()</span></code> unless you know
+what you are doing. A common mistake is to apply it to the entire data
+<em>before</em> splitting into training and test sets. This will bias the
+model evaluation because information would have leaked from the test
+set to the training set.
+In general, we recommend using
+<code class="xref py py-class docutils literal notranslate"><span class="pre">MinMaxScaler</span></code> within a
+<span class="xref std std-ref">Pipeline</span> in order to prevent most risks of data
+leaking: <cite>pipe = make_pipeline(MinMaxScaler(), LogisticRegression())</cite>.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#EIMTC.preprocessing.MinMaxScaler" title="EIMTC.preprocessing.MinMaxScaler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MinMaxScaler</span></code></a></dt><dd><p>Performs scaling to a given range using the Transformer API (e.g. as part of a preprocessing <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>).</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>For a comparison of the different scalers, transformers, and normalizers,
+see <span class="xref std std-ref">examples/preprocessing/plot_all_scaling.py</span>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MinMaxScaler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">MinMaxScaler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.MinMaxScaler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code></p>
+<p>Transform features by scaling each feature to a given range.</p>
+<p>This estimator scales and translates each feature individually such
+that it is in the given range on the training set, e.g. between
+zero and one.</p>
+<p>The transformation is given by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X_std</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">X</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">X</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">X_std</span> <span class="o">*</span> <span class="p">(</span><span class="nb">max</span> <span class="o">-</span> <span class="nb">min</span><span class="p">)</span> <span class="o">+</span> <span class="nb">min</span>
+</pre></div>
+</div>
+<p>where min, max = feature_range.</p>
+<p>This transformation is often used as an alternative to zero mean,
+unit variance scaling.</p>
+<p>Read more in the <span class="xref std std-ref">User Guide</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature_range</strong> (<em>tuple</em><em> (</em><em>min</em><em>, </em><em>max</em><em>)</em><em>, </em><em>default=</em><em>(</em><em>0</em><em>, </em><em>1</em><em>)</em>) – Desired range of transformed data.</p></li>
+<li><p><strong>copy</strong> (<em>bool</em><em>, </em><em>default=True</em>) – Set to False to perform inplace row normalization and avoid a
+copy (if the input is already a numpy array).</p></li>
+<li><p><strong>clip</strong> (<em>bool</em><em>, </em><em>default=False</em>) – <p>Set to True to clip transformed values of held-out data to
+provided <cite>feature range</cite>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.24.</span></p>
+</div>
+</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MinMaxScaler.min_">
+<span class="sig-name descname"><span class="pre">min_</span></span><a class="headerlink" href="#EIMTC.preprocessing.MinMaxScaler.min_" title="Permalink to this definition"></a></dt>
+<dd><p>Per feature adjustment for minimum. Equivalent to
+<code class="docutils literal notranslate"><span class="pre">min</span> <span class="pre">-</span> <span class="pre">X.min(axis=0)</span> <span class="pre">*</span> <span class="pre">self.scale_</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MinMaxScaler.scale_">
+<span class="sig-name descname"><span class="pre">scale_</span></span><a class="headerlink" href="#EIMTC.preprocessing.MinMaxScaler.scale_" title="Permalink to this definition"></a></dt>
+<dd><p>Per feature relative scaling of the data. Equivalent to
+<code class="docutils literal notranslate"><span class="pre">(max</span> <span class="pre">-</span> <span class="pre">min)</span> <span class="pre">/</span> <span class="pre">(X.max(axis=0)</span> <span class="pre">-</span> <span class="pre">X.min(axis=0))</span></code></p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.17: </span><em>scale_</em> attribute.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MinMaxScaler.data_min_">
+<span class="sig-name descname"><span class="pre">data_min_</span></span><a class="headerlink" href="#EIMTC.preprocessing.MinMaxScaler.data_min_" title="Permalink to this definition"></a></dt>
+<dd><p>Per feature minimum seen in the data</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.17: </span><em>data_min_</em></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MinMaxScaler.data_max_">
+<span class="sig-name descname"><span class="pre">data_max_</span></span><a class="headerlink" href="#EIMTC.preprocessing.MinMaxScaler.data_max_" title="Permalink to this definition"></a></dt>
+<dd><p>Per feature maximum seen in the data</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.17: </span><em>data_max_</em></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MinMaxScaler.data_range_">
+<span class="sig-name descname"><span class="pre">data_range_</span></span><a class="headerlink" href="#EIMTC.preprocessing.MinMaxScaler.data_range_" title="Permalink to this definition"></a></dt>
+<dd><p>Per feature range <code class="docutils literal notranslate"><span class="pre">(data_max_</span> <span class="pre">-</span> <span class="pre">data_min_)</span></code> seen in the data</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.17: </span><em>data_range_</em></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MinMaxScaler.n_samples_seen_">
+<span class="sig-name descname"><span class="pre">n_samples_seen_</span></span><a class="headerlink" href="#EIMTC.preprocessing.MinMaxScaler.n_samples_seen_" title="Permalink to this definition"></a></dt>
+<dd><p>The number of samples processed by the estimator.
+It will be reset on new calls to fit, but increments across
+<code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> calls.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="go">MinMaxScaler()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">data_max_</span><span class="p">)</span>
+<span class="go">[ 1. 18.]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="go">[[0.   0.  ]</span>
+<span class="go"> [0.25 0.25]</span>
+<span class="go"> [0.5  0.5 ]</span>
+<span class="go"> [1.   1.  ]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]))</span>
+<span class="go">[[1.5 0. ]]</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#EIMTC.preprocessing.minmax_scale" title="EIMTC.preprocessing.minmax_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">minmax_scale</span></code></a></dt><dd><p>Equivalent function without the estimator API.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>NaNs are treated as missing values: disregarded in fit, and maintained in
+transform.</p>
+<p>For a comparison of the different scalers, transformers, and normalizers,
+see <span class="xref std std-ref">examples/preprocessing/plot_all_scaling.py</span>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MinMaxScaler.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.MinMaxScaler.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the minimum and maximum to be used for later scaling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data used to compute the per-feature minimum and maximum
+used for later scaling along the features axis.</p></li>
+<li><p><strong>y</strong> (<em>None</em>) – Ignored.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> – Fitted scaler.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MinMaxScaler.partial_fit">
+<span class="sig-name descname"><span class="pre">partial_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.MinMaxScaler.partial_fit" title="Permalink to this definition"></a></dt>
+<dd><p>Online computation of min and max on X for later scaling.</p>
+<p>All of X is processed as a single batch. This is intended for cases
+when <a class="reference internal" href="#EIMTC.preprocessing.MinMaxScaler.fit" title="EIMTC.preprocessing.MinMaxScaler.fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fit()</span></code></a> is not feasible due to very large number of
+<cite>n_samples</cite> or because X is read from a continuous stream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data used to compute the mean and standard deviation
+used for later scaling along the features axis.</p></li>
+<li><p><strong>y</strong> (<em>None</em>) – Ignored.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> – Fitted scaler.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MinMaxScaler.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.MinMaxScaler.transform" title="Permalink to this definition"></a></dt>
+<dd><p>Scale features of X according to feature_range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – Input data that will be transformed.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>Xt</strong> – Transformed data.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_samples, n_features)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MinMaxScaler.inverse_transform">
+<span class="sig-name descname"><span class="pre">inverse_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.MinMaxScaler.inverse_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Undo the scaling of X according to feature_range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – Input data that will be transformed. It cannot be sparse.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>Xt</strong> – Transformed data.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_samples, n_features)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MultiLabelBinarizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">MultiLabelBinarizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sparse_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.MultiLabelBinarizer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code></p>
+<p>Transform between iterable of iterables and a multilabel format.</p>
+<p>Although a list of sets or tuples is a very intuitive format for multilabel
+data, it is unwieldy to process. This transformer converts between this
+intuitive format and the supported multilabel format: a (samples x classes)
+binary matrix indicating the presence of a class label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>classes</strong> (<em>array-like of shape</em><em> (</em><em>n_classes</em><em>,</em><em>)</em><em>, </em><em>default=None</em>) – Indicates an ordering for the class labels.
+All entries should be unique (cannot contain duplicate classes).</p></li>
+<li><p><strong>sparse_output</strong> (<em>bool</em><em>, </em><em>default=False</em>) – Set to True if output binary array is desired in CSR sparse format.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MultiLabelBinarizer.classes_">
+<span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#EIMTC.preprocessing.MultiLabelBinarizer.classes_" title="Permalink to this definition"></a></dt>
+<dd><p>A copy of the <cite>classes</cite> parameter when provided.
+Otherwise it corresponds to the sorted set of classes found
+when fitting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_classes,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MultiLabelBinarizer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mlb</span> <span class="o">=</span> <span class="n">MultiLabelBinarizer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mlb</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,)])</span>
+<span class="go">array([[1, 1, 0],</span>
+<span class="go">       [0, 0, 1]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mlb</span><span class="o">.</span><span class="n">classes_</span>
+<span class="go">array([1, 2, 3])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mlb</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([{</span><span class="s1">&#39;sci-fi&#39;</span><span class="p">,</span> <span class="s1">&#39;thriller&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;comedy&#39;</span><span class="p">}])</span>
+<span class="go">array([[0, 1, 1],</span>
+<span class="go">       [1, 0, 0]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">mlb</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="go">[&#39;comedy&#39;, &#39;sci-fi&#39;, &#39;thriller&#39;]</span>
+</pre></div>
+</div>
+<p>A common mistake is to pass in a list, which leads to the following issue:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mlb</span> <span class="o">=</span> <span class="n">MultiLabelBinarizer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mlb</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="s1">&#39;sci-fi&#39;</span><span class="p">,</span> <span class="s1">&#39;thriller&#39;</span><span class="p">,</span> <span class="s1">&#39;comedy&#39;</span><span class="p">])</span>
+<span class="go">MultiLabelBinarizer()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mlb</span><span class="o">.</span><span class="n">classes_</span>
+<span class="go">array([&#39;-&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;, &#39;h&#39;, &#39;i&#39;, &#39;l&#39;, &#39;m&#39;, &#39;o&#39;, &#39;r&#39;, &#39;s&#39;, &#39;t&#39;,</span>
+<span class="go">    &#39;y&#39;], dtype=object)</span>
+</pre></div>
+</div>
+<p>To correct this, the list of labels should be passed in as:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mlb</span> <span class="o">=</span> <span class="n">MultiLabelBinarizer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mlb</span><span class="o">.</span><span class="n">fit</span><span class="p">([[</span><span class="s1">&#39;sci-fi&#39;</span><span class="p">,</span> <span class="s1">&#39;thriller&#39;</span><span class="p">,</span> <span class="s1">&#39;comedy&#39;</span><span class="p">]])</span>
+<span class="go">MultiLabelBinarizer()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mlb</span><span class="o">.</span><span class="n">classes_</span>
+<span class="go">array([&#39;comedy&#39;, &#39;sci-fi&#39;, &#39;thriller&#39;], dtype=object)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#EIMTC.preprocessing.OneHotEncoder" title="EIMTC.preprocessing.OneHotEncoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OneHotEncoder</span></code></a></dt><dd><p>Encode categorical features using a one-hot aka one-of-K scheme.</p>
+</dd>
+</dl>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MultiLabelBinarizer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.MultiLabelBinarizer.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Fit the label sets binarizer, storing <span class="xref std std-term">classes_</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>y</strong> (<em>iterable of iterables</em>) – A set of labels (any orderable and hashable object) for each
+sample. If the <cite>classes</cite> parameter is set, <cite>y</cite> will not be
+iterated.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>returns this MultiLabelBinarizer instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MultiLabelBinarizer.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.MultiLabelBinarizer.fit_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Fit the label sets binarizer and transform the given label sets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>y</strong> (<em>iterable of iterables</em>) – A set of labels (any orderable and hashable object) for each
+sample. If the <cite>classes</cite> parameter is set, <cite>y</cite> will not be
+iterated.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>y_indicator</strong> – A matrix such that <cite>y_indicator[i, j] = 1</cite> i.f.f. <cite>classes_[j]</cite>
+is in <cite>y[i]</cite>, and 0 otherwise. Sparse matrix will be of CSR
+format.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>{ndarray, sparse matrix} of shape (n_samples, n_classes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MultiLabelBinarizer.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.MultiLabelBinarizer.transform" title="Permalink to this definition"></a></dt>
+<dd><p>Transform the given label sets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>y</strong> (<em>iterable of iterables</em>) – A set of labels (any orderable and hashable object) for each
+sample. If the <cite>classes</cite> parameter is set, <cite>y</cite> will not be
+iterated.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>y_indicator</strong> – A matrix such that <cite>y_indicator[i, j] = 1</cite> iff <cite>classes_[j]</cite> is in
+<cite>y[i]</cite>, and 0 otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array or CSR matrix, shape (n_samples, n_classes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.MultiLabelBinarizer.inverse_transform">
+<span class="sig-name descname"><span class="pre">inverse_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.MultiLabelBinarizer.inverse_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Transform the given indicator matrix into label sets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>yt</strong> (<em>{ndarray</em><em>, </em><em>sparse matrix} of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_classes</em><em>)</em>) – A matrix containing only 1s ands 0s.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>y</strong> – The set of labels for each sample such that <cite>y[i]</cite> consists of
+<cite>classes_[j]</cite> for each <cite>yt[i, j] == 1</cite>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of tuples</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.normalize">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'l2'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.normalize" title="Permalink to this definition"></a></dt>
+<dd><p>Scale input vectors individually to unit norm (vector length).</p>
+<p>Read more in the <span class="xref std std-ref">User Guide</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>{array-like</em><em>, </em><em>sparse matrix} of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data to normalize, element by element.
+scipy.sparse matrices should be in CSR format to avoid an
+un-necessary copy.</p></li>
+<li><p><strong>norm</strong> (<em>{'l1'</em><em>, </em><em>'l2'</em><em>, </em><em>'max'}</em><em>, </em><em>default='l2'</em>) – The norm to use to normalize each non zero sample (or each non-zero
+feature if axis is 0).</p></li>
+<li><p><strong>axis</strong> (<em>{0</em><em>, </em><em>1}</em><em>, </em><em>default=1</em>) – axis used to normalize the data along. If 1, independently normalize
+each sample, otherwise (if 0) normalize each feature.</p></li>
+<li><p><strong>copy</strong> (<em>bool</em><em>, </em><em>default=True</em>) – set to False to perform inplace row normalization and avoid a
+copy (if the input is already a numpy array or a scipy.sparse
+CSR matrix and if axis is 1).</p></li>
+<li><p><strong>return_norm</strong> (<em>bool</em><em>, </em><em>default=False</em>) – whether to return the computed norms</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>X</strong> (<em>{ndarray, sparse matrix} of shape (n_samples, n_features)</em>) – Normalized input X.</p></li>
+<li><p><strong>norms</strong> (<em>ndarray of shape (n_samples, ) if axis=1 else (n_features, )</em>) – An array of norms along given axis for X.
+When X is sparse, a NotImplementedError will be raised
+for norm ‘l1’ or ‘l2’.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#EIMTC.preprocessing.Normalizer" title="EIMTC.preprocessing.Normalizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Normalizer</span></code></a></dt><dd><p>Performs normalization using the Transformer API (e.g. as part of a preprocessing <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>).</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>For a comparison of the different scalers, transformers, and normalizers,
+see <span class="xref std std-ref">examples/preprocessing/plot_all_scaling.py</span>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.Normalizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">Normalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'l2'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.Normalizer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code></p>
+<p>Normalize samples individually to unit norm.</p>
+<p>Each sample (i.e. each row of the data matrix) with at least one
+non zero component is rescaled independently of other samples so
+that its norm (l1, l2 or inf) equals one.</p>
+<p>This transformer is able to work both with dense numpy arrays and
+scipy.sparse matrix (use CSR format if you want to avoid the burden of
+a copy / conversion).</p>
+<p>Scaling inputs to unit norms is a common operation for text
+classification or clustering for instance. For instance the dot
+product of two l2-normalized TF-IDF vectors is the cosine similarity
+of the vectors and is the base similarity metric for the Vector
+Space Model commonly used by the Information Retrieval community.</p>
+<p>Read more in the <span class="xref std std-ref">User Guide</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>norm</strong> (<em>{'l1'</em><em>, </em><em>'l2'</em><em>, </em><em>'max'}</em><em>, </em><em>default='l2'</em>) – The norm to use to normalize each non zero sample. If norm=’max’
+is used, values will be rescaled by the maximum of the absolute
+values.</p></li>
+<li><p><strong>copy</strong> (<em>bool</em><em>, </em><em>default=True</em>) – set to False to perform inplace row normalization and avoid a
+copy (if the input is already a numpy array or a scipy.sparse
+CSR matrix).</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">Normalizer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transformer</span> <span class="o">=</span> <span class="n">Normalizer</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>  <span class="c1"># fit does nothing.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transformer</span>
+<span class="go">Normalizer()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">array([[0.8, 0.2, 0.4, 0.4],</span>
+<span class="go">       [0.1, 0.3, 0.9, 0.3],</span>
+<span class="go">       [0.5, 0.7, 0.5, 0.1]])</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>This estimator is stateless (besides constructor parameters), the
+fit method does nothing but is useful when used in a pipeline.</p>
+<p>For a comparison of the different scalers, transformers, and normalizers,
+see <span class="xref std std-ref">examples/preprocessing/plot_all_scaling.py</span>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#EIMTC.preprocessing.normalize" title="EIMTC.preprocessing.normalize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalize</span></code></a></dt><dd><p>Equivalent function without the estimator API.</p>
+</dd>
+</dl>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.Normalizer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.Normalizer.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Do nothing and return the estimator unchanged</p>
+<p>This method is just there to implement the usual API and hence
+work in pipelines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>{array-like</em><em>, </em><em>sparse matrix} of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data to estimate the normalization parameters.</p></li>
+<li><p><strong>y</strong> (<em>None</em>) – Ignored.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> – Fitted transformer.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.Normalizer.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.Normalizer.transform" title="Permalink to this definition"></a></dt>
+<dd><p>Scale each non zero row of X to unit norm</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>{array-like</em><em>, </em><em>sparse matrix} of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data to normalize, row by row. scipy.sparse matrices should be
+in CSR format to avoid an un-necessary copy.</p></li>
+<li><p><strong>copy</strong> (<em>bool</em><em>, </em><em>default=None</em>) – Copy the input X or not.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_tr</strong> – Transformed array.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>{ndarray, sparse matrix} of shape (n_samples, n_features)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OneHotEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">OneHotEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories='auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sparse=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float64'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handle_unknown='error'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.OneHotEncoder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.preprocessing._encoders._BaseEncoder</span></code></p>
+<p>Encode categorical features as a one-hot numeric array.</p>
+<p>The input to this transformer should be an array-like of integers or
+strings, denoting the values taken on by categorical (discrete) features.
+The features are encoded using a one-hot (aka ‘one-of-K’ or ‘dummy’)
+encoding scheme. This creates a binary column for each category and
+returns a sparse matrix or dense array (depending on the <code class="docutils literal notranslate"><span class="pre">sparse</span></code>
+parameter)</p>
+<p>By default, the encoder derives the categories based on the unique values
+in each feature. Alternatively, you can also specify the <cite>categories</cite>
+manually.</p>
+<p>This encoding is needed for feeding categorical data to many scikit-learn
+estimators, notably linear models and SVMs with the standard kernels.</p>
+<p>Note: a one-hot encoding of y labels should use a LabelBinarizer
+instead.</p>
+<p>Read more in the <span class="xref std std-ref">User Guide</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>categories</strong> (<em>'auto'</em><em> or </em><em>a list of array-like</em><em>, </em><em>default='auto'</em>) – <p>Categories (unique values) per feature:</p>
+<ul>
+<li><p>’auto’ : Determine categories automatically from the training data.</p></li>
+<li><p>list : <code class="docutils literal notranslate"><span class="pre">categories[i]</span></code> holds the categories expected in the ith
+column. The passed categories should not mix strings and numeric
+values within a single feature, and should be sorted in case of
+numeric values.</p></li>
+</ul>
+<p>The used categories can be found in the <code class="docutils literal notranslate"><span class="pre">categories_</span></code> attribute.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.20.</span></p>
+</div>
+</p></li>
+<li><p><strong>drop</strong> (<em>{'first'</em><em>, </em><em>'if_binary'}</em><em> or </em><em>a array-like of shape</em><em> (</em><em>n_features</em><em>,</em><em>)</em><em>,             </em><em>default=None</em>) – <p>Specifies a methodology to use to drop one of the categories per
+feature. This is useful in situations where perfectly collinear
+features cause problems, such as when feeding the resulting data
+into a neural network or an unregularized regression.</p>
+<p>However, dropping one category breaks the symmetry of the original
+representation and can therefore induce a bias in downstream models,
+for instance for penalized linear classification or regression models.</p>
+<ul>
+<li><p>None : retain all features (the default).</p></li>
+<li><p>’first’ : drop the first category in each feature. If only one
+category is present, the feature will be dropped entirely.</p></li>
+<li><p>’if_binary’ : drop the first category in each feature with two
+categories. Features with 1 or more than 2 categories are
+left intact.</p></li>
+<li><p>array : <code class="docutils literal notranslate"><span class="pre">drop[i]</span></code> is the category in feature <code class="docutils literal notranslate"><span class="pre">X[:,</span> <span class="pre">i]</span></code> that
+should be dropped.</p></li>
+</ul>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.21: </span>The parameter <cite>drop</cite> was added in 0.21.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.23: </span>The option <cite>drop=’if_binary’</cite> was added in 0.23.</p>
+</div>
+</p></li>
+<li><p><strong>sparse</strong> (<em>bool</em><em>, </em><em>default=True</em>) – Will return sparse matrix if set True else will return an array.</p></li>
+<li><p><strong>dtype</strong> (<em>number type</em><em>, </em><em>default=float</em>) – Desired dtype of output.</p></li>
+<li><p><strong>handle_unknown</strong> (<em>{'error'</em><em>, </em><em>'ignore'}</em><em>, </em><em>default='error'</em>) – Whether to raise an error or ignore if an unknown categorical feature
+is present during transform (default is to raise). When this parameter
+is set to ‘ignore’ and an unknown category is encountered during
+transform, the resulting one-hot encoded columns for this feature
+will be all zeros. In the inverse transform, an unknown category
+will be denoted as None.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OneHotEncoder.categories_">
+<span class="sig-name descname"><span class="pre">categories_</span></span><a class="headerlink" href="#EIMTC.preprocessing.OneHotEncoder.categories_" title="Permalink to this definition"></a></dt>
+<dd><p>The categories of each feature determined during fitting
+(in order of the features in X and corresponding with the output
+of <code class="docutils literal notranslate"><span class="pre">transform</span></code>). This includes the category specified in <code class="docutils literal notranslate"><span class="pre">drop</span></code>
+(if any).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of arrays</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OneHotEncoder.drop_idx_">
+<span class="sig-name descname"><span class="pre">drop_idx_</span></span><a class="headerlink" href="#EIMTC.preprocessing.OneHotEncoder.drop_idx_" title="Permalink to this definition"></a></dt>
+<dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">drop_idx_[i]</span></code> is the index in <code class="docutils literal notranslate"><span class="pre">categories_[i]</span></code> of the category
+to be dropped for each feature.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">drop_idx_[i]</span> <span class="pre">=</span> <span class="pre">None</span></code> if no category is to be dropped from the
+feature with index <code class="docutils literal notranslate"><span class="pre">i</span></code>, e.g. when <cite>drop=’if_binary’</cite> and the
+feature isn’t binary.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">drop_idx_</span> <span class="pre">=</span> <span class="pre">None</span></code> if all the transformed features will be
+retained.</p></li>
+</ul>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.23: </span>Added the possibility to contain <cite>None</cite> values.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>array of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#EIMTC.preprocessing.OrdinalEncoder" title="EIMTC.preprocessing.OrdinalEncoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OrdinalEncoder</span></code></a></dt><dd><p>Performs an ordinal (integer) encoding of the categorical features.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.feature_extraction.DictVectorizer</span></code></dt><dd><p>Performs a one-hot encoding of dictionary items (also handles string-valued features).</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.feature_extraction.FeatureHasher</span></code></dt><dd><p>Performs an approximate one-hot encoding of dictionary items or strings.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">LabelBinarizer</span></code></dt><dd><p>Binarizes labels in a one-vs-all fashion.</p>
+</dd>
+<dt><a class="reference internal" href="#EIMTC.preprocessing.MultiLabelBinarizer" title="EIMTC.preprocessing.MultiLabelBinarizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiLabelBinarizer</span></code></a></dt><dd><p>Transforms between iterable of iterables and a multilabel format, e.g. a (samples x classes) binary matrix indicating the presence of a class label.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>Given a dataset with two features, we let the encoder find the unique
+values per feature and transform the data to a binary one-hot encoding.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
+</pre></div>
+</div>
+<p>One can discard categories not seen during <cite>fit</cite>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">OneHotEncoder(handle_unknown=&#39;ignore&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">categories_</span>
+<span class="go">[array([&#39;Female&#39;, &#39;Male&#39;], dtype=object), array([1, 2, 3], dtype=object)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">transform</span><span class="p">([[</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+<span class="go">array([[1., 0., 1., 0., 0.],</span>
+<span class="go">       [0., 1., 0., 0., 0.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="go">array([[&#39;Male&#39;, 1],</span>
+<span class="go">       [None, 2]], dtype=object)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">([</span><span class="s1">&#39;gender&#39;</span><span class="p">,</span> <span class="s1">&#39;group&#39;</span><span class="p">])</span>
+<span class="go">array([&#39;gender_Female&#39;, &#39;gender_Male&#39;, &#39;group_1&#39;, &#39;group_2&#39;, &#39;group_3&#39;],</span>
+<span class="go">  dtype=object)</span>
+</pre></div>
+</div>
+<p>One can always drop the first column for each feature:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">drop_enc</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">drop_enc</span><span class="o">.</span><span class="n">categories_</span>
+<span class="go">[array([&#39;Female&#39;, &#39;Male&#39;], dtype=object), array([1, 2, 3], dtype=object)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">drop_enc</span><span class="o">.</span><span class="n">transform</span><span class="p">([[</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+<span class="go">array([[0., 0., 0.],</span>
+<span class="go">       [1., 1., 0.]])</span>
+</pre></div>
+</div>
+<p>Or drop a column for feature only having 2 categories:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">drop_binary_enc</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="s1">&#39;if_binary&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">drop_binary_enc</span><span class="o">.</span><span class="n">transform</span><span class="p">([[</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+<span class="go">array([[0., 1., 0., 0.],</span>
+<span class="go">       [1., 0., 1., 0.]])</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OneHotEncoder.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.OneHotEncoder.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Fit OneHotEncoder to X.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data to determine the categories of each feature.</p></li>
+<li><p><strong>y</strong> (<em>None</em>) – Ignored. This parameter exists only for compatibility with
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OneHotEncoder.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.OneHotEncoder.fit_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Fit OneHotEncoder to X, then transform X.</p>
+<p>Equivalent to fit(X).transform(X) but more convenient.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data to encode.</p></li>
+<li><p><strong>y</strong> (<em>None</em>) – Ignored. This parameter exists only for compatibility with
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_out</strong> – Transformed input. If <cite>sparse=True</cite>, a sparse matrix will be
+returned.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>{ndarray, sparse matrix} of shape                 (n_samples, n_encoded_features)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OneHotEncoder.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.OneHotEncoder.transform" title="Permalink to this definition"></a></dt>
+<dd><p>Transform X using one-hot encoding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data to encode.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_out</strong> – Transformed input. If <cite>sparse=True</cite>, a sparse matrix will be
+returned.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>{ndarray, sparse matrix} of shape                 (n_samples, n_encoded_features)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OneHotEncoder.inverse_transform">
+<span class="sig-name descname"><span class="pre">inverse_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.OneHotEncoder.inverse_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Convert the data back to the original representation.</p>
+<p>In case unknown categories are encountered (all zeros in the
+one-hot encoding), <code class="docutils literal notranslate"><span class="pre">None</span></code> is used to represent this category.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>{array-like</em><em>, </em><em>sparse matrix} of shape</em><em>                 (</em><em>n_samples</em><em>, </em><em>n_encoded_features</em><em>)</em>) – The transformed data.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_tr</strong> – Inverse transformed array.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_samples, n_features)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OneHotEncoder.get_feature_names">
+<span class="sig-name descname"><span class="pre">get_feature_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.OneHotEncoder.get_feature_names" title="Permalink to this definition"></a></dt>
+<dd><p>Return feature names for output features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input_features</strong> (<em>list of str of shape</em><em> (</em><em>n_features</em><em>,</em><em>)</em>) – String names for input features if available. By default,
+“x0”, “x1”, … “xn_features” is used.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>output_feature_names</strong> – Array of feature names.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_output_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OrdinalEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">OrdinalEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories='auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float64'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handle_unknown='error'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unknown_value=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.OrdinalEncoder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.preprocessing._encoders._BaseEncoder</span></code></p>
+<p>Encode categorical features as an integer array.</p>
+<p>The input to this transformer should be an array-like of integers or
+strings, denoting the values taken on by categorical (discrete) features.
+The features are converted to ordinal integers. This results in
+a single column of integers (0 to n_categories - 1) per feature.</p>
+<p>Read more in the <span class="xref std std-ref">User Guide</span>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.20.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>categories</strong> (<em>'auto'</em><em> or </em><em>a list of array-like</em><em>, </em><em>default='auto'</em>) – <p>Categories (unique values) per feature:</p>
+<ul>
+<li><p>’auto’ : Determine categories automatically from the training data.</p></li>
+<li><p>list : <code class="docutils literal notranslate"><span class="pre">categories[i]</span></code> holds the categories expected in the ith
+column. The passed categories should not mix strings and numeric
+values, and should be sorted in case of numeric values.</p></li>
+</ul>
+<p>The used categories can be found in the <code class="docutils literal notranslate"><span class="pre">categories_</span></code> attribute.</p>
+</p></li>
+<li><p><strong>dtype</strong> (<em>number type</em><em>, </em><em>default np.float64</em>) – Desired dtype of output.</p></li>
+<li><p><strong>handle_unknown</strong> (<em>{'error'</em><em>, </em><em>'use_encoded_value'}</em><em>, </em><em>default='error'</em>) – <p>When set to ‘error’ an error will be raised in case an unknown
+categorical feature is present during transform. When set to
+‘use_encoded_value’, the encoded value of unknown categories will be
+set to the value given for the parameter <cite>unknown_value</cite>. In
+<a class="reference internal" href="#EIMTC.preprocessing.OrdinalEncoder.inverse_transform" title="EIMTC.preprocessing.OrdinalEncoder.inverse_transform"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inverse_transform()</span></code></a>, an unknown category will be denoted as None.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.24.</span></p>
+</div>
+</p></li>
+<li><p><strong>unknown_value</strong> (<em>int</em><em> or </em><em>np.nan</em><em>, </em><em>default=None</em>) – <p>When the parameter handle_unknown is set to ‘use_encoded_value’, this
+parameter is required and will set the encoded value of unknown
+categories. It has to be distinct from the values used to encode any of
+the categories in <cite>fit</cite>. If set to np.nan, the <cite>dtype</cite> parameter must
+be a float dtype.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.24.</span></p>
+</div>
+</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OrdinalEncoder.categories_">
+<span class="sig-name descname"><span class="pre">categories_</span></span><a class="headerlink" href="#EIMTC.preprocessing.OrdinalEncoder.categories_" title="Permalink to this definition"></a></dt>
+<dd><p>The categories of each feature determined during <code class="docutils literal notranslate"><span class="pre">fit</span></code> (in order of
+the features in X and corresponding with the output of <code class="docutils literal notranslate"><span class="pre">transform</span></code>).
+This does not include categories that weren’t seen during <code class="docutils literal notranslate"><span class="pre">fit</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of arrays</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#EIMTC.preprocessing.OneHotEncoder" title="EIMTC.preprocessing.OneHotEncoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OneHotEncoder</span></code></a></dt><dd><p>Performs a one-hot encoding of categorical features.</p>
+</dd>
+<dt><a class="reference internal" href="#EIMTC.preprocessing.LabelEncoder" title="EIMTC.preprocessing.LabelEncoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LabelEncoder</span></code></a></dt><dd><p>Encodes target labels with values between 0 and <code class="docutils literal notranslate"><span class="pre">n_classes-1</span></code>.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>Given a dataset with two features, we let the encoder find the unique
+values per feature and transform the data to an ordinal encoding.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OrdinalEncoder</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span> <span class="o">=</span> <span class="n">OrdinalEncoder</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">OrdinalEncoder()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">categories_</span>
+<span class="go">[array([&#39;Female&#39;, &#39;Male&#39;], dtype=object), array([1, 2, 3], dtype=object)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">transform</span><span class="p">([[</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="go">array([[0., 2.],</span>
+<span class="go">       [1., 0.]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="go">array([[&#39;Male&#39;, 1],</span>
+<span class="go">       [&#39;Female&#39;, 2]], dtype=object)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OrdinalEncoder.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.OrdinalEncoder.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Fit the OrdinalEncoder to X.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data to determine the categories of each feature.</p></li>
+<li><p><strong>y</strong> (<em>None</em>) – Ignored. This parameter exists only for compatibility with
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OrdinalEncoder.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.OrdinalEncoder.transform" title="Permalink to this definition"></a></dt>
+<dd><p>Transform X to ordinal codes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data to encode.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_out</strong> – Transformed input.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_samples, n_features)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.OrdinalEncoder.inverse_transform">
+<span class="sig-name descname"><span class="pre">inverse_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.OrdinalEncoder.inverse_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Convert the data back to the original representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>{array-like</em><em>, </em><em>sparse matrix} of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The transformed data.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_tr</strong> – Inverse transformed array.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_samples, n_features)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.StandardScaler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.preprocessing.</span></span><span class="sig-name descname"><span class="pre">StandardScaler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_mean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.StandardScaler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code></p>
+<p>Standardize features by removing the mean and scaling to unit variance</p>
+<p>The standard score of a sample <cite>x</cite> is calculated as:</p>
+<blockquote>
+<div><p>z = (x - u) / s</p>
+</div></blockquote>
+<p>where <cite>u</cite> is the mean of the training samples or zero if <cite>with_mean=False</cite>,
+and <cite>s</cite> is the standard deviation of the training samples or one if
+<cite>with_std=False</cite>.</p>
+<p>Centering and scaling happen independently on each feature by computing
+the relevant statistics on the samples in the training set. Mean and
+standard deviation are then stored to be used on later data using
+<a class="reference internal" href="#EIMTC.preprocessing.StandardScaler.transform" title="EIMTC.preprocessing.StandardScaler.transform"><code class="xref py py-meth docutils literal notranslate"><span class="pre">transform()</span></code></a>.</p>
+<p>Standardization of a dataset is a common requirement for many
+machine learning estimators: they might behave badly if the
+individual features do not more or less look like standard normally
+distributed data (e.g. Gaussian with 0 mean and unit variance).</p>
+<p>For instance many elements used in the objective function of
+a learning algorithm (such as the RBF kernel of Support Vector
+Machines or the L1 and L2 regularizers of linear models) assume that
+all features are centered around 0 and have variance in the same
+order. If a feature has a variance that is orders of magnitude larger
+that others, it might dominate the objective function and make the
+estimator unable to learn from other features correctly as expected.</p>
+<p>This scaler can also be applied to sparse CSR or CSC matrices by passing
+<cite>with_mean=False</cite> to avoid breaking the sparsity structure of the data.</p>
+<p>Read more in the <span class="xref std std-ref">User Guide</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>copy</strong> (<em>bool</em><em>, </em><em>default=True</em>) – If False, try to avoid a copy and do inplace scaling instead.
+This is not guaranteed to always work inplace; e.g. if the data is
+not a NumPy array or scipy.sparse CSR matrix, a copy may still be
+returned.</p></li>
+<li><p><strong>with_mean</strong> (<em>bool</em><em>, </em><em>default=True</em>) – If True, center the data before scaling.
+This does not work (and will raise an exception) when attempted on
+sparse matrices, because centering them entails building a dense
+matrix which in common use cases is likely to be too large to fit in
+memory.</p></li>
+<li><p><strong>with_std</strong> (<em>bool</em><em>, </em><em>default=True</em>) – If True, scale the data to unit variance (or equivalently,
+unit standard deviation).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.StandardScaler.scale_">
+<span class="sig-name descname"><span class="pre">scale_</span></span><a class="headerlink" href="#EIMTC.preprocessing.StandardScaler.scale_" title="Permalink to this definition"></a></dt>
+<dd><p>Per feature relative scaling of the data to achieve zero mean and unit
+variance. Generally this is calculated using <cite>np.sqrt(var_)</cite>. If a
+variance is zero, we can’t achieve unit variance, and the data is left
+as-is, giving a scaling factor of 1. <cite>scale_</cite> is equal to <cite>None</cite>
+when <cite>with_std=False</cite>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.17: </span><em>scale_</em></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_features,) or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.StandardScaler.mean_">
+<span class="sig-name descname"><span class="pre">mean_</span></span><a class="headerlink" href="#EIMTC.preprocessing.StandardScaler.mean_" title="Permalink to this definition"></a></dt>
+<dd><p>The mean value for each feature in the training set.
+Equal to <code class="docutils literal notranslate"><span class="pre">None</span></code> when <code class="docutils literal notranslate"><span class="pre">with_mean=False</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_features,) or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.StandardScaler.var_">
+<span class="sig-name descname"><span class="pre">var_</span></span><a class="headerlink" href="#EIMTC.preprocessing.StandardScaler.var_" title="Permalink to this definition"></a></dt>
+<dd><p>The variance for each feature in the training set. Used to compute
+<cite>scale_</cite>. Equal to <code class="docutils literal notranslate"><span class="pre">None</span></code> when <code class="docutils literal notranslate"><span class="pre">with_std=False</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray of shape (n_features,) or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.StandardScaler.n_samples_seen_">
+<span class="sig-name descname"><span class="pre">n_samples_seen_</span></span><a class="headerlink" href="#EIMTC.preprocessing.StandardScaler.n_samples_seen_" title="Permalink to this definition"></a></dt>
+<dd><p>The number of samples processed by the estimator for each feature.
+If there are no missing samples, the <code class="docutils literal notranslate"><span class="pre">n_samples_seen</span></code> will be an
+integer, otherwise it will be an array of dtype int. If
+<cite>sample_weights</cite> are used it will be a float (if no missing data)
+or an array of dtype float that sums the weights seen so far.
+Will be reset on new calls to fit, but increments across
+<code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> calls.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int or ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="go">StandardScaler()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">mean_</span><span class="p">)</span>
+<span class="go">[0.5 0.5]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="go">[[-1. -1.]</span>
+<span class="go"> [-1. -1.]</span>
+<span class="go"> [ 1.  1.]</span>
+<span class="go"> [ 1.  1.]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]))</span>
+<span class="go">[[3. 3.]]</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale</span></code></dt><dd><p>Equivalent function without the estimator API.</p>
+</dd>
+<dt><code class="xref py py-class docutils literal notranslate"><span class="pre">PCA</span></code></dt><dd><p>Further removes the linear correlation across features with ‘whiten=True’.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>NaNs are treated as missing values: disregarded in fit, and maintained in
+transform.</p>
+<p>We use a biased estimator for the standard deviation, equivalent to
+<cite>numpy.std(x, ddof=0)</cite>. Note that the choice of <cite>ddof</cite> is unlikely to
+affect model performance.</p>
+<p>For a comparison of the different scalers, transformers, and normalizers,
+see <span class="xref std std-ref">examples/preprocessing/plot_all_scaling.py</span>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.StandardScaler.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.StandardScaler.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the mean and std to be used for later scaling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>{array-like</em><em>, </em><em>sparse matrix} of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data used to compute the mean and standard deviation
+used for later scaling along the features axis.</p></li>
+<li><p><strong>y</strong> (<em>None</em>) – Ignored.</p></li>
+<li><p><strong>sample_weight</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em><em>, </em><em>default=None</em>) – <p>Individual weights for each sample.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.24: </span>parameter <em>sample_weight</em> support to StandardScaler.</p>
+</div>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> – Fitted scaler.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.StandardScaler.partial_fit">
+<span class="sig-name descname"><span class="pre">partial_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.StandardScaler.partial_fit" title="Permalink to this definition"></a></dt>
+<dd><p>Online computation of mean and std on X for later scaling.</p>
+<p>All of X is processed as a single batch. This is intended for cases
+when <a class="reference internal" href="#EIMTC.preprocessing.StandardScaler.fit" title="EIMTC.preprocessing.StandardScaler.fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fit()</span></code></a> is not feasible due to very large number of
+<cite>n_samples</cite> or because X is read from a continuous stream.</p>
+<p>The algorithm for incremental mean and std is given in Equation 1.5a,b
+in Chan, Tony F., Gene H. Golub, and Randall J. LeVeque. “Algorithms
+for computing the sample variance: Analysis and recommendations.”
+The American Statistician 37.3 (1983): 242-247:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>{array-like</em><em>, </em><em>sparse matrix} of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data used to compute the mean and standard deviation
+used for later scaling along the features axis.</p></li>
+<li><p><strong>y</strong> (<em>None</em>) – Ignored.</p></li>
+<li><p><strong>sample_weight</strong> (<em>array-like of shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em><em>, </em><em>default=None</em>) – <p>Individual weights for each sample.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.24: </span>parameter <em>sample_weight</em> support to StandardScaler.</p>
+</div>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> – Fitted scaler.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.StandardScaler.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.StandardScaler.transform" title="Permalink to this definition"></a></dt>
+<dd><p>Perform standardization by centering and scaling</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>{array-like</em><em>, </em><em>sparse matrix of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data used to scale along the features axis.</p></li>
+<li><p><strong>copy</strong> (<em>bool</em><em>, </em><em>default=None</em>) – Copy the input X or not.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_tr</strong> – Transformed array.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>{ndarray, sparse matrix} of shape (n_samples, n_features)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.preprocessing.StandardScaler.inverse_transform">
+<span class="sig-name descname"><span class="pre">inverse_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.preprocessing.StandardScaler.inverse_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Scale back the data to the original representation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>{array-like</em><em>, </em><em>sparse matrix} of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data used to scale along the features axis.</p></li>
+<li><p><strong>copy</strong> (<em>bool</em><em>, </em><em>default=None</em>) – Copy the input X or not.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_tr</strong> – Transformed array.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>{ndarray, sparse matrix} of shape (n_samples, n_features)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="EIMTC.plugins.html" class="btn btn-neutral float-left" title="EIMTC.plugins package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="EIMTC.selection.html" class="btn btn-neutral float-right" title="EIMTC.selection package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Ariel University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EIMTC.stats package &mdash; OSF-EIMTC pre-release documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="EIMTC.tests package" href="EIMTC.tests.html" />
+    <link rel="prev" title="EIMTC.selection package" href="EIMTC.selection.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> OSF-EIMTC
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="EIMTC.html">EIMTC package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="EIMTC.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.metrics.html">EIMTC.metrics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.models.html">EIMTC.models package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.plugins.html">EIMTC.plugins package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.preprocessing.html">EIMTC.preprocessing package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.selection.html">EIMTC.selection package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">EIMTC.stats package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.stats.stats">EIMTC.stats.stats module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.stats">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.tests.html">EIMTC.tests package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.third_party.html">EIMTC.third_party package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#eimtc-cli-module">EIMTC.cli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#module-EIMTC.extractor">EIMTC.extractor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#eimtc-temp-pipelines-module">EIMTC.temp_pipelines module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#module-EIMTC.tls_tshark_entry">EIMTC.tls_tshark_entry module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#module-EIMTC.utils">EIMTC.utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#module-EIMTC">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OSF-EIMTC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="EIMTC.html">EIMTC package</a> &raquo;</li>
+      <li>EIMTC.stats package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/autodoc/EIMTC.stats.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="eimtc-stats-package">
+<h1>EIMTC.stats package<a class="headerlink" href="#eimtc-stats-package" title="Permalink to this headline"></a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="module-EIMTC.stats.stats">
+<span id="eimtc-stats-stats-module"></span><h2>EIMTC.stats.stats module<a class="headerlink" href="#module-EIMTC.stats.stats" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.Stats">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.stats.stats.</span></span><span class="sig-name descname"><span class="pre">Stats</span></span><a class="headerlink" href="#EIMTC.stats.stats.Stats" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.Stats.average">
+<span class="sig-name descname"><span class="pre">average</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.Stats.average" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.Stats.median">
+<span class="sig-name descname"><span class="pre">median</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.Stats.median" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.Stats.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.Stats.mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.Stats.variance">
+<span class="sig-name descname"><span class="pre">variance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.Stats.variance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.Stats.std_deviation">
+<span class="sig-name descname"><span class="pre">std_deviation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.Stats.std_deviation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.Stats.coeff_of_variation">
+<span class="sig-name descname"><span class="pre">coeff_of_variation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.Stats.coeff_of_variation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.Stats.skew_from_median">
+<span class="sig-name descname"><span class="pre">skew_from_median</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.Stats.skew_from_median" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.Stats.skew_from_mode">
+<span class="sig-name descname"><span class="pre">skew_from_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.Stats.skew_from_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.Stats.min">
+<span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.Stats.min" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.Stats.max">
+<span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.Stats.max" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.StatsCollection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.stats.stats.</span></span><span class="sig-name descname"><span class="pre">StatsCollection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stats</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.StatsCollection" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#EIMTC.stats.stats.Stats" title="EIMTC.stats.stats.Stats"><code class="xref py py-class docutils literal notranslate"><span class="pre">EIMTC.stats.stats.Stats</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.StatsCollection.average">
+<span class="sig-name descname"><span class="pre">average</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.StatsCollection.average" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.StatsCollection.median">
+<span class="sig-name descname"><span class="pre">median</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.StatsCollection.median" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.StatsCollection.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.StatsCollection.mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.StatsCollection.variance">
+<span class="sig-name descname"><span class="pre">variance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.StatsCollection.variance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.StatsCollection.std_deviation">
+<span class="sig-name descname"><span class="pre">std_deviation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.StatsCollection.std_deviation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.StatsCollection.coeff_of_variation">
+<span class="sig-name descname"><span class="pre">coeff_of_variation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.StatsCollection.coeff_of_variation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.StatsCollection.skew_from_median">
+<span class="sig-name descname"><span class="pre">skew_from_median</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.StatsCollection.skew_from_median" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.StatsCollection.skew_from_mode">
+<span class="sig-name descname"><span class="pre">skew_from_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.StatsCollection.skew_from_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.StatsCollection.min">
+<span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.stats.stats.StatsCollection.min" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.StatsCollection.max">
+<span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.stats.stats.StatsCollection.max" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.WeightedIterableStats">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.stats.stats.</span></span><span class="sig-name descname"><span class="pre">WeightedIterableStats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.WeightedIterableStats" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#EIMTC.stats.stats.Stats" title="EIMTC.stats.stats.Stats"><code class="xref py py-class docutils literal notranslate"><span class="pre">EIMTC.stats.stats.Stats</span></code></a></p>
+<p>Works only on iterables such as lists.
+Assumes that:
+1. the values and weights has matching indices,
+2. that the values are ordered/sorted from low to high.
+3. the weights are integers. (frequencies) for median calc</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.WeightedIterableStats.average">
+<span class="sig-name descname"><span class="pre">average</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.stats.stats.WeightedIterableStats.average" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.WeightedIterableStats.median">
+<span class="sig-name descname"><span class="pre">median</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.stats.stats.WeightedIterableStats.median" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.WeightedIterableStats.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.stats.stats.WeightedIterableStats.mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.WeightedIterableStats.variance">
+<span class="sig-name descname"><span class="pre">variance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.stats.stats.WeightedIterableStats.variance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.WeightedIterableStats.std_deviation">
+<span class="sig-name descname"><span class="pre">std_deviation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.stats.stats.WeightedIterableStats.std_deviation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.WeightedIterableStats.coeff_of_variation">
+<span class="sig-name descname"><span class="pre">coeff_of_variation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.stats.stats.WeightedIterableStats.coeff_of_variation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.WeightedIterableStats.skew_from_median">
+<span class="sig-name descname"><span class="pre">skew_from_median</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.stats.stats.WeightedIterableStats.skew_from_median" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.WeightedIterableStats.skew_from_mode">
+<span class="sig-name descname"><span class="pre">skew_from_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.stats.stats.WeightedIterableStats.skew_from_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.WeightedIterableStats.min">
+<span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.WeightedIterableStats.min" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.WeightedIterableStats.max">
+<span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.WeightedIterableStats.max" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.IterableStats">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.stats.stats.</span></span><span class="sig-name descname"><span class="pre">IterableStats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.IterableStats" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#EIMTC.stats.stats.Stats" title="EIMTC.stats.stats.Stats"><code class="xref py py-class docutils literal notranslate"><span class="pre">EIMTC.stats.stats.Stats</span></code></a></p>
+<p>Works only on iterables such as lists.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.IterableStats.average">
+<span class="sig-name descname"><span class="pre">average</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.stats.stats.IterableStats.average" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.IterableStats.median">
+<span class="sig-name descname"><span class="pre">median</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.stats.stats.IterableStats.median" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.IterableStats.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.stats.stats.IterableStats.mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.IterableStats.variance">
+<span class="sig-name descname"><span class="pre">variance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.stats.stats.IterableStats.variance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.IterableStats.std_deviation">
+<span class="sig-name descname"><span class="pre">std_deviation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.stats.stats.IterableStats.std_deviation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.IterableStats.coeff_of_variation">
+<span class="sig-name descname"><span class="pre">coeff_of_variation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.stats.stats.IterableStats.coeff_of_variation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.IterableStats.skew_from_median">
+<span class="sig-name descname"><span class="pre">skew_from_median</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.stats.stats.IterableStats.skew_from_median" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.IterableStats.skew_from_mode">
+<span class="sig-name descname"><span class="pre">skew_from_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.stats.stats.IterableStats.skew_from_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.IterableStats.min">
+<span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.IterableStats.min" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.stats.stats.IterableStats.max">
+<span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.stats.stats.IterableStats.max" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.stats">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-EIMTC.stats" title="Permalink to this headline"></a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="EIMTC.selection.html" class="btn btn-neutral float-left" title="EIMTC.selection package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="EIMTC.tests.html" class="btn btn-neutral float-right" title="EIMTC.tests package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Ariel University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

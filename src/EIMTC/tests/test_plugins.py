@@ -1021,7 +1021,7 @@ class TestDNSCounter(unittest.TestCase):
         self.assertEqual(flow_at_test.udps.bidirectional_mean_dns_response_dots_count, 9)
         self.assertEqual(flow_at_test.udps.bidirectional_mean_dns_response_ip_count, 1)
         self.assertAlmostEqual(flow_at_test.udps.bidirectional_mean_dns_response_ttls_s, 1061.333, 3)
-        self.assertAlmostEqual(flow_at_test.udps.bidirectional_stdev_dns_response_ttls_s, 1482.5897, 3)
+        self.assertAlmostEqual(flow_at_test.udps.bidirectional_stddev_dns_response_ttls_s, 1482.5897, 3)
         self.assertAlmostEqual(flow_at_test.udps.bidirectional_variance_dns_response_ttls_s, 2198072.2222, 3)
         self.assertAlmostEqual(flow_at_test.udps.bidirectional_coeff_of_var_dns_response_ttls_s, 1.3969, 3)
         self.assertAlmostEqual(flow_at_test.udps.bidirectional_skew_from_median_dns_response_ttls_s, 2.101, 3)
@@ -1041,7 +1041,7 @@ class TestDNSCounter(unittest.TestCase):
         self.assertEqual(flow_at_test.udps.src2dst_dns_response_ip_count,     0)
         self.assertEqual(flow_at_test.udps.src2dst_dns_response_ttls_s, None) # in seconds
         self.assertEqual(flow_at_test.udps.src2dst_mean_dns_response_ttls_s, None)
-        self.assertEqual(flow_at_test.udps.src2dst_stdev_dns_response_ttls_s, None)
+        self.assertEqual(flow_at_test.udps.src2dst_stddev_dns_response_ttls_s, None)
         self.assertEqual(flow_at_test.udps.src2dst_variance_dns_response_ttls_s, None)
         self.assertEqual(flow_at_test.udps.src2dst_coeff_of_var_dns_response_ttls_s, None)
         self.assertEqual(flow_at_test.udps.src2dst_skew_from_median_dns_response_ttls_s, None)
@@ -1061,7 +1061,7 @@ class TestDNSCounter(unittest.TestCase):
         self.assertEqual(flow_at_test.udps.dst2src_dns_response_ip_count,     1)
         self.assertEqual(flow_at_test.udps.dst2src_dns_response_ttls_s, [3158, 23, 3]) # in seconds
         self.assertAlmostEqual(flow_at_test.udps.dst2src_mean_dns_response_ttls_s, 1061.333, 3)
-        self.assertAlmostEqual(flow_at_test.udps.dst2src_stdev_dns_response_ttls_s, 1482.5897, 3)
+        self.assertAlmostEqual(flow_at_test.udps.dst2src_stddev_dns_response_ttls_s, 1482.5897, 3)
         self.assertAlmostEqual(flow_at_test.udps.dst2src_variance_dns_response_ttls_s, 2198072.2222, 3)
         self.assertAlmostEqual(flow_at_test.udps.dst2src_coeff_of_var_dns_response_ttls_s, 1.3969, 3)
         self.assertAlmostEqual(flow_at_test.udps.dst2src_skew_from_median_dns_response_ttls_s, 2.101, 3)
@@ -1191,7 +1191,7 @@ class TestByteFrequencyPlugin(unittest.TestCase):
             ]
         )
         self.assertAlmostEqual(flow_at_test.udps.bidirectional_mean_n_packets_byte_distribution, 106.52380952) 
-        self.assertAlmostEqual(flow_at_test.udps.bidirectional_stdev_n_packets_byte_distribution, 76.95594640) 
+        self.assertAlmostEqual(flow_at_test.udps.bidirectional_stddev_n_packets_byte_distribution, 76.95594640) 
         self.assertAlmostEqual(flow_at_test.udps.bidirectional_median_n_packets_byte_distribution, 97)
         self.assertAlmostEqual(flow_at_test.udps.bidirectional_variance_n_packets_byte_distribution, 5922.217687074)
         self.assertAlmostEqual(flow_at_test.udps.bidirectional_coeff_of_var_n_packets_byte_distribution, 0.7224295371)
@@ -1212,7 +1212,7 @@ class TestByteFrequencyPlugin(unittest.TestCase):
             ]
         )
         self.assertAlmostEqual(flow_at_test.udps.src2dst_mean_n_packets_byte_distribution, 106.52380952) 
-        self.assertAlmostEqual(flow_at_test.udps.src2dst_stdev_n_packets_byte_distribution, 76.95594640) 
+        self.assertAlmostEqual(flow_at_test.udps.src2dst_stddev_n_packets_byte_distribution, 76.95594640) 
         self.assertAlmostEqual(flow_at_test.udps.src2dst_median_n_packets_byte_distribution, 97)
         self.assertAlmostEqual(flow_at_test.udps.src2dst_variance_n_packets_byte_distribution, 5922.217687074)
         self.assertAlmostEqual(flow_at_test.udps.src2dst_coeff_of_var_n_packets_byte_distribution, 0.7224295371)
@@ -1233,7 +1233,7 @@ class TestByteFrequencyPlugin(unittest.TestCase):
             ]
         )
         self.assertAlmostEqual(flow_at_test.udps.dst2src_mean_n_packets_byte_distribution, 0) 
-        self.assertAlmostEqual(flow_at_test.udps.dst2src_stdev_n_packets_byte_distribution, 0) 
+        self.assertAlmostEqual(flow_at_test.udps.dst2src_stddev_n_packets_byte_distribution, 0) 
         self.assertAlmostEqual(flow_at_test.udps.dst2src_median_n_packets_byte_distribution, 0)
         self.assertAlmostEqual(flow_at_test.udps.dst2src_variance_n_packets_byte_distribution, 0)
         self.assertAlmostEqual(flow_at_test.udps.dst2src_coeff_of_var_n_packets_byte_distribution, 0)
@@ -1268,7 +1268,7 @@ class TestByteFrequencyPlugin(unittest.TestCase):
             ]
         )
         self.assertAlmostEqual(flow_at_test.udps.bidirectional_mean_n_packets_byte_distribution, 116.31707317) 
-        self.assertAlmostEqual(flow_at_test.udps.bidirectional_stdev_n_packets_byte_distribution, 77.0165769) 
+        self.assertAlmostEqual(flow_at_test.udps.bidirectional_stddev_n_packets_byte_distribution, 77.0165769) 
         self.assertAlmostEqual(flow_at_test.udps.bidirectional_median_n_packets_byte_distribution, 111)
         self.assertAlmostEqual(flow_at_test.udps.bidirectional_variance_n_packets_byte_distribution, 5931.55312314)
         self.assertAlmostEqual(flow_at_test.udps.bidirectional_coeff_of_var_n_packets_byte_distribution, 0.66212615)
@@ -1289,7 +1289,7 @@ class TestByteFrequencyPlugin(unittest.TestCase):
             ]
         )
         self.assertAlmostEqual(flow_at_test.udps.src2dst_mean_n_packets_byte_distribution, 106.52380952) 
-        self.assertAlmostEqual(flow_at_test.udps.src2dst_stdev_n_packets_byte_distribution, 76.95594640) 
+        self.assertAlmostEqual(flow_at_test.udps.src2dst_stddev_n_packets_byte_distribution, 76.95594640) 
         self.assertAlmostEqual(flow_at_test.udps.src2dst_median_n_packets_byte_distribution, 97)
         self.assertAlmostEqual(flow_at_test.udps.src2dst_variance_n_packets_byte_distribution, 5922.217687074)
         self.assertAlmostEqual(flow_at_test.udps.src2dst_coeff_of_var_n_packets_byte_distribution, 0.7224295371)
@@ -1310,7 +1310,7 @@ class TestByteFrequencyPlugin(unittest.TestCase):
             ]
         )
         self.assertAlmostEqual(flow_at_test.udps.dst2src_mean_n_packets_byte_distribution, 120.66197183) 
-        self.assertAlmostEqual(flow_at_test.udps.dst2src_stdev_n_packets_byte_distribution, 76.64376046) 
+        self.assertAlmostEqual(flow_at_test.udps.dst2src_stddev_n_packets_byte_distribution, 76.64376046) 
         self.assertAlmostEqual(flow_at_test.udps.dst2src_median_n_packets_byte_distribution, 119)
         self.assertAlmostEqual(flow_at_test.udps.dst2src_variance_n_packets_byte_distribution, 5874.2660186)
         self.assertAlmostEqual(flow_at_test.udps.dst2src_coeff_of_var_n_packets_byte_distribution, 0.63519399944)

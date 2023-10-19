@@ -6,6 +6,7 @@ from ._distiller import Distiller
 from ._maldist import MalDist
 from ._graphdapp import GraphDApp
 from ._chainedgnn import ChainedGNN
+from ._hybrid import Hybrid
 # ML
 from sklearn.svm import LinearSVC, LinearSVR, NuSVC, NuSVR, OneClassSVM, SVC, SVR
 from sklearn.ensemble import (

@@ -5,32 +5,45 @@ import os
 
 
 class GrayPic1(NFPlugin):
-    '''
-    Description:
-        Produces two gray-scaled image/picture, first of size 16x40 (IAT to packet-sizes),
-        and the second of size 30x40 (burst/clump time to burst/clump size in bytes).
-        data is extracted from the 1024-packet windows of bi-flow (default), this number can be configured.
+    ''' GrayPic1 | Produces two gray-scaled image/picture, first of size 16x40 (IAT to packet-sizes),
+    and the second of size 30x40 (burst/clump time to burst/clump size in bytes).
+    data is extracted from the 1024-packet windows of bi-flow (default), this number can be configured.
     
+    Feature output:
+        After reaching `n_first_packets` packets, the two images will be saved in the following formats:
+        graypic1-[count]-[src_ip]-[src_port]-[dst_ip]-[dst_port]-[protocol]
+        and
+        graypic1-burst-[count]-[src_ip]-[src_port]-[dst_ip]-[dst_port]-[protocol]
+
     Paper:
         "Fingerprinting encrypted network traffic types using machine learning"
-    By:
-        Sam Leroux, 
-        Steven Bohez, 
-        Pieter-Jan Maenhaut, 
-        Nathan Meheus, 
-        Pieter Simoens, 
-        Bart Dhoedt.
-        - Department of Information Technology, IDLab, Ghent University - imec
-    Source:
-        https://biblio.ugent.be/publication/8559975/file/8559977.pdf
+        
+        By:
+            - Sam Leroux, 
+            - Steven Bohez, 
+            - Pieter-Jan Maenhaut, 
+            - Nathan Meheus, 
+            - Pieter Simoens, 
+            - Bart Dhoedt.
+            
+            Department of Information Technology, IDLab, Ghent University - imec.
+            
+        Source:
+            https://biblio.ugent.be/publication/8559975/file/8559977.pdf
     '''
 
     def __init__(self, save_path, n_first_packets=1024, **kwargs):
+        '''
+        Args: 
+            `save_path` (str): The path to save the images.
+            `n_first_packets` (int): The number of packets required to produce the images.
+        '''
         super().__init__(**kwargs)
         self.save_path = save_path
         self.n_first_packets = n_first_packets
 
     def on_init(self, packet, flow):
+        ''' '''
         flow.udps.graypic1_iat2packetsizes     = np.zeros((40, 16), dtype=np.uint32)
         flow.udps.graypic1_bursttime2burstsize = np.zeros((40, 30), dtype=np.uint32)
         flow.udps.graypic1_previous_packet_time = packet.time
@@ -44,6 +57,7 @@ class GrayPic1(NFPlugin):
         self.on_update(packet, flow)
 
     def on_update(self, packet, flow):
+        ''' '''
         flow.udps.graypic1_packets += 1
         self._handle_iat2packetsizes(packet, flow)
         self._handle_bursttime2burstsize(packet, flow)
@@ -56,6 +70,7 @@ class GrayPic1(NFPlugin):
             flow.udps.graypic1_pic_count += 1
         
     def on_expire(self, flow):
+        ''' '''
         # cleanup
         del flow.udps.graypic1_iat2packetsizes     
         del flow.udps.graypic1_bursttime2burstsize 
@@ -75,19 +90,19 @@ class GrayPic1(NFPlugin):
             scaled_interarrival_time = 0
         flow.udps.graypic1_iat2packetsizes[20+scaled_interarrival_time, 8+scaled_size] += 1
         
-       
+
     def _handle_iat2packetsizes_finalize(self, packet, flow):
         # save and stuff
         flow.udps.graypic1_iat2packetsizes = ((flow.udps.graypic1_iat2packetsizes/np.sum(flow.udps.graypic1_iat2packetsizes))*255).astype(np.uint8)
         flow.udps.graypic1_iat2packetsizes = np.flip(flow.udps.graypic1_iat2packetsizes, axis=0)
-        flow.udps.graypic1_iat2packetsizes = 255-flow.udps.graypic1_iat2packetsizes # for clarity/debug
+        #flow.udps.graypic1_iat2packetsizes = 255-flow.udps.graypic1_iat2packetsizes # for clarity/debug
         img = Image.fromarray(flow.udps.graypic1_iat2packetsizes, 'L') # L = 8bit black and white (gray scale)
         img.save(os.path.join(self.save_path,
                         '-'.join(['graypic1',str(flow.udps.graypic1_pic_count), flow.src_ip, str(flow.src_port), flow.dst_ip, str(flow.dst_port), str(flow.protocol)])
                         + '.png'))
-        print('saved:', os.path.join(self.save_path,
+        '''print('saved:', os.path.join(self.save_path,
                         '-'.join(['graypic1',str(flow.udps.graypic1_pic_count), flow.src_ip, str(flow.src_port), flow.dst_ip, str(flow.dst_port), str(flow.protocol)])
-                        + '.png'))
+                        + '.png'))'''
         
         flow.udps.graypic1_iat2packetsizes = np.zeros((40, 16), dtype=np.uint32)
             
@@ -118,7 +133,7 @@ class GrayPic1(NFPlugin):
             flow.udps.graypic1_burst_end_time = packet.time
             flow.udps.graypic1_burst_size    += packet.ip_size
         
-              
+
     def _handle_bursttime2burstsize_finalize(self, packet, flow):
         # save and stuff
         flow.udps.graypic1_bursttime2burstsize = ((flow.udps.graypic1_bursttime2burstsize/np.sum(flow.udps.graypic1_bursttime2burstsize))*255).astype(np.uint8)
@@ -128,11 +143,11 @@ class GrayPic1(NFPlugin):
         img.save(os.path.join(self.save_path,
                         '-'.join(['graypic1', 'burst',str(flow.udps.graypic1_pic_count), flow.src_ip, str(flow.src_port), flow.dst_ip, str(flow.dst_port), str(flow.protocol)])
                         + '.png'))
-        print('saved:', os.path.join(self.save_path,
+        '''print('saved:', os.path.join(self.save_path,
                         '-'.join(['graypic1', 'burst',str(flow.udps.graypic1_pic_count), flow.src_ip, str(flow.src_port), flow.dst_ip, str(flow.dst_port), str(flow.protocol)])
-                        + '.png'))
+                        + '.png'))'''
         
-       
+
         flow.udps.graypic1_bursttime2burstsize = np.zeros((40, 30), dtype=np.uint32)
         flow.udps.graypic1_burst_size = 0 # in bytes
         flow.udps.graypic1_burst_direction = -1

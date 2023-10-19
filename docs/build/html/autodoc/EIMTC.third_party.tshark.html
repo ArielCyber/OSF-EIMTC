@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EIMTC.third_party.tshark package &mdash; OSF-EIMTC pre-release documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="EIMTC.third_party package" href="EIMTC.third_party.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> OSF-EIMTC
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="EIMTC.html">EIMTC package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="EIMTC.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.metrics.html">EIMTC.metrics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.models.html">EIMTC.models package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.plugins.html">EIMTC.plugins package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.preprocessing.html">EIMTC.preprocessing package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.selection.html">EIMTC.selection package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.stats.html">EIMTC.stats package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.tests.html">EIMTC.tests package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="EIMTC.third_party.html">EIMTC.third_party package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="EIMTC.third_party.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="EIMTC.third_party.html#module-EIMTC.third_party">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#eimtc-cli-module">EIMTC.cli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#module-EIMTC.extractor">EIMTC.extractor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#eimtc-temp-pipelines-module">EIMTC.temp_pipelines module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#module-EIMTC.tls_tshark_entry">EIMTC.tls_tshark_entry module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#module-EIMTC.utils">EIMTC.utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#module-EIMTC">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OSF-EIMTC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="EIMTC.html">EIMTC package</a> &raquo;</li>
+          <li><a href="EIMTC.third_party.html">EIMTC.third_party package</a> &raquo;</li>
+      <li>EIMTC.third_party.tshark package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/autodoc/EIMTC.third_party.tshark.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="eimtc-third-party-tshark-package">
+<h1>EIMTC.third_party.tshark package<a class="headerlink" href="#eimtc-third-party-tshark-package" title="Permalink to this headline"></a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="module-EIMTC.third_party.tshark.dataframe_utils">
+<span id="eimtc-third-party-tshark-dataframe-utils-module"></span><h2>EIMTC.third_party.tshark.dataframe_utils module<a class="headerlink" href="#module-EIMTC.third_party.tshark.dataframe_utils" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.dataframe_utils.merge_df_by_biflows">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.third_party.tshark.dataframe_utils.</span></span><span class="sig-name descname"><span class="pre">merge_df_by_biflows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_tshark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_nfstream</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.dataframe_utils.merge_df_by_biflows" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.dataframe_utils.read_tshark_csv_output">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.third_party.tshark.dataframe_utils.</span></span><span class="sig-name descname"><span class="pre">read_tshark_csv_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.dataframe_utils.read_tshark_csv_output" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.dataframe_utils.get_tls_record_stats">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.third_party.tshark.dataframe_utils.</span></span><span class="sig-name descname"><span class="pre">get_tls_record_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.dataframe_utils.get_tls_record_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.dataframe_utils.get_tls_clump_stats">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.third_party.tshark.dataframe_utils.</span></span><span class="sig-name descname"><span class="pre">get_tls_clump_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.dataframe_utils.get_tls_clump_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.dataframe_utils.drop_lengthless_tls_records">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.third_party.tshark.dataframe_utils.</span></span><span class="sig-name descname"><span class="pre">drop_lengthless_tls_records</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.dataframe_utils.drop_lengthless_tls_records" title="Permalink to this definition"></a></dt>
+<dd><p>can happen with tcp restrasnsmission and network errors</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.dataframe_utils.convert_to_correct_dtypes">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.third_party.tshark.dataframe_utils.</span></span><span class="sig-name descname"><span class="pre">convert_to_correct_dtypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.dataframe_utils.convert_to_correct_dtypes" title="Permalink to this definition"></a></dt>
+<dd><p>tls.record.length can be scalar/list, but it is represented as string at load.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.dataframe_utils.add_packet_directions_column">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.third_party.tshark.dataframe_utils.</span></span><span class="sig-name descname"><span class="pre">add_packet_directions_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.dataframe_utils.add_packet_directions_column" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.dataframe_utils.add_packet_clump_num_column">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.third_party.tshark.dataframe_utils.</span></span><span class="sig-name descname"><span class="pre">add_packet_clump_num_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.dataframe_utils.add_packet_clump_num_column" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.dataframe_utils.groupby_biflows">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.third_party.tshark.dataframe_utils.</span></span><span class="sig-name descname"><span class="pre">groupby_biflows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.dataframe_utils.groupby_biflows" title="Permalink to this definition"></a></dt>
+<dd><p>TODO: add caching mechanism - groupby is a view of the dataframe.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.dataframe_utils.add_five_tuple_biflow_id_column">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.third_party.tshark.dataframe_utils.</span></span><span class="sig-name descname"><span class="pre">add_five_tuple_biflow_id_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.dataframe_utils.add_five_tuple_biflow_id_column" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.dataframe_utils.sort_key_string">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.third_party.tshark.dataframe_utils.</span></span><span class="sig-name descname"><span class="pre">sort_key_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.dataframe_utils.sort_key_string" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.third_party.tshark.stats">
+<span id="eimtc-third-party-tshark-stats-module"></span><h2>EIMTC.third_party.tshark.stats module<a class="headerlink" href="#module-EIMTC.third_party.tshark.stats" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.Stats">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.third_party.tshark.stats.</span></span><span class="sig-name descname"><span class="pre">Stats</span></span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.Stats" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.Stats.average">
+<span class="sig-name descname"><span class="pre">average</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.Stats.average" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.Stats.median">
+<span class="sig-name descname"><span class="pre">median</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.Stats.median" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.Stats.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.Stats.mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.Stats.variance">
+<span class="sig-name descname"><span class="pre">variance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.Stats.variance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.Stats.std_deviation">
+<span class="sig-name descname"><span class="pre">std_deviation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.Stats.std_deviation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.Stats.coeff_of_variation">
+<span class="sig-name descname"><span class="pre">coeff_of_variation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.Stats.coeff_of_variation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.Stats.skew_from_median">
+<span class="sig-name descname"><span class="pre">skew_from_median</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.Stats.skew_from_median" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.Stats.skew_from_mode">
+<span class="sig-name descname"><span class="pre">skew_from_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.Stats.skew_from_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.Stats.min">
+<span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.Stats.min" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.Stats.max">
+<span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.Stats.max" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.StatsCollection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.third_party.tshark.stats.</span></span><span class="sig-name descname"><span class="pre">StatsCollection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stats</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.StatsCollection" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#EIMTC.third_party.tshark.stats.Stats" title="EIMTC.third_party.tshark.stats.Stats"><code class="xref py py-class docutils literal notranslate"><span class="pre">EIMTC.third_party.tshark.stats.Stats</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.StatsCollection.average">
+<span class="sig-name descname"><span class="pre">average</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.StatsCollection.average" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.StatsCollection.median">
+<span class="sig-name descname"><span class="pre">median</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.StatsCollection.median" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.StatsCollection.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.StatsCollection.mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.StatsCollection.variance">
+<span class="sig-name descname"><span class="pre">variance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.StatsCollection.variance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.StatsCollection.std_deviation">
+<span class="sig-name descname"><span class="pre">std_deviation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.StatsCollection.std_deviation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.StatsCollection.coeff_of_variation">
+<span class="sig-name descname"><span class="pre">coeff_of_variation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.StatsCollection.coeff_of_variation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.StatsCollection.skew_from_median">
+<span class="sig-name descname"><span class="pre">skew_from_median</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.StatsCollection.skew_from_median" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.StatsCollection.skew_from_mode">
+<span class="sig-name descname"><span class="pre">skew_from_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.StatsCollection.skew_from_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.StatsCollection.min">
+<span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.StatsCollection.min" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.StatsCollection.max">
+<span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.StatsCollection.max" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.WeightedIterableStats">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.third_party.tshark.stats.</span></span><span class="sig-name descname"><span class="pre">WeightedIterableStats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.WeightedIterableStats" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#EIMTC.third_party.tshark.stats.Stats" title="EIMTC.third_party.tshark.stats.Stats"><code class="xref py py-class docutils literal notranslate"><span class="pre">EIMTC.third_party.tshark.stats.Stats</span></code></a></p>
+<p>Works only on iterables such as lists.
+Assumes that:
+1. the values and weights has matching indices,
+2. that the values are ordered/sorted from low to high.
+3. the weights are integers. (frequencies) for median calc</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.WeightedIterableStats.average">
+<span class="sig-name descname"><span class="pre">average</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.WeightedIterableStats.average" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.WeightedIterableStats.median">
+<span class="sig-name descname"><span class="pre">median</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.WeightedIterableStats.median" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.WeightedIterableStats.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.WeightedIterableStats.mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.WeightedIterableStats.variance">
+<span class="sig-name descname"><span class="pre">variance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.WeightedIterableStats.variance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.WeightedIterableStats.std_deviation">
+<span class="sig-name descname"><span class="pre">std_deviation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.WeightedIterableStats.std_deviation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.WeightedIterableStats.coeff_of_variation">
+<span class="sig-name descname"><span class="pre">coeff_of_variation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.WeightedIterableStats.coeff_of_variation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.WeightedIterableStats.skew_from_median">
+<span class="sig-name descname"><span class="pre">skew_from_median</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.WeightedIterableStats.skew_from_median" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.WeightedIterableStats.skew_from_mode">
+<span class="sig-name descname"><span class="pre">skew_from_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.WeightedIterableStats.skew_from_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.WeightedIterableStats.min">
+<span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.WeightedIterableStats.min" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.WeightedIterableStats.max">
+<span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.WeightedIterableStats.max" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.IterableStats">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.third_party.tshark.stats.</span></span><span class="sig-name descname"><span class="pre">IterableStats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.IterableStats" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#EIMTC.third_party.tshark.stats.Stats" title="EIMTC.third_party.tshark.stats.Stats"><code class="xref py py-class docutils literal notranslate"><span class="pre">EIMTC.third_party.tshark.stats.Stats</span></code></a></p>
+<p>Works only on iterables such as lists.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.IterableStats.average">
+<span class="sig-name descname"><span class="pre">average</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.IterableStats.average" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.IterableStats.median">
+<span class="sig-name descname"><span class="pre">median</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.IterableStats.median" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.IterableStats.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.IterableStats.mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.IterableStats.variance">
+<span class="sig-name descname"><span class="pre">variance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.IterableStats.variance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.IterableStats.std_deviation">
+<span class="sig-name descname"><span class="pre">std_deviation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.IterableStats.std_deviation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.IterableStats.coeff_of_variation">
+<span class="sig-name descname"><span class="pre">coeff_of_variation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.IterableStats.coeff_of_variation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.IterableStats.skew_from_median">
+<span class="sig-name descname"><span class="pre">skew_from_median</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.IterableStats.skew_from_median" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.IterableStats.skew_from_mode">
+<span class="sig-name descname"><span class="pre">skew_from_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.IterableStats.skew_from_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.IterableStats.min">
+<span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.IterableStats.min" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.stats.IterableStats.max">
+<span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.stats.IterableStats.max" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.third_party.tshark.tls_stats">
+<span id="eimtc-third-party-tshark-tls-stats-module"></span><h2>EIMTC.third_party.tshark.tls_stats module<a class="headerlink" href="#module-EIMTC.third_party.tshark.tls_stats" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.tls_stats.TLSRecordStats">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.third_party.tshark.tls_stats.</span></span><span class="sig-name descname"><span class="pre">TLSRecordStats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bidir_lengths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.tls_stats.TLSRecordStats" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.tls_stats.TLSRecordStats.length_stats">
+<span class="sig-name descname"><span class="pre">length_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.tls_stats.TLSRecordStats.length_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.tls_stats.TLSRecordStats.bidirectional_length_stats">
+<span class="sig-name descname"><span class="pre">bidirectional_length_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.tls_stats.TLSRecordStats.bidirectional_length_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.tls_stats.TLSRecordStats.src2dst_length_stats">
+<span class="sig-name descname"><span class="pre">src2dst_length_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.tls_stats.TLSRecordStats.src2dst_length_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.tls_stats.TLSRecordStats.dst2src_length_stats">
+<span class="sig-name descname"><span class="pre">dst2src_length_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.tls_stats.TLSRecordStats.dst2src_length_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.tls_stats.TLSRecordStats.available_feature_names">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">available_feature_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.tls_stats.TLSRecordStats.available_feature_names" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.tls_stats.TLSRecordClumpStats">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.third_party.tshark.tls_stats.</span></span><span class="sig-name descname"><span class="pre">TLSRecordClumpStats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bidir_lengths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.tls_stats.TLSRecordClumpStats" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.tls_stats.TLSRecordClumpStats.clump_stats">
+<span class="sig-name descname"><span class="pre">clump_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.tls_stats.TLSRecordClumpStats.clump_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.tls_stats.TLSRecordClumpStats.bidirectional_stats">
+<span class="sig-name descname"><span class="pre">bidirectional_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.tls_stats.TLSRecordClumpStats.bidirectional_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.tls_stats.TLSRecordClumpStats.src2dst_stats">
+<span class="sig-name descname"><span class="pre">src2dst_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.tls_stats.TLSRecordClumpStats.src2dst_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.tls_stats.TLSRecordClumpStats.dst2src_stats">
+<span class="sig-name descname"><span class="pre">dst2src_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.tls_stats.TLSRecordClumpStats.dst2src_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.tls_stats.TLSRecordClumpStats.available_feature_names">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">available_feature_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.tls_stats.TLSRecordClumpStats.available_feature_names" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.third_party.tshark.tshark">
+<span id="eimtc-third-party-tshark-tshark-module"></span><h2>EIMTC.third_party.tshark.tshark module<a class="headerlink" href="#module-EIMTC.third_party.tshark.tshark" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.third_party.tshark.tshark.run_tshark_tls">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.third_party.tshark.tshark.</span></span><span class="sig-name descname"><span class="pre">run_tshark_tls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tshark_location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_log_filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./tshark_error_log.txt'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.third_party.tshark.tshark.run_tshark_tls" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.third_party.tshark">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-EIMTC.third_party.tshark" title="Permalink to this headline"></a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="EIMTC.third_party.html" class="btn btn-neutral float-left" title="EIMTC.third_party package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Ariel University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

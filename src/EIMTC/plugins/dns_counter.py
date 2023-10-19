@@ -1,39 +1,64 @@
 from nfstream import NFPlugin
 from scapy.all import IP, DNS, IPv6
-from ..stats.stats import IterableStats
+from EIMTC.stats.stats import IterableStats
 
 class DNSCounter(NFPlugin):
-    '''
-    Description:
-        DNS over UDP only, supports MDNS (Multicast DNS)
+    '''DNSCounter | DNS over UDP only, supports MDNS (Multicast DNS)
         
-    Features (bidirectional and unidirectional per direction):
-        dns_packets   
-        dns_queries   
-        dns_responses 
-        dns_qd_count  
-        dns_an_count
-        dns_ns_count
-        dns_ar_count
-        dns_response_digit_count (+ mean)
-        dns_response_alpha_count (+ mean)
-        dns_response_hypens_count (+ mean)
-        dns_response_dots_count (+ mean)
-        dns_response_ip_count (+ mean)
-        dns_response_ttls_s (seconds) (+ Stats)
+    Output Features:
+        - dns_packets: Number of DNS packets in the flow.
+        - dns_queries: Number of DNS queries in the flow.
+        - dns_responses: Number of DNS responses in the flow.
+        - dns_qd_count: Query domain count.
+        - dns_an_count: Answer count.
+        - dns_ns_count: Name server count.
+        - dns_ar_count: Additional Information section count.
+        - dns_response_digit_count (+ mean): Number of digits in DNS response answers.
+        - dns_response_alpha_count (+ mean): Number of alphanumeric characters in DNS response answers.
+        - dns_response_hypens_count (+ mean): Number of hypens in DNS response answer.
+        - dns_response_dots_count (+ mean): Number of dots in DNS response answer.
+        - dns_response_ip_count (+ mean): Number of IP addresses in DNS response answers.
+        - dns_response_ttls_s (+ stats): The value of Time-To-Live attribute of DNS caches (in seconds).
         
-    Prefixes:
-        bidirectional_
-        src2dst_
-        dst2src_
+        Name Format:
+            udps.[DIR]_[STAT]_dns_[FEATURE] 
+        
+        Direction (DIR) Names:
+            - bidirectional
+            - src2dst
+            - dst2src
+            
+        Statistics (STAT) Names:
+            - max
+            - min
+            - mean
+            - stddev
+            - median
+            - variance
+            - coeff_of_var
+            - skew_from_median
+            
+        Feature Names:
+            - packets
+            - queries
+            - responses 
+            - qd_count  
+            - an_count
+            - ns_count
+            - ar_count
+            - response_digit_count
+            - response_alpha_count
+            - response_hypens_count
+            - response_dots_count
+            - response_ip_count
+            - response_ttls_s
     '''
     def __init__(self, **kwargs):
+        ''' '''
         super().__init__(**kwargs)
 
     def on_init(self, packet, flow):
-        '''
-        on_init(self, packet, flow): Method called at flow creation.
-        '''
+        ''' '''
         # bidirectional
         flow.udps.bidirectional_dns_packets   = 0
         flow.udps.bidirectional_dns_queries   = 0
@@ -55,7 +80,7 @@ class DNSCounter(NFPlugin):
         flow.udps.bidirectional_mean_dns_response_ip_count     = 0 
         flow.udps.bidirectional_mean_dns_response_ttls_s             = None
         flow.udps.bidirectional_median_dns_response_ttls_s           = None
-        flow.udps.bidirectional_stdev_dns_response_ttls_s            = None
+        flow.udps.bidirectional_stddev_dns_response_ttls_s            = None
         flow.udps.bidirectional_variance_dns_response_ttls_s         = None
         flow.udps.bidirectional_coeff_of_var_dns_response_ttls_s     = None
         flow.udps.bidirectional_skew_from_median_dns_response_ttls_s = None
@@ -83,7 +108,7 @@ class DNSCounter(NFPlugin):
         flow.udps.src2dst_mean_dns_response_ip_count     = 0 
         flow.udps.src2dst_mean_dns_response_ttls_s             = None
         flow.udps.src2dst_median_dns_response_ttls_s           = None
-        flow.udps.src2dst_stdev_dns_response_ttls_s            = None
+        flow.udps.src2dst_stddev_dns_response_ttls_s            = None
         flow.udps.src2dst_variance_dns_response_ttls_s         = None
         flow.udps.src2dst_coeff_of_var_dns_response_ttls_s     = None
         flow.udps.src2dst_skew_from_median_dns_response_ttls_s = None
@@ -110,7 +135,7 @@ class DNSCounter(NFPlugin):
         flow.udps.dst2src_mean_dns_response_ip_count     = 0 
         flow.udps.dst2src_mean_dns_response_ttls_s             = None
         flow.udps.dst2src_median_dns_response_ttls_s           = None
-        flow.udps.dst2src_stdev_dns_response_ttls_s            = None
+        flow.udps.dst2src_stddev_dns_response_ttls_s            = None
         flow.udps.dst2src_variance_dns_response_ttls_s         = None
         flow.udps.dst2src_coeff_of_var_dns_response_ttls_s     = None
         flow.udps.dst2src_skew_from_median_dns_response_ttls_s = None
@@ -120,6 +145,7 @@ class DNSCounter(NFPlugin):
         self.on_update(packet, flow)
 
     def on_update(self, packet, flow):
+        ''' '''
         if flow.protocol == 17: # 17=UDP, 6=TCP
             ip_packet = IP(packet.ip_packet)
             if ip_packet[IP].version == 6:
@@ -176,13 +202,14 @@ class DNSCounter(NFPlugin):
                 flow.udps.bidirectional_dns_response_ttls_s       = flow.udps.src2dst_dns_response_ttls_s       + flow.udps.dst2src_dns_response_ttls_s
     
     def on_expire(self, flow):
+        ''' '''
         # TTLS
         # src -> dst
         if len(flow.udps.src2dst_dns_response_ttls_s) > 0:
             src2dst_stats = IterableStats(flow.udps.src2dst_dns_response_ttls_s)
             flow.udps.src2dst_mean_dns_response_ttls_s         = src2dst_stats.average()
             flow.udps.src2dst_median_dns_response_ttls_s       = src2dst_stats.median()
-            flow.udps.src2dst_stdev_dns_response_ttls_s        = src2dst_stats.std_deviation()
+            flow.udps.src2dst_stddev_dns_response_ttls_s        = src2dst_stats.std_deviation()
             flow.udps.src2dst_variance_dns_response_ttls_s     = src2dst_stats.variance()
             flow.udps.src2dst_coeff_of_var_dns_response_ttls_s = src2dst_stats.coeff_of_variation()
             flow.udps.src2dst_skew_from_median_dns_response_ttls_s = src2dst_stats.skew_from_median()
@@ -195,7 +222,7 @@ class DNSCounter(NFPlugin):
             dst2src_stats = IterableStats(flow.udps.dst2src_dns_response_ttls_s)
             flow.udps.dst2src_mean_dns_response_ttls_s             = dst2src_stats.average()
             flow.udps.dst2src_median_dns_response_ttls_s           = dst2src_stats.median()
-            flow.udps.dst2src_stdev_dns_response_ttls_s            = dst2src_stats.std_deviation()
+            flow.udps.dst2src_stddev_dns_response_ttls_s            = dst2src_stats.std_deviation()
             flow.udps.dst2src_variance_dns_response_ttls_s         = dst2src_stats.variance()
             flow.udps.dst2src_coeff_of_var_dns_response_ttls_s     = dst2src_stats.coeff_of_variation()
             flow.udps.dst2src_skew_from_median_dns_response_ttls_s = dst2src_stats.skew_from_median()
@@ -208,7 +235,7 @@ class DNSCounter(NFPlugin):
             bi_stats = IterableStats(flow.udps.bidirectional_dns_response_ttls_s)
             flow.udps.bidirectional_mean_dns_response_ttls_s             = bi_stats.average()
             flow.udps.bidirectional_median_dns_response_ttls_s           = bi_stats.median()
-            flow.udps.bidirectional_stdev_dns_response_ttls_s            = bi_stats.std_deviation()
+            flow.udps.bidirectional_stddev_dns_response_ttls_s            = bi_stats.std_deviation()
             flow.udps.bidirectional_variance_dns_response_ttls_s         = bi_stats.variance()
             flow.udps.bidirectional_coeff_of_var_dns_response_ttls_s     = bi_stats.coeff_of_variation()
             flow.udps.bidirectional_skew_from_median_dns_response_ttls_s = bi_stats.skew_from_median()

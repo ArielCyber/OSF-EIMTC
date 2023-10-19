@@ -9,22 +9,54 @@ from tensorflow.keras.models import *
 
 
 class CustomDistiller(Model):
-    def __init__(self, modalities=[], adapter_size=128, n_classes=[]) -> None:
+    def __init__(self, modalities=[], adapter_size=128, n_classes=[], merging_method='feat_concat') -> None:
         super(CustomDistiller, self).__init__()
         self.n_classes = n_classes
         self.modalities = modalities
         self.adapter_size = adapter_size
+        self.merging_method = merging_method
         self._validate()
         
-        shared_representation = stack(
-            [
-                Concatenate()(
-                    wrap_adapter_multi(modalities, adapter_size) 
-                )
-            ]
-            + get_sr_layers(adapter_size)
-        )
+        if self.merging_method == 'feat_concat':
+            shared_representation = stack(
+                [
+                    Concatenate()(
+                        wrap_adapter_multi(modalities, adapter_size) 
+                    )
+                ]
+                + get_sr_layers(adapter_size)
+            )
+
+        elif self.merging_method == 'deep_concat':
+            shared_representation = stack(
+                [
+                    Concatenate()(
+                        [model.output for model in modalities]
+                    )
+                ]
+                + get_sr_layers(adapter_size)
+            )
+            
+        elif self.merging_method == 'feat_merge_opt':
+            shared_representation = stack(
+                [
+                    Add()(
+                        wrap_adapter_multi(modalities, adapter_size) 
+                    )
+                ]
+                + get_sr_layers(adapter_size)
+            )
         
+        elif self.merging_method == 'deep_merge':
+            shared_representation = stack(
+                [
+                    Add()(
+                        wrap_adapter_multi(modalities, adapter_size) 
+                    )
+                ]
+                + get_sr_layers(adapter_size)
+            )
+
         outputs = []
         for n_class in n_classes:
             outputs.append(stack([shared_representation] + get_ts_layers(classes_count=n_class, adapter_size=adapter_size)))
@@ -43,9 +75,13 @@ class CustomDistiller(Model):
 
 
     def compile(self, **kwargs):
+        self.compile_settings = kwargs
         for model, compile_kwargs in zip(self.pretraining_models + [self.model], zip_dict(kwargs)):
             model.compile(**compile_kwargs)
 
+    def _compile(self, **kwargs):
+        for model, compile_kwargs in zip(self.pretraining_models + [self.model], zip_dict(kwargs)):
+            model.compile(**compile_kwargs)
 
     def fit(self, x, y, **kwargs):
         kwargs_per_fit = list(zip_dict(kwargs))
@@ -61,6 +97,19 @@ class CustomDistiller(Model):
         self.model.fit(x,y, **fit_kwargs)
         self.unfreeze_for_finetuning()
 
+    def fit_display(self, x, y,queue, **kwargs):
+        kwargs_per_fit = list(zip_dict(kwargs))
+    
+        for features, model, fit_kwargs in zip(x, self.pretraining_models, kwargs_per_fit):
+            queue.put('##################### {} ##########################'.format(model.name.upper()))
+            model.fit(features, y, **fit_kwargs)
+
+        # FINE-TUNE
+        queue.put('##################### FINE-TUNING ##########################')
+        fit_kwargs = kwargs_per_fit[len(self.modalities)]
+        self.freeze_for_finetuning()
+        self.model.fit(x,y, **fit_kwargs)
+        self.unfreeze_for_finetuning()
 
     def _validate(self):
         # modalities and n_classess array must not be empty .
@@ -92,12 +141,14 @@ class CustomDistiller(Model):
         for modal in self.modalities:
             for layer in modal.layers:
                 layer.trainable = False
+        self._compile(**self.compile_settings)
 
 
     def unfreeze_for_finetuning(self):
         for modal in self.modalities:
             for layer in modal.layers:
                 layer.trainable = True
+        self._compile(**self.compile_settings)
         
     
 

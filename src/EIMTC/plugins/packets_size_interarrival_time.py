@@ -3,21 +3,68 @@ from nfstream import NFPlugin
 import numpy as np
 
 class Packets_size_and_interarrival_time(NFPlugin):
-    '''
-    W.I.P:
+    ''' Packets_size_and_interarrival_time |
+    Extracts statistics of packet size (raw) and inter-arrival time (ms).
+    
+    Feature outputs:
+        Statistics of packet size and IAT of the first 'n_packets' packets of the flow.
+        
+        Name Format:
+            udps.packets_[FEATURE]_[STAT]
+        
+        Statistics (STAT) Names:
+            - max
+            - min
+            - mean
+            - stddev
+            - skewness
+            - variance
+            - kurtosis
+            - sum
+            - first_quartile
+            - second_quartile
+            - third_quartile
+            
+        Feature Names:
+            - size
+            - interarrival_time
+    
+    Paper: 
+        "Deep Learning for Network Traffic Classification".
+    
+        By:
+            - Niloofar Bayat.
+            - Weston Jackson.
+            - Derrick Liu.
+            
+            Columbia University.
+    
+    Contribution Requests:
         1. Optimize median calculations by using histogram (if possible)
-        2. Add info about this plugin and its origin paper.
+        
     '''
+    def __init__(self, n_packets=None):
+        '''
+        Args:
+            `n_packets` (int): The number of packets to process. If None then the whole flow will be processed.        
+        '''
+        self.n_packets = n_packets
+    
     def on_init(self, packet, flow):
+        ''' '''
         flow.udps.packets_size = list()
         flow.udps.packets_interarrival_time = list()
         self.on_update(packet,flow)
 
     def on_update(self, packet, flow):
+        ''' '''
+        if self.n_packets is not None and flow.bidirectional_packets > self.n_packets:
+            return
         flow.udps.packets_size.append(packet.raw_size)
         flow.udps.packets_interarrival_time.append(packet.delta_time)
 
     def on_expire(self, flow):
+        ''' '''
         packets_size_statistics = Statistics(flow.udps.packets_size)
         packets_interarrival_time_statistics = Statistics(flow.udps.packets_interarrival_time)
 

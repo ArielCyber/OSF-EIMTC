@@ -5,27 +5,36 @@ import pandas as pd
 from os import path
 
 class ASNInfo(NFPlugin):
-    '''
-    Description:
-        Extracts ASN related info from source and destination ip addresses.
-        By using databases along with 'pyasn' Python module.
-        DB required: 
-            1. pyasn.db or equavalent, please see 'IPASN Data Files' section in: 
-            https://github.com/hadiasghari/pyasn to aquire it.
-            2. TSV (tab separated values) DB file of contextual info such as from https://iptoasn.com
-            
-    Features:
-        asn_number
-        asn_country_code
-        asn_description
+    ''' ASNInfo | Extracts ASN related info from source and destination ip addresses,
+    by using databases along with 'pyasn' Python module.
         
-    Feature prefixes:
-        src_
-        dst_
+        DB required: 
+            1. pyasn.db or equavalent, please see 'IPASN Data Files' section in: https://github.com/hadiasghari/pyasn to aquire it.
+            2. TSV (tab separated values) DB file of contextual info such as from https://iptoasn.com.
+            
+    Output Features:
+        - asn_number
+        - asn_country_code
+        - asn_description
+        
+        Name Format:
+            udps.[HOST-DIR]_asn_[FEATURE]
+        
+        Host Direction (HOST-DIR) Prefixes:
+            - src
+            - dst
+        
+        Feature Names:
+            - asn_number
+            - asn_country_code
+            - asn_description
     '''
-    def __init__(self, pyasn_context_file=path.join(path.dirname(__file__), '../tools/pyasn.db'), 
-                as_contextual_file=path.join(path.dirname(__file__),'../tools/ip2asn-v4.tsv'), **kwargs):
+    def __init__(self, pyasn_context_file=None, as_contextual_file=None, **kwargs):
         super().__init__(**kwargs)
+        if pyasn_context_file is None:
+            pyasn_context_file = path.join(path.dirname(__file__), '../tools/pyasn.db')
+        if as_contextual_file is None:
+            as_contextual_file = path.join(path.dirname(__file__),'../tools/ip2asn-v4.tsv')
         self.pyasn_contextual_data = pyasn.pyasn(pyasn_context_file)
         self.as_contextual_data = pd.read_csv(as_contextual_file, 
                                             sep='\t', 
@@ -38,6 +47,7 @@ class ASNInfo(NFPlugin):
                                             ])
 
     def on_init(self, packet, flow):
+        ''' '''
         flow.udps.src_asn_number       = None
         flow.udps.src_asn_country_code = None
         flow.udps.src_asn_description  = None
@@ -61,6 +71,7 @@ class ASNInfo(NFPlugin):
     MAX_CACHED_RESULTS = 2**16
     @functools.lru_cache(maxsize=MAX_CACHED_RESULTS)
     def get_asn_info(self, ip_addr: str):
+        ''' '''
         try:
             asn_n,_ = self.pyasn_contextual_data.lookup(ip_addr)
             if asn_n != None:

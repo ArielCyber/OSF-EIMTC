@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EIMTC.plugins package &mdash; OSF-EIMTC pre-release documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="EIMTC.preprocessing package" href="EIMTC.preprocessing.html" />
+    <link rel="prev" title="EIMTC.models package" href="EIMTC.models.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> OSF-EIMTC
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="EIMTC.html">EIMTC package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="EIMTC.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.metrics.html">EIMTC.metrics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.models.html">EIMTC.models package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">EIMTC.plugins package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.plugins.asn_info">EIMTC.plugins.asn_info module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.plugins.clump_flows">EIMTC.plugins.clump_flows module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.plugins.dns_counter">EIMTC.plugins.dns_counter module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.plugins.first_packet_payload">EIMTC.plugins.first_packet_payload module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.plugins.flowpic">EIMTC.plugins.flowpic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.plugins.graypic">EIMTC.plugins.graypic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.plugins.most_freq_payload_len_ratio">EIMTC.plugins.most_freq_payload_len_ratio module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.plugins.n_bytes">EIMTC.plugins.n_bytes module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.plugins.n_bytes_per_packet">EIMTC.plugins.n_bytes_per_packet module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.plugins.n_pkts_byte_freq">EIMTC.plugins.n_pkts_byte_freq module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.plugins.packets_size_interarrival_time">EIMTC.plugins.packets_size_interarrival_time module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.plugins.pkt_rel_time">EIMTC.plugins.pkt_rel_time module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.plugins.protocol_header_fields">EIMTC.plugins.protocol_header_fields module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.plugins.recv_sent_pkt_ratio">EIMTC.plugins.recv_sent_pkt_ratio module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.plugins.res_req_diff_time">EIMTC.plugins.res_req_diff_time module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.plugins.simple_tig">EIMTC.plugins.simple_tig module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.plugins.small_pkt_payload_ratio">EIMTC.plugins.small_pkt_payload_ratio module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.plugins.stnn">EIMTC.plugins.stnn module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-EIMTC.plugins">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.preprocessing.html">EIMTC.preprocessing package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.selection.html">EIMTC.selection package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.stats.html">EIMTC.stats package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.tests.html">EIMTC.tests package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EIMTC.third_party.html">EIMTC.third_party package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#eimtc-cli-module">EIMTC.cli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#module-EIMTC.extractor">EIMTC.extractor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#eimtc-temp-pipelines-module">EIMTC.temp_pipelines module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#module-EIMTC.tls_tshark_entry">EIMTC.tls_tshark_entry module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#module-EIMTC.utils">EIMTC.utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EIMTC.html#module-EIMTC">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OSF-EIMTC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="EIMTC.html">EIMTC package</a> &raquo;</li>
+      <li>EIMTC.plugins package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/autodoc/EIMTC.plugins.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="eimtc-plugins-package">
+<h1>EIMTC.plugins package<a class="headerlink" href="#eimtc-plugins-package" title="Permalink to this headline"></a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="module-EIMTC.plugins.asn_info">
+<span id="eimtc-plugins-asn-info-module"></span><h2>EIMTC.plugins.asn_info module<a class="headerlink" href="#module-EIMTC.plugins.asn_info" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.asn_info.ASNInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.asn_info.</span></span><span class="sig-name descname"><span class="pre">ASNInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pyasn_context_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_contextual_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.asn_info.ASNInfo" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nfstream.plugin.NFPlugin</span></code></p>
+<p>ASNInfo | Extracts ASN related info from source and destination ip addresses,
+by using databases along with ‘pyasn’ Python module.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>DB required:</dt><dd><ol class="arabic simple">
+<li><p>pyasn.db or equavalent, please see ‘IPASN Data Files’ section in: <a class="reference external" href="https://github.com/hadiasghari/pyasn">https://github.com/hadiasghari/pyasn</a> to aquire it.</p></li>
+<li><p>TSV (tab separated values) DB file of contextual info such as from <a class="reference external" href="https://iptoasn.com">https://iptoasn.com</a>.</p></li>
+</ol>
+</dd>
+</dl>
+</div></blockquote>
+<dl>
+<dt>Output Features:</dt><dd><ul class="simple">
+<li><p>asn_number</p></li>
+<li><p>asn_country_code</p></li>
+<li><p>asn_description</p></li>
+</ul>
+<dl class="simple">
+<dt>Name Format:</dt><dd><p>udps.[HOST-DIR]_asn_[FEATURE]</p>
+</dd>
+<dt>Host Direction (HOST-DIR) Prefixes:</dt><dd><ul class="simple">
+<li><p>src</p></li>
+<li><p>dst</p></li>
+</ul>
+</dd>
+<dt>Feature Names:</dt><dd><ul class="simple">
+<li><p>asn_number</p></li>
+<li><p>asn_country_code</p></li>
+<li><p>asn_description</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>NFPlugin Parameters:
+kwargs : user defined named arguments that will be stored as Plugin attributes</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.asn_info.ASNInfo.on_init">
+<span class="sig-name descname"><span class="pre">on_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.asn_info.ASNInfo.on_init" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="EIMTC.plugins.asn_info.ASNInfo.MAX_CACHED_RESULTS">
+<span class="sig-name descname"><span class="pre">MAX_CACHED_RESULTS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">65536</span></em><a class="headerlink" href="#EIMTC.plugins.asn_info.ASNInfo.MAX_CACHED_RESULTS" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.asn_info.ASNInfo.get_asn_info">
+<span class="sig-name descname"><span class="pre">get_asn_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip_addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.asn_info.ASNInfo.get_asn_info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.plugins.clump_flows">
+<span id="eimtc-plugins-clump-flows-module"></span><h2>EIMTC.plugins.clump_flows module<a class="headerlink" href="#module-EIMTC.plugins.clump_flows" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clump_Flow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.clump_flows.</span></span><span class="sig-name descname"><span class="pre">Clump_Flow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_packets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clump_Flow" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nfstream.plugin.NFPlugin</span></code></p>
+<p>Clumps | The plugin ‘clumps’ the packets of each flow by the direction src2dst or dst2src,
+for each clump in flow clump starts and end when the next packet change direction or last flow packet.
+The clumps then extract stastical information from the clumps groups.</p>
+<dl>
+<dt>Output Features:</dt><dd><ol class="arabic simple">
+<li><p>Clump’s length (bytes). (Inter)</p></li>
+<li><p>Clump’s size (packets). (Inter)</p></li>
+<li><p>IAT between clumps. (Inter)</p></li>
+<li><p>Packet size stats of agg clumps. (Inter)</p></li>
+<li><p>Packet size inside a clump. (Intra)</p></li>
+<li><p>IAT inside a clump. (Intra)</p></li>
+</ol>
+<dl class="simple">
+<dt>Name Format:</dt><dd><ul class="simple">
+<li><p>Inter-clump (floats): udps.[DIR]_[STAT]_clumps_[FEATURE]</p></li>
+<li><p>Intra-clump (lists): udps.[DIR]_[STAT]_clump_[FEATURE]</p></li>
+</ul>
+</dd>
+<dt>Direction (DIR) Names:</dt><dd><ul class="simple">
+<li><p>src2dst</p></li>
+<li><p>dst2src</p></li>
+<li><p>&lt;None&gt; (for bidirectional)</p></li>
+</ul>
+</dd>
+<dt>Statistics (STAT) Names:</dt><dd><ul class="simple">
+<li><p>max</p></li>
+<li><p>min</p></li>
+<li><p>mean</p></li>
+<li><p>stddev</p></li>
+<li><p>skewness</p></li>
+<li><p>variance</p></li>
+<li><p>kurtosis</p></li>
+</ul>
+</dd>
+<dt>Feature Names:</dt><dd><ul class="simple">
+<li><p>len</p></li>
+<li><p>size</p></li>
+<li><p>interarrival_time</p></li>
+<li><p>bytes_per_packet</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>Paper:</dt><dd><p>The paper we used as refrence to the clumps is “The Challenge of Only One Flow Problem for Traffic Classification in Identity Obfuscation Environments”:</p>
+<p>In the paper the authors call the clumps as ‘subflows’ such forward (src2dst) subflows and backward (dst2src) subflows.</p>
+<dl class="simple">
+<dt>We used only the subflow features:</dt><dd><ul class="simple">
+<li><p>PACKET NUMBER (SIZE)</p></li>
+<li><p>PACKET BYTES (LEN)</p></li>
+<li><p>BYTES PER PACKET</p></li>
+</ul>
+</dd>
+</dl>
+<p>In addition we added few more statistical features to each one of the features above.</p>
+<dl class="simple">
+<dt>By:</dt><dd><ul class="simple">
+<li><p>HONG-YEN CHEN.</p></li>
+<li><p>TSUNG-NAN LIN.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>Coded by Adi Lichy,
+Edited by Ofek Bader,
+Ariel University.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n_packets</strong> (<em>int</em>) – Number of first packets to process. Default: None (process all).</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clump_Flow.on_init">
+<span class="sig-name descname"><span class="pre">on_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clump_Flow.on_init" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clump_Flow.on_update">
+<span class="sig-name descname"><span class="pre">on_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clump_Flow.on_update" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clump_Flow.on_expire">
+<span class="sig-name descname"><span class="pre">on_expire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clump_Flow.on_expire" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clump">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.clump_flows.</span></span><span class="sig-name descname"><span class="pre">Clump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">direction</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clump" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>‘</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clump.get_time_stats">
+<span class="sig-name descname"><span class="pre">get_time_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clump.get_time_stats" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clump.get_len_stats">
+<span class="sig-name descname"><span class="pre">get_len_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clump.get_len_stats" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clump.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">len</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bytes_per_packet</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clump.update" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clump.update_size">
+<span class="sig-name descname"><span class="pre">update_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clump.update_size" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clump.update_time">
+<span class="sig-name descname"><span class="pre">update_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clump.update_time" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clump.update_clump_time_stats">
+<span class="sig-name descname"><span class="pre">update_clump_time_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clump.update_clump_time_stats" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clump.update_len">
+<span class="sig-name descname"><span class="pre">update_len</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clump.update_len" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clump.update_bytes_per_packet">
+<span class="sig-name descname"><span class="pre">update_bytes_per_packet</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clump.update_bytes_per_packet" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clump.get_size">
+<span class="sig-name descname"><span class="pre">get_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clump.get_size" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clump.get_time">
+<span class="sig-name descname"><span class="pre">get_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clump.get_time" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clump.get_len">
+<span class="sig-name descname"><span class="pre">get_len</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clump.get_len" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clump.get_bytes_per_packet">
+<span class="sig-name descname"><span class="pre">get_bytes_per_packet</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clump.get_bytes_per_packet" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clumps">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.clump_flows.</span></span><span class="sig-name descname"><span class="pre">Clumps</span></span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clumps" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>‘</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clumps.add_clump">
+<span class="sig-name descname"><span class="pre">add_clump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clump</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clumps.add_clump" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clumps.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">len</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bytes_per_packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clumps.update" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clumps.update_size">
+<span class="sig-name descname"><span class="pre">update_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clumps.update_size" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clumps.update_time">
+<span class="sig-name descname"><span class="pre">update_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clumps.update_time" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clumps.update_len">
+<span class="sig-name descname"><span class="pre">update_len</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clumps.update_len" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clumps.update_bytes_per_packet">
+<span class="sig-name descname"><span class="pre">update_bytes_per_packet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clumps.update_bytes_per_packet" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clumps.get_clumps">
+<span class="sig-name descname"><span class="pre">get_clumps</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clumps.get_clumps" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clumps.get_size_stats">
+<span class="sig-name descname"><span class="pre">get_size_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clumps.get_size_stats" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clumps.get_time_stats">
+<span class="sig-name descname"><span class="pre">get_time_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clumps.get_time_stats" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clumps.get_len_stats">
+<span class="sig-name descname"><span class="pre">get_len_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clumps.get_len_stats" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.clump_flows.Clumps.get_bytes_per_packet_stats">
+<span class="sig-name descname"><span class="pre">get_bytes_per_packet_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.clump_flows.Clumps.get_bytes_per_packet_stats" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.plugins.dns_counter">
+<span id="eimtc-plugins-dns-counter-module"></span><h2>EIMTC.plugins.dns_counter module<a class="headerlink" href="#module-EIMTC.plugins.dns_counter" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.dns_counter.DNSCounter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.dns_counter.</span></span><span class="sig-name descname"><span class="pre">DNSCounter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.dns_counter.DNSCounter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nfstream.plugin.NFPlugin</span></code></p>
+<p>DNSCounter | DNS over UDP only, supports MDNS (Multicast DNS)</p>
+<dl>
+<dt>Output Features:</dt><dd><ul class="simple">
+<li><p>dns_packets: Number of DNS packets in the flow.</p></li>
+<li><p>dns_queries: Number of DNS queries in the flow.</p></li>
+<li><p>dns_responses: Number of DNS responses in the flow.</p></li>
+<li><p>dns_qd_count: Query domain count.</p></li>
+<li><p>dns_an_count: Answer count.</p></li>
+<li><p>dns_ns_count: Name server count.</p></li>
+<li><p>dns_ar_count: Additional Information section count.</p></li>
+<li><p>dns_response_digit_count (+ mean): Number of digits in DNS response answers.</p></li>
+<li><p>dns_response_alpha_count (+ mean): Number of alphanumeric characters in DNS response answers.</p></li>
+<li><p>dns_response_hypens_count (+ mean): Number of hypens in DNS response answer.</p></li>
+<li><p>dns_response_dots_count (+ mean): Number of dots in DNS response answer.</p></li>
+<li><p>dns_response_ip_count (+ mean): Number of IP addresses in DNS response answers.</p></li>
+<li><p>dns_response_ttls_s (+ stats): The value of Time-To-Live attribute of DNS caches (in seconds).</p></li>
+</ul>
+<dl class="simple">
+<dt>Name Format:</dt><dd><p>udps.[DIR]_[STAT]_dns_[FEATURE]</p>
+</dd>
+<dt>Direction (DIR) Names:</dt><dd><ul class="simple">
+<li><p>bidirectional</p></li>
+<li><p>src2dst</p></li>
+<li><p>dst2src</p></li>
+</ul>
+</dd>
+<dt>Statistics (STAT) Names:</dt><dd><ul class="simple">
+<li><p>max</p></li>
+<li><p>min</p></li>
+<li><p>mean</p></li>
+<li><p>stddev</p></li>
+<li><p>median</p></li>
+<li><p>variance</p></li>
+<li><p>coeff_of_var</p></li>
+<li><p>skew_from_median</p></li>
+</ul>
+</dd>
+<dt>Feature Names:</dt><dd><ul class="simple">
+<li><p>packets</p></li>
+<li><p>queries</p></li>
+<li><p>responses</p></li>
+<li><p>qd_count</p></li>
+<li><p>an_count</p></li>
+<li><p>ns_count</p></li>
+<li><p>ar_count</p></li>
+<li><p>response_digit_count</p></li>
+<li><p>response_alpha_count</p></li>
+<li><p>response_hypens_count</p></li>
+<li><p>response_dots_count</p></li>
+<li><p>response_ip_count</p></li>
+<li><p>response_ttls_s</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.dns_counter.DNSCounter.on_init">
+<span class="sig-name descname"><span class="pre">on_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.dns_counter.DNSCounter.on_init" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.dns_counter.DNSCounter.on_update">
+<span class="sig-name descname"><span class="pre">on_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.dns_counter.DNSCounter.on_update" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.dns_counter.DNSCounter.on_expire">
+<span class="sig-name descname"><span class="pre">on_expire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.dns_counter.DNSCounter.on_expire" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.plugins.first_packet_payload">
+<span id="eimtc-plugins-first-packet-payload-module"></span><h2>EIMTC.plugins.first_packet_payload module<a class="headerlink" href="#module-EIMTC.plugins.first_packet_payload" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.first_packet_payload.FirstPacketPayloadLen">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.first_packet_payload.</span></span><span class="sig-name descname"><span class="pre">FirstPacketPayloadLen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.first_packet_payload.FirstPacketPayloadLen" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nfstream.plugin.NFPlugin</span></code></p>
+<p>FirstPacketPayloadLen | First packet’s payload length per direction,
+note that the first packet is always from src to dst hence
+bidirectional first packet’s payload length is equal to src2dst_packet_payload_len.
+if there are no packets from dst to src, then the value is defaulted to None (empty).</p>
+<dl class="simple">
+<dt>Output Features:</dt><dd><ol class="arabic simple">
+<li><p>src2dst_first_packet_payload_len</p></li>
+<li><p>dst2src_first_packet_payload_len</p></li>
+</ol>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.first_packet_payload.FirstPacketPayloadLen.on_init">
+<span class="sig-name descname"><span class="pre">on_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.first_packet_payload.FirstPacketPayloadLen.on_init" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.first_packet_payload.FirstPacketPayloadLen.on_update">
+<span class="sig-name descname"><span class="pre">on_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.first_packet_payload.FirstPacketPayloadLen.on_update" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.plugins.flowpic">
+<span id="eimtc-plugins-flowpic-module"></span><h2>EIMTC.plugins.flowpic module<a class="headerlink" href="#module-EIMTC.plugins.flowpic" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.flowpic.FlowPic">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.flowpic.</span></span><span class="sig-name descname"><span class="pre">FlowPic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_per_subflow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_time_per_subflow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_packets_per_subflow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_dims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1500,</span> <span class="pre">1500)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MTU</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1500</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.flowpic.FlowPic" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nfstream.plugin.NFPlugin</span></code></p>
+<p>FlowPic | An NxN histogram of packet sizes and relative times, represented as an image.</p>
+<dl>
+<dt>Output Features:</dt><dd><p>Since the FlowPics can get very big and hence consume a lot of memory,
+instead of outputting the features as a column in a CSV file the images are
+exported to npz files with the following naming scheme:
+flowpic-[flow_start_time_ms]-[src_ip]-[src_port]-[dst_ip]-[dst_port]-[protocol]-[direction].npz</p>
+<p>Each FlowPic is captured on a specific time frame/window/subflow, hence, a flow can be partitioned
+into multiple time frames. In such cases, multiple .npz files can be created.</p>
+<p>To load the .npz files into memory you can use the following:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">flowpic_sample</span> <span class="pre">=</span> <span class="pre">np.load(filepath)['flowpic']</span>
+<span class="pre">`</span></code></p>
+</dd>
+<dt>Paper:</dt><dd><p>“FlowPic: Encrypted Internet Traffic Classification is as Easy as Image Recognition”.</p>
+<dl class="simple">
+<dt>By:</dt><dd><ul class="simple">
+<li><p>Tal Shapira.</p></li>
+<li><p>Yuval Shavitt.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>save_path</strong> (<em>str</em>) – The directory to save the .npz files.</p></li>
+<li><p><strong>time_per_subflow</strong> (<em>int</em>) – Duration for each subflow or time frame/window (in seconds). Default: 30s.</p></li>
+<li><p><strong>min_time_per_subflow</strong> (<em>int</em>) – Minimum duration for a time frame to process (in seconds). Default: 5/6 * <cite>time_per_subflow</cite></p></li>
+<li><p><strong>min_packets_per_subflow</strong> (<em>int</em>) – Minimum packets for a time frame to process. Default: 10.</p></li>
+<li><p><strong>image_dims</strong> (<em>int</em><em>, </em><em>int</em>) – FlowPic output image dimensions. Default: (1500,1500).</p></li>
+<li><p><strong>MTU</strong> (<em>int</em>) – The max packet size to process, packets with size larger than <cite>MTU</cite> will be ignored. Default: 1500.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.flowpic.FlowPic.on_init">
+<span class="sig-name descname"><span class="pre">on_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.flowpic.FlowPic.on_init" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.flowpic.FlowPic.on_update">
+<span class="sig-name descname"><span class="pre">on_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.flowpic.FlowPic.on_update" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.flowpic.FlowPic.on_expire">
+<span class="sig-name descname"><span class="pre">on_expire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.flowpic.FlowPic.on_expire" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.flowpic.FlowPic.save_histogram">
+<span class="sig-name descname"><span class="pre">save_histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subflow_start_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.flowpic.FlowPic.save_histogram" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.flowpic.FlowPic.is_subflow_ended">
+<span class="sig-name descname"><span class="pre">is_subflow_ended</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_time_ms</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_time_ms</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_per_subflow_s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.flowpic.FlowPic.is_subflow_ended" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.plugins.graypic">
+<span id="eimtc-plugins-graypic-module"></span><h2>EIMTC.plugins.graypic module<a class="headerlink" href="#module-EIMTC.plugins.graypic" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.graypic.GrayPic1">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.graypic.</span></span><span class="sig-name descname"><span class="pre">GrayPic1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_first_packets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1024</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.graypic.GrayPic1" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nfstream.plugin.NFPlugin</span></code></p>
+<p>GrayPic1 | Produces two gray-scaled image/picture, first of size 16x40 (IAT to packet-sizes),
+and the second of size 30x40 (burst/clump time to burst/clump size in bytes).
+data is extracted from the 1024-packet windows of bi-flow (default), this number can be configured.</p>
+<dl>
+<dt>Feature output:</dt><dd><p>After reaching <cite>n_first_packets</cite> packets, the two images will be saved in the following formats:
+graypic1-[count]-[src_ip]-[src_port]-[dst_ip]-[dst_port]-[protocol]
+and
+graypic1-burst-[count]-[src_ip]-[src_port]-[dst_ip]-[dst_port]-[protocol]</p>
+</dd>
+<dt>Paper:</dt><dd><p>“Fingerprinting encrypted network traffic types using machine learning”</p>
+<dl>
+<dt>By:</dt><dd><ul class="simple">
+<li><p>Sam Leroux,</p></li>
+<li><p>Steven Bohez,</p></li>
+<li><p>Pieter-Jan Maenhaut,</p></li>
+<li><p>Nathan Meheus,</p></li>
+<li><p>Pieter Simoens,</p></li>
+<li><p>Bart Dhoedt.</p></li>
+</ul>
+<p>Department of Information Technology, IDLab, Ghent University - imec.</p>
+</dd>
+<dt>Source:</dt><dd><p><a class="reference external" href="https://biblio.ugent.be/publication/8559975/file/8559977.pdf">https://biblio.ugent.be/publication/8559975/file/8559977.pdf</a></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>save_path</strong> (<em>str</em>) – The path to save the images.</p></li>
+<li><p><strong>n_first_packets</strong> (<em>int</em>) – The number of packets required to produce the images.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.graypic.GrayPic1.on_init">
+<span class="sig-name descname"><span class="pre">on_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.graypic.GrayPic1.on_init" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.graypic.GrayPic1.on_update">
+<span class="sig-name descname"><span class="pre">on_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.graypic.GrayPic1.on_update" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.graypic.GrayPic1.on_expire">
+<span class="sig-name descname"><span class="pre">on_expire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.graypic.GrayPic1.on_expire" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.plugins.most_freq_payload_len_ratio">
+<span id="eimtc-plugins-most-freq-payload-len-ratio-module"></span><h2>EIMTC.plugins.most_freq_payload_len_ratio module<a class="headerlink" href="#module-EIMTC.plugins.most_freq_payload_len_ratio" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.most_freq_payload_len_ratio.MostFreqPayloadLenRatio">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.most_freq_payload_len_ratio.</span></span><span class="sig-name descname"><span class="pre">MostFreqPayloadLenRatio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.most_freq_payload_len_ratio.MostFreqPayloadLenRatio" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nfstream.plugin.NFPlugin</span></code></p>
+<p>MostFreqPayloadLenRatio | The ratio of number of packets with most freq payload len for direction X to the the total number of packets
+in direction X, for each direction x in {src2dst, dst2src}.</p>
+<dl class="simple">
+<dt>Output Features:</dt><dd><ol class="arabic simple">
+<li><p>udps.src2dst_most_freq_payload_ratio: The frequency of the most frequent payload divided by the total number of uploaded packets. (float)</p></li>
+<li><p>udps.src2dst_most_freq_payload_len: The most frequent payload length/size of the uploaded packets. (float)</p></li>
+<li><p>udps.src2dst_payload_freq: Frequencies of payload lengths of the uploaded packets. (dict)</p></li>
+<li><p>udps.dst2src_most_freq_payload_ratio: The frequency of the most frequent payload divided by the total number of downloaded packets. (float)</p></li>
+<li><p>udps.dst2src_most_freq_payload_len: The most frequent payload length/size of the downloaded packets. (float)</p></li>
+<li><p>udps.dst2src_payload_freq = Frequencies of payload lengths of the downloaded packets. (dict)</p></li>
+</ol>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.most_freq_payload_len_ratio.MostFreqPayloadLenRatio.on_init">
+<span class="sig-name descname"><span class="pre">on_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.most_freq_payload_len_ratio.MostFreqPayloadLenRatio.on_init" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.most_freq_payload_len_ratio.MostFreqPayloadLenRatio.on_update">
+<span class="sig-name descname"><span class="pre">on_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.most_freq_payload_len_ratio.MostFreqPayloadLenRatio.on_update" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.most_freq_payload_len_ratio.MostFreqPayloadLenRatio.on_expire">
+<span class="sig-name descname"><span class="pre">on_expire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.most_freq_payload_len_ratio.MostFreqPayloadLenRatio.on_expire" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.plugins.n_bytes">
+<span id="eimtc-plugins-n-bytes-module"></span><h2>EIMTC.plugins.n_bytes module<a class="headerlink" href="#module-EIMTC.plugins.n_bytes" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.n_bytes.NBytes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.n_bytes.</span></span><span class="sig-name descname"><span class="pre">NBytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">784</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.n_bytes.NBytes" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nfstream.plugin.NFPlugin</span></code></p>
+<p>NBytes |
+Extracts the first n_bytes from the flow, the bytes are taken
+from the transport layer payload (L4). if the flow has less than n_bytes bytes,
+then the rest of the bytes are zero-valued (padding).</p>
+<dl>
+<dt>Paper:</dt><dd><p>“End-to-end Encrypted Traffic Classification with One-dimensional Convolution Neural Networks”.</p>
+<dl class="simple">
+<dt>By:</dt><dd><ul class="simple">
+<li><p>Wei Wang.</p></li>
+<li><p>Ming Zhu.</p></li>
+<li><p>Jinlin Wang.</p></li>
+<li><p>Xuewen Zeng.</p></li>
+<li><p>Zhongzhen Yang.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – The number of bytes to extract from the flow’s payload.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.n_bytes.NBytes.on_init">
+<span class="sig-name descname"><span class="pre">on_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.n_bytes.NBytes.on_init" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.n_bytes.NBytes.on_update">
+<span class="sig-name descname"><span class="pre">on_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.n_bytes.NBytes.on_update" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.n_bytes.NBytes.on_expire">
+<span class="sig-name descname"><span class="pre">on_expire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.n_bytes.NBytes.on_expire" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.n_bytes.NBytes.get_payload_as_binary">
+<span class="sig-name descname"><span class="pre">get_payload_as_binary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.n_bytes.NBytes.get_payload_as_binary" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.n_bytes.NBytes.get_payload_as_binary_scapy">
+<span class="sig-name descname"><span class="pre">get_payload_as_binary_scapy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.n_bytes.NBytes.get_payload_as_binary_scapy" title="Permalink to this definition"></a></dt>
+<dd><p>Older versions of NFStream (lower than 6.1) has problems with
+detection the correct payload size of ipv6 packets.
+This function is here as a fallback in case of problems in future
+versions.</p>
+<p>in 6.4.2 and 6.4.3 there is a bug with wrong transport_size, also
+NFStream does not detect ethernet padding.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.n_bytes.NBytes.get_payload_as_binary_pypacker">
+<span class="sig-name descname"><span class="pre">get_payload_as_binary_pypacker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.n_bytes.NBytes.get_payload_as_binary_pypacker" title="Permalink to this definition"></a></dt>
+<dd><p>Scapy has a bug with correctly dissecting SNMP payload.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.n_bytes.NBytes.preprocess">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.n_bytes.NBytes.preprocess" title="Permalink to this definition"></a></dt>
+<dd><p>Preprocessing method for the n_bytes features.
+Converting ‘udps.n_bytes’ column from str to list.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.plugins.n_bytes_per_packet">
+<span id="eimtc-plugins-n-bytes-per-packet-module"></span><h2>EIMTC.plugins.n_bytes_per_packet module<a class="headerlink" href="#module-EIMTC.plugins.n_bytes_per_packet" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.n_bytes_per_packet.NBytesPerPacket">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.n_bytes_per_packet.</span></span><span class="sig-name descname"><span class="pre">NBytesPerPacket</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_empty_payload</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_packets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.n_bytes_per_packet.NBytesPerPacket" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nfstream.plugin.NFPlugin</span></code></p>
+<p>NBytesPerPacket |
+Extracts the first n_bytes from each packet in the flow, the bytes are taken
+from the transport layer payload (L4). if the flow has less than n_bytes bytes,
+then the rest of the bytes are zero-valued.</p>
+<p>remove_empty_payload flag tells the plugin to not add empty payload packets such as acks in TCP.
+max_packets param determines the highest amount of packets to save/extract from the flow.</p>
+<dl>
+<dt>Paper:</dt><dd><p>“DeepMAL - Deep Learning Models for Malware Traffic Detection and Classification.”</p>
+<dl class="simple">
+<dt>By:</dt><dd><ul class="simple">
+<li><p>Gonzalo Marín.</p></li>
+<li><p>Pedro Casas.</p></li>
+<li><p>Germán Capdehourat.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<em>int</em>) – The number of bytes to extract from each packet.</p></li>
+<li><p><strong>remove_empty_payload</strong> (<em>bool</em>) – Ignore packets with empty payload. Default: True.</p></li>
+<li><p><strong>max_packets</strong> (<em>int</em>) – The number of packets to extract from.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.n_bytes_per_packet.NBytesPerPacket.on_init">
+<span class="sig-name descname"><span class="pre">on_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.n_bytes_per_packet.NBytesPerPacket.on_init" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.n_bytes_per_packet.NBytesPerPacket.on_update">
+<span class="sig-name descname"><span class="pre">on_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.n_bytes_per_packet.NBytesPerPacket.on_update" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.n_bytes_per_packet.NBytesPerPacket.on_expire">
+<span class="sig-name descname"><span class="pre">on_expire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.n_bytes_per_packet.NBytesPerPacket.on_expire" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.n_bytes_per_packet.NBytesPerPacket.get_payload_as_binary">
+<span class="sig-name descname"><span class="pre">get_payload_as_binary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.n_bytes_per_packet.NBytesPerPacket.get_payload_as_binary" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.plugins.n_pkts_byte_freq">
+<span id="eimtc-plugins-n-pkts-byte-freq-module"></span><h2>EIMTC.plugins.n_pkts_byte_freq module<a class="headerlink" href="#module-EIMTC.plugins.n_pkts_byte_freq" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.n_pkts_byte_freq.NPacketsByteFrequency">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.n_pkts_byte_freq.</span></span><span class="sig-name descname"><span class="pre">NPacketsByteFrequency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_first_packets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.n_pkts_byte_freq.NPacketsByteFrequency" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nfstream.plugin.NFPlugin</span></code></p>
+<p>NPacketsByteFrequency |
+Extracts an array of length 256 representing the frequency of each byte value
+found in the first <cite>n_first_packets</cite> of the flow.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n_first_packets</strong> (<em>int</em>) – the byte distribution will be taken from the n first packets only (bidirectional), if ‘n_first_packets’=0 then the byte distribution will taken from all packets in the flow.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.n_pkts_byte_freq.NPacketsByteFrequency.on_init">
+<span class="sig-name descname"><span class="pre">on_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.n_pkts_byte_freq.NPacketsByteFrequency.on_init" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.n_pkts_byte_freq.NPacketsByteFrequency.on_update">
+<span class="sig-name descname"><span class="pre">on_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.n_pkts_byte_freq.NPacketsByteFrequency.on_update" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.n_pkts_byte_freq.NPacketsByteFrequency.on_expire">
+<span class="sig-name descname"><span class="pre">on_expire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.n_pkts_byte_freq.NPacketsByteFrequency.on_expire" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.n_pkts_byte_freq.NPacketsByteFrequency.preprocess">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.n_pkts_byte_freq.NPacketsByteFrequency.preprocess" title="Permalink to this definition"></a></dt>
+<dd><p>Preprocessing method for the NPacketsByteFrequency features.
+Converting ‘udps.bidirectional_n_packets_byte_frequency’,
+‘udps.src2dst_n_packets_byte_frequency’ and ‘udps.dst2src_n_packets_byte_frequency’ columns from str to 2D-list.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.plugins.packets_size_interarrival_time">
+<span id="eimtc-plugins-packets-size-interarrival-time-module"></span><h2>EIMTC.plugins.packets_size_interarrival_time module<a class="headerlink" href="#module-EIMTC.plugins.packets_size_interarrival_time" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.packets_size_interarrival_time.Packets_size_and_interarrival_time">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.packets_size_interarrival_time.</span></span><span class="sig-name descname"><span class="pre">Packets_size_and_interarrival_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_packets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.packets_size_interarrival_time.Packets_size_and_interarrival_time" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nfstream.plugin.NFPlugin</span></code></p>
+<p>Packets_size_and_interarrival_time |
+Extracts statistics of packet size (raw) and inter-arrival time (ms).</p>
+<dl>
+<dt>Feature outputs:</dt><dd><p>Statistics of packet size and IAT of the first ‘n_packets’ packets of the flow.</p>
+<dl class="simple">
+<dt>Name Format:</dt><dd><p>udps.packets_[FEATURE]_[STAT]</p>
+</dd>
+<dt>Statistics (STAT) Names:</dt><dd><ul class="simple">
+<li><p>max</p></li>
+<li><p>min</p></li>
+<li><p>mean</p></li>
+<li><p>stddev</p></li>
+<li><p>skewness</p></li>
+<li><p>variance</p></li>
+<li><p>kurtosis</p></li>
+<li><p>sum</p></li>
+<li><p>first_quartile</p></li>
+<li><p>second_quartile</p></li>
+<li><p>third_quartile</p></li>
+</ul>
+</dd>
+<dt>Feature Names:</dt><dd><ul class="simple">
+<li><p>size</p></li>
+<li><p>interarrival_time</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>Paper:</dt><dd><p>“Deep Learning for Network Traffic Classification”.</p>
+<dl>
+<dt>By:</dt><dd><ul class="simple">
+<li><p>Niloofar Bayat.</p></li>
+<li><p>Weston Jackson.</p></li>
+<li><p>Derrick Liu.</p></li>
+</ul>
+<p>Columbia University.</p>
+</dd>
+</dl>
+</dd>
+<dt>Contribution Requests:</dt><dd><ol class="arabic simple">
+<li><p>Optimize median calculations by using histogram (if possible)</p></li>
+</ol>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n_packets</strong> (<em>int</em>) – The number of packets to process. If None then the whole flow will be processed.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.packets_size_interarrival_time.Packets_size_and_interarrival_time.on_init">
+<span class="sig-name descname"><span class="pre">on_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.packets_size_interarrival_time.Packets_size_and_interarrival_time.on_init" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.packets_size_interarrival_time.Packets_size_and_interarrival_time.on_update">
+<span class="sig-name descname"><span class="pre">on_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.packets_size_interarrival_time.Packets_size_and_interarrival_time.on_update" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.packets_size_interarrival_time.Packets_size_and_interarrival_time.on_expire">
+<span class="sig-name descname"><span class="pre">on_expire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.packets_size_interarrival_time.Packets_size_and_interarrival_time.on_expire" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.plugins.packets_size_interarrival_time.median_absolute_deviation">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.packets_size_interarrival_time.</span></span><span class="sig-name descname"><span class="pre">median_absolute_deviation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.packets_size_interarrival_time.median_absolute_deviation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.plugins.packets_size_interarrival_time.quartile">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.packets_size_interarrival_time.</span></span><span class="sig-name descname"><span class="pre">quartile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.packets_size_interarrival_time.quartile" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.plugins.packets_size_interarrival_time.sorted_median">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.packets_size_interarrival_time.</span></span><span class="sig-name descname"><span class="pre">sorted_median</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sorted_arr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.packets_size_interarrival_time.sorted_median" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.plugins.pkt_rel_time">
+<span id="eimtc-plugins-pkt-rel-time-module"></span><h2>EIMTC.plugins.pkt_rel_time module<a class="headerlink" href="#module-EIMTC.plugins.pkt_rel_time" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.pkt_rel_time.PacketRelativeTime">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.pkt_rel_time.</span></span><span class="sig-name descname"><span class="pre">PacketRelativeTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.pkt_rel_time.PacketRelativeTime" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nfstream.plugin.NFPlugin</span></code></p>
+<p>PacketRelativeTime |
+Relative times to the beginning of the flow. This plugin extracts statistics regarding
+relatve times of packets.</p>
+<dl>
+<dt>Feature Outputs:</dt><dd><ul class="simple">
+<li><p>packet_relative_times (list): The relative time of each packet.</p></li>
+<li><p>Statistics for the above list.</p></li>
+</ul>
+<dl class="simple">
+<dt>Name Format:</dt><dd><ul class="simple">
+<li><p>udps.[DIR]_[STAT]_packet_relative_times</p></li>
+</ul>
+</dd>
+<dt>Direction (DIR) Names:</dt><dd><ul class="simple">
+<li><p>src2dst</p></li>
+<li><p>dst2src</p></li>
+<li><p>bidirectional</p></li>
+</ul>
+</dd>
+<dt>Statistics (STAT) Names:</dt><dd><ul class="simple">
+<li><p>max</p></li>
+<li><p>min</p></li>
+<li><p>mean</p></li>
+<li><p>stddev</p></li>
+<li><p>variance</p></li>
+<li><p>coeff_of_var</p></li>
+<li><p>skew_from_median</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.pkt_rel_time.PacketRelativeTime.on_init">
+<span class="sig-name descname"><span class="pre">on_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.pkt_rel_time.PacketRelativeTime.on_init" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.pkt_rel_time.PacketRelativeTime.on_update">
+<span class="sig-name descname"><span class="pre">on_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.pkt_rel_time.PacketRelativeTime.on_update" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.pkt_rel_time.PacketRelativeTime.on_expire">
+<span class="sig-name descname"><span class="pre">on_expire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.pkt_rel_time.PacketRelativeTime.on_expire" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.plugins.protocol_header_fields">
+<span id="eimtc-plugins-protocol-header-fields-module"></span><h2>EIMTC.plugins.protocol_header_fields module<a class="headerlink" href="#module-EIMTC.plugins.protocol_header_fields" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.protocol_header_fields.ProtocolHeaderFields">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.protocol_header_fields.</span></span><span class="sig-name descname"><span class="pre">ProtocolHeaderFields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_packets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.protocol_header_fields.ProtocolHeaderFields" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nfstream.plugin.NFPlugin</span></code></p>
+<p>ProtocolHeaderFields |
+Extracts 4 features for <cite>n_packets</cite> packets. Packet direction, payload size, delta time
+and TCP window size if TCP, value is set to zero if UDP.</p>
+<dl>
+<dt>Feature Outputs:</dt><dd><ul class="simple">
+<li><p>udps.protocol_header_fields: utput shape of (<cite>n_packets</cite>, 4). Hence <cite>n_packets</cite> rows and 4 columns per row where each column contains the respective feature extracted from the packet. [dir, size, time, win]</p></li>
+</ul>
+</dd>
+<dt>Paper:</dt><dd><p>“Network Traffic Classifier With Convolutional and Recurrent Neural Networks for Internet of Things”</p>
+<dl class="simple">
+<dt>By:</dt><dd><ul class="simple">
+<li><p>Manuel Lopez-Martin (Senior Member, IEEE).</p></li>
+<li><p>Belen Carro.</p></li>
+<li><p>Antonio Sanchez-Esguevillas (Senior Member, IEEE).</p></li>
+<li><p>Jaime Lloret (Senior Member, IEEE).</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n_packets</strong> (<em>int</em>) – The number of packets to process.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.protocol_header_fields.ProtocolHeaderFields.on_init">
+<span class="sig-name descname"><span class="pre">on_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.protocol_header_fields.ProtocolHeaderFields.on_init" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.protocol_header_fields.ProtocolHeaderFields.on_update">
+<span class="sig-name descname"><span class="pre">on_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.protocol_header_fields.ProtocolHeaderFields.on_update" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.protocol_header_fields.ProtocolHeaderFields.on_expire">
+<span class="sig-name descname"><span class="pre">on_expire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.protocol_header_fields.ProtocolHeaderFields.on_expire" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.protocol_header_fields.ProtocolHeaderFields.preprocess">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.protocol_header_fields.ProtocolHeaderFields.preprocess" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.plugins.recv_sent_pkt_ratio">
+<span id="eimtc-plugins-recv-sent-pkt-ratio-module"></span><h2>EIMTC.plugins.recv_sent_pkt_ratio module<a class="headerlink" href="#module-EIMTC.plugins.recv_sent_pkt_ratio" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.recv_sent_pkt_ratio.RecvSentPacketRatio">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.recv_sent_pkt_ratio.</span></span><span class="sig-name descname"><span class="pre">RecvSentPacketRatio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.recv_sent_pkt_ratio.RecvSentPacketRatio" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nfstream.plugin.NFPlugin</span></code></p>
+<p>RecvSentPacketRatio |
+The ratio of the number of received packets to the number of sent packets.
+= recv/sent.</p>
+<dl class="simple">
+<dt>Feature Outputs:</dt><dd><ul class="simple">
+<li><p>udps.sent_recv_packet_ratio (float).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.recv_sent_pkt_ratio.RecvSentPacketRatio.on_expire">
+<span class="sig-name descname"><span class="pre">on_expire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.recv_sent_pkt_ratio.RecvSentPacketRatio.on_expire" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.plugins.res_req_diff_time">
+<span id="eimtc-plugins-res-req-diff-time-module"></span><h2>EIMTC.plugins.res_req_diff_time module<a class="headerlink" href="#module-EIMTC.plugins.res_req_diff_time" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.res_req_diff_time.ResReqDiffTime">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.res_req_diff_time.</span></span><span class="sig-name descname"><span class="pre">ResReqDiffTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.res_req_diff_time.ResReqDiffTime" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nfstream.plugin.NFPlugin</span></code></p>
+<p>ResReqDiffTime |
+Statistics of delta time between upload packets to download packets.
+For example, if there are 3 consequtive packets at time t1 going from src -&gt; dst, and then the next packet is
+from the other direction, dst -&gt; src, at tune t2 then the time calculation is the diff between the first upload packet
+to the first download packet hence, t2 -t1. This process repeats to get a list of such values. The plugin then extracts
+statistics on the series of time values.</p>
+<dl>
+<dt>Output Features:</dt><dd><p>udps.req_res_time_diff: (list) The time values of flow direction changes.
+udps.min_req_res_time_diff: (float)
+udps.max_req_res_time_diff: (float)
+udps.mean_req_res_time_diff: (float)
+udps.stddev_req_res_time_diff: (float)
+udps.variance_req_res_time_diff: (float)
+udps.coeff_of_var_req_res_time_diff: (float)
+udps.skew_from_median_req_res_time_diff: (float)</p>
+<dl class="simple">
+<dt>Name Format:</dt><dd><p>udps.[STAT]_req_res_time_diff</p>
+</dd>
+<dt>Statistics (STAT) Names:</dt><dd><ul class="simple">
+<li><p>max</p></li>
+<li><p>min</p></li>
+<li><p>mean</p></li>
+<li><p>stddev</p></li>
+<li><p>variance</p></li>
+<li><p>coeff_of_var</p></li>
+<li><p>skew_from_median</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.res_req_diff_time.ResReqDiffTime.on_init">
+<span class="sig-name descname"><span class="pre">on_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.res_req_diff_time.ResReqDiffTime.on_init" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.res_req_diff_time.ResReqDiffTime.on_update">
+<span class="sig-name descname"><span class="pre">on_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.res_req_diff_time.ResReqDiffTime.on_update" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.res_req_diff_time.ResReqDiffTime.on_expire">
+<span class="sig-name descname"><span class="pre">on_expire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.res_req_diff_time.ResReqDiffTime.on_expire" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.plugins.simple_tig">
+<span id="eimtc-plugins-simple-tig-module"></span><h2>EIMTC.plugins.simple_tig module<a class="headerlink" href="#module-EIMTC.plugins.simple_tig" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.simple_tig.SimpleTIG">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.simple_tig.</span></span><span class="sig-name descname"><span class="pre">SimpleTIG</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_packets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'raw'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.simple_tig.SimpleTIG" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nfstream.plugin.NFPlugin</span></code></p>
+<p>SimpleTIG | A simple Traffic interaction Graph (TIG) feature extractor.</p>
+<p>From each packet the plugin extracts the packet size and the packet direction,
+the final feature is a signed packet size (neg size for src2dst, pos size for dst2src).</p>
+<p>Why simple: The plugin doesnt support any packet/node feature customization.</p>
+<dl>
+<dt>Output Features:</dt><dd><ol class="arabic simple">
+<li><p><cite>udps.simple_tig_adj</cite>: Adjacency matrix of the graph. Shape of (<cite>n_packets</cite>, <cite>n_packets</cite>).</p></li>
+<li><p><cite>udps.simple_tig_features</cite>: Node features, a signed packet size. Shape of (<cite>n_packets</cite>, 1).</p></li>
+</ol>
+</dd>
+<dt>Paper:</dt><dd><p>“Accurate Decentralized Application Identification via Encrypted Traffic Analysis Using Graph Neural Networks.”</p>
+<dl class="simple">
+<dt>By:</dt><dd><ul class="simple">
+<li><p>Meng Shen,</p></li>
+<li><p>Jinpeng Zhang,</p></li>
+<li><p>Liehuang Zhu,</p></li>
+<li><p>Ke Xu,</p></li>
+<li><p>Xiaojiang Du.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_packets</strong> (<em>int</em>) – The number of packets to process per flow.
+flows with less than the desired <cite>n_packets</cite> will be padded with
+unconnected zero-valued vertices to match <cite>n_packets</cite>.</p></li>
+<li><p><strong>size_type</strong> (<em>str</em>) – The layer of a packet to compute the size from. The options are
+“raw”, “ip”, “transport” or “payload”.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.simple_tig.SimpleTIG.on_init">
+<span class="sig-name descname"><span class="pre">on_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.simple_tig.SimpleTIG.on_init" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.simple_tig.SimpleTIG.on_update">
+<span class="sig-name descname"><span class="pre">on_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.simple_tig.SimpleTIG.on_update" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.simple_tig.SimpleTIG.on_expire">
+<span class="sig-name descname"><span class="pre">on_expire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.simple_tig.SimpleTIG.on_expire" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.simple_tig.SimpleTIG.preprocess">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.simple_tig.SimpleTIG.preprocess" title="Permalink to this definition"></a></dt>
+<dd><p>Preprocessing method for the GraphDApp features.
+Converting ‘udps.simple_tig_adj’ and ‘udps.simple_tig_features’ columns from str to 2D-list.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.plugins.simple_tig.generate_simple_TIG">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.simple_tig.</span></span><span class="sig-name descname"><span class="pre">generate_simple_TIG</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.simple_tig.generate_simple_TIG" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="EIMTC.plugins.simple_tig.get_bursts">
+<span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.simple_tig.</span></span><span class="sig-name descname"><span class="pre">get_bursts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.simple_tig.get_bursts" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.simple_tig.Graph">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.simple_tig.</span></span><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.simple_tig.Graph" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.simple_tig.Graph.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.simple_tig.Graph.connect" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.simple_tig.Graph.connect_inner_burst">
+<span class="sig-name descname"><span class="pre">connect_inner_burst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">burst</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.simple_tig.Graph.connect_inner_burst" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.simple_tig.Graph.connect_bursts">
+<span class="sig-name descname"><span class="pre">connect_bursts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">burst1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">burst2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.simple_tig.Graph.connect_bursts" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.simple_tig.Burst">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.simple_tig.</span></span><span class="sig-name descname"><span class="pre">Burst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.simple_tig.Burst" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.simple_tig.Burst.length">
+<span class="sig-name descname"><span class="pre">length</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.simple_tig.Burst.length" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.simple_tig.Burst.first">
+<span class="sig-name descname"><span class="pre">first</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.simple_tig.Burst.first" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.simple_tig.Burst.last">
+<span class="sig-name descname"><span class="pre">last</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.simple_tig.Burst.last" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.plugins.small_pkt_payload_ratio">
+<span id="eimtc-plugins-small-pkt-payload-ratio-module"></span><h2>EIMTC.plugins.small_pkt_payload_ratio module<a class="headerlink" href="#module-EIMTC.plugins.small_pkt_payload_ratio" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.small_pkt_payload_ratio.SmallPacketPayloadRatio">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.small_pkt_payload_ratio.</span></span><span class="sig-name descname"><span class="pre">SmallPacketPayloadRatio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">small_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.small_pkt_payload_ratio.SmallPacketPayloadRatio" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nfstream.plugin.NFPlugin</span></code></p>
+<p>SmallPacketPayloadRatio |
+The ratio of number of small packets for direction X to the the total number of packets
+in direction X, for each direction x in {src2dst, dst2src}.</p>
+<dl>
+<dt>Feature Outputs:</dt><dd><ul class="simple">
+<li><p>udps.src2dst_small_packet_payload_packets: (int) The number of small packets (upload).</p></li>
+<li><p>udps.src2dst_small_packet_payload_ratio: (float) The ratio of small packets (upload) out of all upload packets.</p></li>
+<li><p>udps.dst2src_small_packet_payload_packets: (int) The number of small packets (download).</p></li>
+<li><p>udps.dst2src_small_packet_payload_ratio: (float) The ratio of small packets (download) out of all download packets.</p></li>
+</ul>
+<dl class="simple">
+<dt>Name Format:</dt><dd><p>udps.[DIR]_small_packet_payload_[FEATURE]</p>
+</dd>
+<dt>Direction (DIR) Names:</dt><dd><ul class="simple">
+<li><p>src2dst</p></li>
+<li><p>dst2src</p></li>
+</ul>
+</dd>
+<dt>Feature Names:</dt><dd><ul class="simple">
+<li><p>packets</p></li>
+<li><p>ratio</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>small_size</strong> (<em>int</em>) – the size (in bytes) of the payload that a packet is considered to be small (i.e, payload size &lt; small_size).</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.small_pkt_payload_ratio.SmallPacketPayloadRatio.on_init">
+<span class="sig-name descname"><span class="pre">on_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.small_pkt_payload_ratio.SmallPacketPayloadRatio.on_init" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.small_pkt_payload_ratio.SmallPacketPayloadRatio.on_update">
+<span class="sig-name descname"><span class="pre">on_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.small_pkt_payload_ratio.SmallPacketPayloadRatio.on_update" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.small_pkt_payload_ratio.SmallPacketPayloadRatio.on_expire">
+<span class="sig-name descname"><span class="pre">on_expire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.small_pkt_payload_ratio.SmallPacketPayloadRatio.on_expire" title="Permalink to this definition"></a></dt>
+<dd><p>‘</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.plugins.stnn">
+<span id="eimtc-plugins-stnn-module"></span><h2>EIMTC.plugins.stnn module<a class="headerlink" href="#module-EIMTC.plugins.stnn" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="EIMTC.plugins.stnn.STNN">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EIMTC.plugins.stnn.</span></span><span class="sig-name descname"><span class="pre">STNN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_packets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.stnn.STNN" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nfstream.plugin.NFPlugin</span></code></p>
+<p>wip</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.stnn.STNN.on_init">
+<span class="sig-name descname"><span class="pre">on_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.stnn.STNN.on_init" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.stnn.STNN.on_update">
+<span class="sig-name descname"><span class="pre">on_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.stnn.STNN.on_update" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.stnn.STNN.on_expire">
+<span class="sig-name descname"><span class="pre">on_expire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.stnn.STNN.on_expire" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EIMTC.plugins.stnn.STNN.preprocess">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EIMTC.plugins.stnn.STNN.preprocess" title="Permalink to this definition"></a></dt>
+<dd><p>Preprocessing method for the STNN features.
+Converting ‘udps.stnn_image’ column from str to 2D-list.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-EIMTC.plugins">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-EIMTC.plugins" title="Permalink to this headline"></a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="EIMTC.models.html" class="btn btn-neutral float-left" title="EIMTC.models package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="EIMTC.preprocessing.html" class="btn btn-neutral float-right" title="EIMTC.preprocessing package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Ariel University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

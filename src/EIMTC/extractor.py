@@ -41,7 +41,7 @@ class Extractor:
         return path.join(self.output_dirpath,'out-sessions.csv')
     
     
-    def extract_single(self, input_pcap_filepath, append=False):
+    def extract_single(self, input_pcap_filepath, labelling_method=None, append=False):
         plugins = self._plugins() if self.custom_plugin_package is None else self.custom_plugin_package
         session_streamer = NFStreamer(
             source=input_pcap_filepath,
@@ -64,6 +64,11 @@ class Extractor:
         if self.TLS:
             config_filepath = path.join(path.dirname(__file__), 'tools/config.json')
             sessions_df = extract_tls_features_and_merge(sessions_df, input_pcap_filepath, config_filepath)
+        
+        if labelling_method is not None:
+            labels = labelling_method(input_pcap_filepath)
+            for name, label in labels.items():
+                sessions_df[name] = label
             
         sessions_df['filepath'] = input_pcap_filepath
         sessions_df.to_csv(
@@ -74,14 +79,14 @@ class Extractor:
         )
 
 
-    def extract_many(self, input_pcap_filepaths, append=False):
-        for i, filepath in enumerate(self.extract_iter(input_pcap_filepaths, append)):
+    def extract_many(self, input_pcap_filepaths, labelling_method=None, append=False):
+        for i, filepath in enumerate(self.extract_iter(input_pcap_filepaths, labelling_method, append)):
             print(f'[{i+1}/{len(input_pcap_filepaths)}] Finished extraction from {filepath}')
 
 
-    def extract_iter(self, input_pcap_filepaths, append=False):
+    def extract_iter(self, input_pcap_filepaths, labelling_method=None, append=False):
         for filepath in input_pcap_filepaths:
-            self.extract_single(filepath, append)
+            self.extract_single(filepath, labelling_method, append)
             yield filepath
             append = True
             
