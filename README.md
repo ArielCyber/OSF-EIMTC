@@ -98,4 +98,14 @@ Under `./src`
 ```
 
 ## Citation
-TBD
+```
+article{BADER2024271,
+title = {OSF-EIMTC: An open-source framework for standardized encrypted internet traffic classification},
+author = {Ofek Bader and Adi Lichy and Amit Dvir and Ran Dubin and Chen Hajaj},
+journal = {Computer Communications},
+volume = {213},
+pages = {271-284},
+year = {2024}
+}
+```
+
