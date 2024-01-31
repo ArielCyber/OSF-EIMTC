@@ -4,59 +4,31 @@ import tensorflow as tf
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.WARN)  # or any {DEBUG, INFO, WARN, ERROR, FATAL}
 from tensorflow.keras.layers import *
 from tensorflow.keras.models import *
+from tensorflow.python.trackable.data_structures import ListWrapper
 
 
 
 
 class CustomDistiller(Model):
-    def __init__(self, modalities=[], adapter_size=128, n_classes=[], merging_method='feat_concat') -> None:
+    def __init__(self, modalities=[], adapter_size=128, n_classes=[], merging_method='feat_concat',adapters_setup=[]) -> None:
         super(CustomDistiller, self).__init__()
         self.n_classes = n_classes
         self.modalities = modalities
         self.adapter_size = adapter_size
         self.merging_method = merging_method
+        self.adapters_setup = adapters_setup
         self._validate()
         
+        
         if self.merging_method == 'feat_concat':
-            shared_representation = stack(
-                [
-                    Concatenate()(
-                        wrap_adapter_multi(modalities, adapter_size) 
-                    )
-                ]
-                + get_sr_layers(adapter_size)
-            )
+            shared_representation = feat_concat_method(get_sub_adapters(modalities,adapter_size,merging_method,adapters_setup),adapter_size)
 
         elif self.merging_method == 'deep_concat':
-            shared_representation = stack(
-                [
-                    Concatenate()(
-                        [model.output for model in modalities]
-                    )
-                ]
-                + get_sr_layers(adapter_size)
-            )
+            shared_representation = deep_concat_method(get_sub_adapters(modalities,adapter_size,merging_method,adapters_setup),adapter_size)
             
-        elif self.merging_method == 'feat_merge_opt':
-            shared_representation = stack(
-                [
-                    Add()(
-                        wrap_adapter_multi(modalities, adapter_size) 
-                    )
-                ]
-                + get_sr_layers(adapter_size)
-            )
+        elif self.merging_method == 'feat_merge':
+            shared_representation = feat_merge_method(get_sub_adapters(modalities,adapter_size,merging_method,adapters_setup),adapter_size)
         
-        elif self.merging_method == 'deep_merge':
-            shared_representation = stack(
-                [
-                    Add()(
-                        wrap_adapter_multi(modalities, adapter_size) 
-                    )
-                ]
-                + get_sr_layers(adapter_size)
-            )
-
         outputs = []
         for n_class in n_classes:
             outputs.append(stack([shared_representation] + get_ts_layers(classes_count=n_class, adapter_size=adapter_size)))
@@ -79,7 +51,7 @@ class CustomDistiller(Model):
         for model, compile_kwargs in zip(self.pretraining_models + [self.model], zip_dict(kwargs)):
             model.compile(**compile_kwargs)
 
-    def _compile(self, **kwargs):
+    def _compile(self, **kwargs): # compile for freezing and unfreezing
         for model, compile_kwargs in zip(self.pretraining_models + [self.model], zip_dict(kwargs)):
             model.compile(**compile_kwargs)
 
@@ -209,7 +181,63 @@ def get_ts_layers(classes_count, adapter_size):
         Softmax()
     ]
     
+def feat_concat_method(modalities,adapter_size):
+    return stack(
+                [
+                    Concatenate()(
+                        wrap_adapter_multi(modalities, adapter_size) 
+                    )
+                ]
+                + get_sr_layers(adapter_size)
+            )
+
+def deep_concat_method(modalities,adapter_size):
+    return stack(
+                [
+                    Concatenate()(
+                        [model.output for model in modalities]
+                    )
+                ]
+                + get_sr_layers(adapter_size)
+            )
+
+def feat_merge_method(modalities,adapter_size):
+    return stack(
+                [
+                    Add()(
+                        wrap_adapter_multi(modalities, adapter_size) 
+                    )
+                ]
+                + get_sr_layers(adapter_size)
+            )
     
+def get_sub_adapter(models,adapter_size,merging_method):
+    if merging_method == 'deep_concat':
+        return Model(
+            inputs=[modal.input for modal in models],
+            outputs= deep_concat_method(models,adapter_size)
+        )
+    if merging_method == 'feat_merge':
+        return Model(
+            inputs=[modal.input for modal in models],
+            outputs= feat_merge_method(models,adapter_size)
+        )
+    return Model(
+            inputs=[modal.input for modal in models],
+            outputs= feat_concat_method(models,adapter_size)
+        )
+
+def get_sub_adapters(models,adapter_size,merging_method,adapters_setup):
+    if not adapters_setup:
+        return models
+    adapters = []
+    for adapter in adapters_setup:
+        if type(adapter) is ListWrapper:
+            adapters.append(get_sub_adapter([models[i] for i in adapter],adapter_size,merging_method))
+        else:
+            adapters.append(models[adapter])
+    return adapters
+
 def zip_dict(d):
     for vals in zip(*(d.values())):
         yield dict(zip(d.keys(), vals))
