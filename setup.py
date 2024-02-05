@@ -11,15 +11,15 @@ long_description = (this_directory / "README.md").read_text(encoding="utf8")
 
 setup(
     name='OSF_EIMTC',
-    version='0.1.46',
+    version='0.1.48',
     description='A Framework for Encrypted Internet and Malicious Traffic Classification.',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/neyney10/PCAPFeatureExtractor',
+    url='https://github.com/ArielCyber/OSF-EIMTC/',
     keywords='nfstream, pcap, network, deep-learning, extraction',
     license='MIT',
     author="Ariel University",
-    author_email='ofek.bader@msmail.ariel.ac.il',
+    author_email='chenha@ariel.ac.il',
     packages=find_packages('src'),
     package_dir={'': 'src'},
     package_data={

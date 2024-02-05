@@ -7,6 +7,7 @@ from ._maldist import MalDist
 from ._graphdapp import GraphDApp
 from ._chainedgnn import ChainedGNN
 from ._hybrid import Hybrid
+from ._model_wrapper import ModelWrapper
 # ML
 from sklearn.svm import LinearSVC, LinearSVR, NuSVC, NuSVR, OneClassSVM, SVC, SVR
 from sklearn.ensemble import (
@@ -37,7 +38,9 @@ __all__ = [ # Deep learning
     'Distiller',
     'MalDist',
     'GraphDApp',
-    'ChainedGNN'
+    'ChainedGNN',
+    'Hybrid',
+    'ModelWrapper'
 ] + [ # SVM 
     'LinearSVC',
     'LinearSVR',
