@@ -127,7 +127,7 @@ class STNN_Extended():
     def stnn_feat_enh(row):
 
         feat = row[STNN_Extended.size_iat_cols + STNN_Extended.clump_cols]
-        sub_stnn =  np.asarray(row['udps.stnn_image'][1:3]).flatten()
+        sub_stnn =  np.asarray(row['udps.stnn_image'][0:3]).flatten()
         return np.concatenate([sub_stnn, feat]).astype('float32')
 
             
