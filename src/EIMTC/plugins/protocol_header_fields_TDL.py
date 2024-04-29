@@ -2,8 +2,8 @@ from nfstream import NFStreamer, NFPlugin
 import numpy as np
 from scapy.all import IP, TCP
 
-class ProtocolHeaderFields(NFPlugin):
-    ''' ProtocolHeaderFields-TDL|
+class ProtocolHeaderFieldsTDL(NFPlugin):
+    ''' ProtocolHeaderFieldsTDL |
     Extracts 3 features for `n_packets` packets. Packet direction, payload size and delta time.
     This plugin use only Timestamp , Direction and Length (TDL). 
     

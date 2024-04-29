@@ -2,8 +2,8 @@ from nfstream import NFStreamer, NFPlugin
 import numpy as np
 from scapy.all import IP, TCP
 
-class ProtocolHeaderFields_Extended(NFPlugin):
-    ''' ProtocolHeaderFields_Extended |
+class ProtocolHeaderFieldsExtended(NFPlugin):
+    ''' ProtocolHeaderFieldsExtended |
     Extracts 6 features for `n_packets` packets. Packet direction, payload size, delta time
     , TCP window size if TCP, value is set to zero if UDP, TCP number of options if TCP, value is set to zero if UDP
     and Time-To-Live (TTL) of packet.

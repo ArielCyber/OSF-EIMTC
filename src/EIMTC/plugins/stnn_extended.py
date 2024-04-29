@@ -2,8 +2,8 @@ from EIMTC.plugins import stnn, clump_flows, packets_size_interarrival_time
 import pandas  as pd
 import numpy as np
 
-class STNN_Extended():
-    ''' STNN_Extended |
+class STNNExtended():
+    ''' STNNExtended |
     Extracts 149 features from `n_packets` packets. The extended version
     maintain only flow direction statistical features bidirectional, src2dst, dst2src. Which are total of 42 features.
     and added 107 new features from clump flows with a total of 149 features.

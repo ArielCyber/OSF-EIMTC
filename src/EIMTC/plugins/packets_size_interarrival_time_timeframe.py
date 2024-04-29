@@ -2,12 +2,12 @@ from runstats import *
 from nfstream import NFPlugin
 import numpy as np
 
-class Packets_size_and_interarrival_time_TimeFrame(NFPlugin):
-    ''' Packets_size_and_interarrival_time |
+class PacketsSizeAndIATTimeFrame(NFPlugin):
+    ''' PacketsSizeAndIATTimeFrame |
     Extracts statistics of packet size (raw) and inter-arrival time (ms).
     
     Feature outputs:
-        Statistics of packet size and IAT of the first 'n_packets' packets of the flow.
+        Statistics of packet size and IAT of the first 'n_packets' packets of the flow with in 'flow_time' threshold.
         
         Name Format:
             udps.packets_[FEATURE]_[STAT]

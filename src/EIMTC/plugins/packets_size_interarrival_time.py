@@ -2,8 +2,8 @@ from runstats import *
 from nfstream import NFPlugin
 import numpy as np
 
-class Packets_size_and_interarrival_time(NFPlugin):
-    ''' Packets_size_and_interarrival_time |
+class PacketsSizeAndIAT(NFPlugin):
+    ''' PacketsSizeAndIAT |
     Extracts statistics of packet size (raw) and inter-arrival time (ms).
     
     Feature outputs:

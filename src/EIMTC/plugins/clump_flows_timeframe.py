@@ -5,8 +5,8 @@ from nfstream import NFPlugin
 
 
 
-class ClumpFlows(NFPlugin):
-    ''' ClumpFlows | The plugin 'clumps' the packets of each flow by the direction src2dst or dst2src,
+class ClumpFlowTimeFrame(NFPlugin):
+    ''' ClumpFlowTimeFrame | The plugin 'clumps' the packets of each flow by the direction src2dst or dst2src,
     for each clump in flow clump starts and end when the next packet change direction or last flow packet.
     The clumps then extract stastical information from the clumps groups.
 
@@ -64,12 +64,12 @@ class ClumpFlows(NFPlugin):
     Ariel University.
     '''
     
-    def __init__(self, n_packets=None):
+    def __init__(self, flow_time=None):
         '''
         Args:
-            `n_packets` (int): Number of first packets to process. Default: None (process all).
+            `flow_time` (int): Number of miliseconds of flow to process. Default: None (process all).
         '''
-        self.n_packets = n_packets
+        self.flow_time = flow_time
 
     def on_init(self, packet, flow):
         ''' '''
@@ -82,7 +82,7 @@ class ClumpFlows(NFPlugin):
 
     def on_update(self, packet, flow):
         ''' '''
-        if self.n_packets is not None and flow.bidirectional_packets > self.n_packets :
+        if self.flow_time is not None and (packet.time - flow.bidirectional_first_seen_ms) > self.flow_time :
             return
         
         if flow.udps.direction is None or flow.udps.direction != packet.direction:#first packet direction or change of direction
