@@ -83,6 +83,29 @@ class CustomDistiller(Model):
         self.model.fit(x,y, **fit_kwargs)
         self.unfreeze_for_finetuning()
 
+    def modals_select_fit(self,x,y,num_modals,to_train=True,**kwargs): # new selected modal allows to choose which modals to pre-train with some modals already pre-train
+        kwargs_per_fit = list(zip_dict(kwargs))
+
+        if to_train:
+            untrained_modals = [self.pretraining_models[i] for i in num_modals]
+        else:
+            num_m = []
+            for i in range(len(self.pretraining_models)):
+                if i not in num_modals:
+                    num_m.append(i)
+            untrained_modals = [self.pretraining_models[i] for i in num_m]
+        
+        for features, model, fit_kwargs in zip(x, untrained_modals, kwargs_per_fit):
+            print('##################### {} ##########################'.format(model.name.upper()))
+            model.fit(features, y, **fit_kwargs)
+
+        # FINE-TUNE
+        print('##################### FINE-TUNING ##########################')
+        fit_kwargs = kwargs_per_fit[len(self.modalities)]
+        self.freeze_for_finetuning()
+        self.model.fit(x,y, **fit_kwargs)
+        self.unfreeze_for_finetuning()
+
     def _validate(self):
         # modalities and n_classess array must not be empty .
         assert len(self.modalities) != 0
