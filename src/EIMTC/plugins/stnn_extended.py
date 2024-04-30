@@ -121,12 +121,12 @@ class STNNExtended():
 
 
     def plugins(n_packets=32):
-        return clump_flows.Clump_Flow(n_packets),stnn.STNN(n_packets),packets_size_interarrival_time.Packets_size_and_interarrival_time(n_packets)
+        return clump_flows.ClumpFlows(n_packets),stnn.STNN(n_packets),packets_size_interarrival_time.PacketsSizeAndIAT(n_packets)
 
     @staticmethod
     def stnn_feat_enh(row):
 
-        feat = row[STNN_Extended.size_iat_cols + STNN_Extended.clump_cols]
+        feat = row[STNNExtended.size_iat_cols + STNNExtended.clump_cols]
         sub_stnn =  np.asarray(row['udps.stnn_image'][0:3]).flatten()
         return np.concatenate([sub_stnn, feat]).astype('float32')
 
@@ -141,5 +141,5 @@ class STNNExtended():
         # validate
         stnn.STNN.preprocess(dataframe)
 
-        dataframe['udps.stnn_image_enh'] = dataframe.apply(STNN_Extended.stnn_feat_enh,axis=1)
+        dataframe['udps.stnn_image_enh'] = dataframe.apply(STNNExtended.stnn_feat_enh,axis=1)
     
