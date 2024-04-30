@@ -1,6 +1,6 @@
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input,LeakyReLU,Bidirectional,Flatten,Conv1D,MaxPool1D,LSTM,Dense
-from _utils import stack
+from ._utils import stack
 
 class STNNExtendedModality:
     '''

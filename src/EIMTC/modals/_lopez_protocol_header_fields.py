@@ -1,7 +1,7 @@
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input,GRU,ReLU,Bidirectional,Flatten
 from tensorflow.keras.constraints import max_norm 
-from _utils import stack
+from ._utils import stack
 
 class LopezModality:
     '''

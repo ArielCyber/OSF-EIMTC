@@ -1,6 +1,6 @@
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input,Conv1D,ReLU,MaxPooling1D,Flatten
-from _utils import stack
+from ._utils import stack
 
 class WangPayloadModality:
     '''

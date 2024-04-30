@@ -1,7 +1,7 @@
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input,Lambda,LeakyReLU,Bidirectional,Flatten,Conv2D,MaxPool2D,LSTM,Dense
 from tensorflow import expand_dims
-from _utils import stack
+from ._utils import stack
 
 
 class STNNModality:

@@ -1,6 +1,6 @@
 import pywt
 import numpy as np
-from _model_wrapper import ModelWrapper
+from ._modal_wrapper import ModalWrapper
 from sklearn.ensemble import RandomForestClassifier
 
 class WaveletModality:
@@ -12,7 +12,7 @@ class WaveletModality:
     Contributor: Natan Dilbary
     '''
     def __init__(self,input_shape) -> None:
-        self.model = ModelWrapper(RandomForestClassifier(),name='wavelet modality',input_shape=input_shape)
+        self.model = ModalWrapper(RandomForestClassifier(),name='wavelet modality',input_shape=input_shape)
     
     def fit_transform(self,x):
         return self.transform_signals2Wavelet(x)
