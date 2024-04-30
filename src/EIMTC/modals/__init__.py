@@ -1,6 +1,6 @@
 # Modals
 from ._graphdapp import GraphDAppModality
-from ._model_wrapper import ModalWrapper
+from ._modal_wrapper import ModalWrapper
 from ._lopez_protocol_header_fields import LopezModality
 from ._lopez_protocol_header_fields_extended import LopezExtendedModality
 from ._lopez_protocol_header_fields_TDL import LopezTDLModality
