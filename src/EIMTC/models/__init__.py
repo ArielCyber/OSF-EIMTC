@@ -21,13 +21,16 @@ from sklearn.neighbors import (
     KNeighborsClassifier, KNeighborsRegressor, KNeighborsTransformer, 
     LocalOutlierFactor, NearestCentroid, NearestNeighbors, 
     NeighborhoodComponentsAnalysis, RadiusNeighborsClassifier, RadiusNeighborsRegressor, 
-    RadiusNeighborsTransformer, KDTree, BallTree, DistanceMetric
+    RadiusNeighborsTransformer, KDTree, BallTree
 )
 from sklearn.naive_bayes import (
     BernoulliNB, CategoricalNB, ComplementNB, GaussianNB, MultinomialNB, 
 )
 from sklearn.tree import (
     DecisionTreeClassifier, DecisionTreeRegressor, ExtraTreeClassifier, ExtraTreeRegressor
+)
+from sklearn.metrics import (
+    DistanceMetric
 )
 
 

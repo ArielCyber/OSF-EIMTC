@@ -17,7 +17,7 @@ class G2VModality:
 
 class _G2V_Model(Model):
     def __init__(self,input_shape) -> None:
-        super(_G2V_Model, self).__init__(name="Graph2Vec modality")
+        super(_G2V_Model, self).__init__(name="Graph2Vec_modality")
 
         #Layers
         self.input_layer = Input(shape=input_shape,name=f'input_vector_graph')
