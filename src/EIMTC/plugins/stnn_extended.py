@@ -5,11 +5,11 @@ import numpy as np
 class STNNExtended():
     ''' STNNExtended |
     Extracts 149 features from `n_packets` packets. The extended version
-    maintain only flow direction statistical features bidirectional, src2dst, dst2src. Which are total of 42 features.
+    maintain only flow direction statistical features src2dst, dst2src. Which are total of 42 features.
     and added 107 new features from clump flows with a total of 149 features.
     
     Feature Outputs:
-        - udps.stnn_image_enh: output shape of (149).
+        - udps.stnn_image_enh: output shape of (135).
     '''
     size_iat_cols = [
             'udps.packets_size_max', 'udps.packets_size_stddev',
@@ -127,7 +127,7 @@ class STNNExtended():
     def stnn_feat_enh(row):
 
         feat = row[STNNExtended.size_iat_cols + STNNExtended.clump_cols]
-        sub_stnn =  np.asarray(row['udps.stnn_image'][0:3]).flatten()
+        sub_stnn =  np.asarray(row['udps.stnn_image'][1:3]).flatten()
         return np.concatenate([sub_stnn, feat]).astype('float32')
 
             

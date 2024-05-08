@@ -13,7 +13,7 @@ class STFTModality:
     Contributor: Natan Dilbary
     '''
     def __init__(self,input_shape) -> None:
-        self.model = ModalWrapper(RandomForestClassifier(),name='short-time-fourier-transform modality',input_shape=input_shape)
+        self.model = ModalWrapper(RandomForestClassifier(),name='short-time-fourier-transform_modality',input_shape=input_shape)
 
     def fit_transform(self,x):
         return self.transform_signals2STFT(x)
