@@ -6,14 +6,14 @@ class STNNExtendedModality:
     '''
     STNN Exteneded deep learning nerual network uses for 1D vector input.
     Classifciation type: packets and flow statistic
-    Input: one-dimensional vector of 149 features.
+    Input: one-dimensional vector of 140 features.
 
     Extraction plugin: STNNExtended
     
     Inspired by the paper: "Network Traffic Classifier With Convolutional and Recurrent Neural Networks for Internet of Things"
     '''
     def __init__(self) -> None:
-        input_layer_stnn_modality = Input(shape=(135,1), name='input_stnn')
+        input_layer_stnn_modality = Input(shape=(140,1), name='input_stnn')
         self.model = Model(
             name='STNN-inspired image extended modality',
             inputs=input_layer_stnn_modality,

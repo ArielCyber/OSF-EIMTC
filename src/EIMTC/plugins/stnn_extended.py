@@ -1,24 +1,33 @@
-from EIMTC.plugins import stnn, clump_flows, packets_size_interarrival_time
-import pandas  as pd
+from .stnn import STNN
+from .clumps_flow import ClumpsFlow
+from .packets_size_interarrival_time import PacketsSizeAndIAT
+import pandas as pd
 import numpy as np
 
 class STNNExtended():
     ''' STNNExtended |
-    Extracts 149 features from `n_packets` packets. The extended version
-    maintain only flow direction statistical features src2dst, dst2src. Which are total of 42 features.
-    and added 107 new features from clump flows with a total of 149 features.
+    Extracts 140 features from `n_packets` packets. The extended version
+    maintain only flow direction statistical features src2dst, dst2src the same and
+    for the bidectional take only the packets,bytes,packets per second and bytes per second.
+    Which are total of 32 features. In addition added 108 new features from clumps flow 84 feautres
+    and from packet size and inter-arrival-time bidrectional flow 24 features a total of 140 features.
     
     Feature Outputs:
-        - udps.stnn_image_enh: output shape of (135).
+        - udps.stnn_image_enh: output shape of (140).
     '''
     size_iat_cols = [
-            'udps.packets_size_max', 'udps.packets_size_stddev',
+            'udps.packets_size_min',
+            'udps.packets_size_max',
+            'udps.packets_size_stddev',
             'udps.packets_size_first_quartile',
             'udps.packets_size_second_quartile',
-            'udps.packets_size_third_quartile', 'udps.packets_size_mean',
+            'udps.packets_size_third_quartile',
+            'udps.packets_size_mean',
             'udps.packets_size_median_absoulte_deviation',
-            'udps.packets_size_variance', 'udps.packets_size_skewness',
-            'udps.packets_size_kurtosis', 'udps.packets_size_sum',
+            'udps.packets_size_variance',
+            'udps.packets_size_skewness',
+            'udps.packets_size_kurtosis',
+            'udps.packets_size_sum',
             'udps.packets_interarrival_time_min',
             'udps.packets_interarrival_time_max',
             'udps.packets_interarrival_time_stddev',
@@ -31,7 +40,7 @@ class STNNExtended():
             'udps.packets_interarrival_time_skewness',
             'udps.packets_interarrival_time_kurtosis',
             'udps.packets_interarrival_time_sum'
-        ]
+        ] # 24
 
     clump_cols = ['udps.src2dst_max_clumps_len',
         'udps.src2dst_min_clumps_len',
@@ -116,18 +125,18 @@ class STNNExtended():
         'udps.stddev_clumps_interarrival_time',
         'udps.skewness_clumps_interarrival_time',
         'udps.variance_clumps_interarrival_time',
-        'udps.kurtosis_clumps_interarrival_time']
+        'udps.kurtosis_clumps_interarrival_time'] # 84
 
 
 
     def plugins(n_packets=32):
-        return clump_flows.ClumpFlows(n_packets),stnn.STNN(n_packets),packets_size_interarrival_time.PacketsSizeAndIAT(n_packets)
+        return ClumpsFlow(n_packets),STNN(n_packets),PacketsSizeAndIAT(n_packets)
 
     @staticmethod
     def stnn_feat_enh(row):
 
         feat = row[STNNExtended.size_iat_cols + STNNExtended.clump_cols]
-        sub_stnn =  np.asarray(row['udps.stnn_image'][1:3]).flatten()
+        sub_stnn =  np.concatenate([np.asarray(row['udps.stnn_image'][0][10:]),np.asarray(row['udps.stnn_image'][1:3]).flatten()])
         return np.concatenate([sub_stnn, feat]).astype('float32')
 
             
@@ -139,7 +148,7 @@ class STNNExtended():
         import
         '''
         # validate
-        stnn.STNN.preprocess(dataframe)
+        STNN.preprocess(dataframe)
 
         dataframe['udps.stnn_image_enh'] = dataframe.apply(STNNExtended.stnn_feat_enh,axis=1)
     
