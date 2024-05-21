@@ -49,8 +49,11 @@ class ModalWrapper(tf.keras.Model):
         else:
             self.prebuilt_layers = False
 
-    def fit_wrapper_model(self,x,y):
-        self.inner_model.fit(x,y)
+    def fit_wrapper_model(self,x,y=None):
+        if y is not None:
+            self.inner_model.fit(x,y)
+        else:
+            self.inner_model.fit(x)
     
     def predict_wrapper_model(self,x):
         return self.inner_model.predict(x)
