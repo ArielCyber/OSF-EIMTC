@@ -7,8 +7,8 @@ from os import path
 from .utils import is_iterable
 from .tls_tshark_entry import extract_tls_features_and_merge
 #from .hosts_processor import HostsProcessor
-from .plugins.clump_flows import Clump_Flow
-from .plugins.packets_size_interarrival_time import Packets_size_and_interarrival_time
+from .plugins.clumps_flow import ClumpsFlow
+from .plugins.packets_size_interarrival_time import PacketsSizeAndIAT
 from .plugins.asn_info import ASNInfo
 from .plugins.n_pkts_byte_freq import NPacketsByteFrequency
 from .plugins.first_packet_payload import FirstPacketPayloadLen
@@ -32,11 +32,11 @@ class Extractor:
         self.TLS = TLS
 
 
-    def extract(self, input_pcap_filepath, append=False):
+    def extract(self, input_pcap_filepath, labelling_method=None, append=False):
         if is_iterable(input_pcap_filepath):
-            self.extract_many(input_pcap_filepath, append)
+            self.extract_many(input_pcap_filepath, labelling_method, append)
         else:
-            self.extract_single(input_pcap_filepath, append)
+            self.extract_single(input_pcap_filepath, labelling_method, append)
 
         return path.join(self.output_dirpath,'out-sessions.csv')
     
@@ -101,8 +101,8 @@ class Extractor:
             PacketRelativeTime(),
             SmallPacketPayloadRatio(),
             ResReqDiffTime(),
-            Clump_Flow(),
-            Packets_size_and_interarrival_time(),
+            ClumpsFlow(),
+            PacketsSizeAndIAT(),
             ProtocolHeaderFields(20),
             NBytes(),
             STNN(20)
