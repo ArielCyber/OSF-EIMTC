@@ -6,7 +6,28 @@ from runstats import *
 
 class STNN(NFPlugin):
     '''
-    wip
+    STNN | statical matrix from n_packets of the flow,
+    extract 5 types of the same flow: bidirectional, src2dst, dst2src, handshake, data
+    extract 14 features from each type.
+    inter-arrival-time and packet size: min, max, mean, stddev, skewness 10 features.
+    and 4 features packets, bytes, packets per second, bytes per second.
+
+    creating each row [iat_min, iat_max, iat_mean, iat_stddev, iat_skewness, size_min, size_max, size_mean, size_stddev, size_skewness, packets, bytes, packets per second, bytes per second]
+        
+    Output Feature:
+        2D matrix in the shape of (5 x 14) 
+    
+    Inspired paper: 
+        "STNN: A Novel TLS/SSL Encrypted Traffic Classification System Based on Stereo Transform Nerual Network".
+    
+        By:
+            - Yu Zhang.
+            - Shiman Zhao.
+            - Jianzhong Zhang.
+            - Xiaowei Ma.
+            - Feilong Huang.
+            
+            Nankai University.
     '''
     def __init__(self,n_packets=32):
         ''' '''

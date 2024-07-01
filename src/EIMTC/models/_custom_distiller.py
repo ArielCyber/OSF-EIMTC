@@ -29,6 +29,9 @@ class CustomDistiller(Model):
         elif self.merging_method == 'feat_merge':
             shared_representation = feat_merge_method(get_sub_adapters(modalities,adapter_size,merging_method,adapters_setup),adapter_size)
         
+        elif self.merging_method == 'feat_cnn':
+            shared_representation = feat_cnn_method(get_sub_adapters(modalities,adapter_size,merging_method,adapters_setup),adapter_size)
+        
         outputs = []
         for n_class in n_classes:
             outputs.append(stack([shared_representation] + get_ts_layers(classes_count=n_class, adapter_size=adapter_size)))
@@ -234,6 +237,26 @@ def feat_merge_method(modalities,adapter_size):
                 + get_sr_layers(adapter_size)
             )
     
+def feat_cnn_method(modalities,adapter_size):
+    return stack(
+        [
+                Concatenate()(
+                        wrap_adapter_multi(modalities, adapter_size) 
+                ),
+               Reshape((len(modalities),-1,1)),
+               Conv2D(16,3,strides=(1,1),padding="same",activation='relu'),
+               MaxPooling2D(3, strides=(3,3),padding="same"),
+               Conv2D(32,3,strides=(1,1),padding="same",activation='relu'),
+               MaxPooling2D(3, strides=(3,3),padding="same"),
+               Conv2D(64,3,strides=(1,1),padding="same",activation='relu'),
+               MaxPooling2D(3, strides=(3,3),padding="same"),
+               Flatten(),
+               Dense(64,activation='relu'),
+               Dropout(0.2),
+        ]
+        + get_sr_layers(adapter_size)
+    )
+    
 def get_sub_adapter(models,adapter_size,merging_method):
     if merging_method == 'deep_concat':
         return Model(
@@ -244,6 +267,11 @@ def get_sub_adapter(models,adapter_size,merging_method):
         return Model(
             inputs=[modal.input for modal in models],
             outputs= feat_merge_method(models,adapter_size)
+        )
+    if merging_method == 'feat_cnn':
+        return Model(
+            inputs=[modal.input for modal in models],
+            outputs= feat_cnn_method(models,adapter_size)
         )
     return Model(
             inputs=[modal.input for modal in models],

@@ -7,7 +7,7 @@ class PacketsSizeAndIAT(NFPlugin):
     Extracts statistics of packet size (raw) and inter-arrival time (ms).
     
     Feature outputs:
-        Statistics of packet size and IAT of the first 'n_packets' packets of the flow.
+        Statistics of packet size and IAT of the first 'n_packets' packets of the flow and/or with in 'flow_time' threshold.
         
         Name Format:
             udps.packets_[FEATURE]_[STAT]
@@ -43,12 +43,14 @@ class PacketsSizeAndIAT(NFPlugin):
         1. Optimize median calculations by using histogram (if possible)
         
     '''
-    def __init__(self, n_packets=None):
+    def __init__(self, n_packets=None, flow_time=None):
         '''
         Args:
-            `n_packets` (int): The number of packets to process. If None then the whole flow will be processed.        
+            `n_packets` (int): The number of packets to process. If None then the whole flow will be processed.
+            `flow_time` (int): The number of miliseconds to process the flow. If None then the whole flow will be processed.        
         '''
         self.n_packets = n_packets
+        self.flow_time = flow_time
     
     def on_init(self, packet, flow):
         ''' '''
@@ -59,6 +61,8 @@ class PacketsSizeAndIAT(NFPlugin):
     def on_update(self, packet, flow):
         ''' '''
         if self.n_packets is not None and flow.bidirectional_packets > self.n_packets:
+            return
+        if self.flow_time is not None and (packet.time - flow.bidirectional_first_seen_ms) > self.flow_time:
             return
         flow.udps.packets_size.append(packet.raw_size)
         flow.udps.packets_interarrival_time.append(packet.delta_time)

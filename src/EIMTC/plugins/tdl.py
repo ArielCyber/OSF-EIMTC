@@ -1,4 +1,4 @@
-from nfstream import NFPlugin,NFStreamer
+from nfstream import NFPlugin
 
 class TDL(NFPlugin):
     '''TDL(Time,packet-Direction,packet Length) | A 2D matrix of extract Time,packet-direction and packet length from each packet.

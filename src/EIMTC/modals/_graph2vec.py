@@ -7,6 +7,8 @@ class G2VModality:
     Classifciation type: Graphs
     Input: Graph2Vec vector 1-dimension matching the input shape of the model
 
+    Graph2Vec algorithm can be found in preprocess
+
     Inspired by the paper: " graph2vec: Learning Distributed Representations of Graphs "
     Authors: Narayanan, Annamalai and Chandramohan, Mahinthan and Venkatesan, Rajasekar and Chen, Lihui and Liu, Yang and Jaiswal, Shantanu
     '''

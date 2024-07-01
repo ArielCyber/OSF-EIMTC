@@ -15,6 +15,7 @@ from sklearn.preprocessing import (
     MaxAbsScaler, minmax_scale, MinMaxScaler, MultiLabelBinarizer, normalize, 
     Normalizer, OneHotEncoder, OrdinalEncoder, StandardScaler
 )
+from ._graph2vec import Graph2Vec
 
 __all__ = [
     'M1CNNPreprocessing',
@@ -42,6 +43,7 @@ __all__ = [
     'Normalizer',
     'OneHotEncoder',
     'OrdinalEncoder',
-    'StandardScaler'
+    'StandardScaler',
+    'Graph2Vec'
 ]
 

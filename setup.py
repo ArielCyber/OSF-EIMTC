@@ -11,7 +11,7 @@ long_description = (this_directory / "README.md").read_text(encoding="utf8")
 
 setup(
     name='OSF_EIMTC',
-    version='0.1.57',
+    version='0.1.58',
     description='A Framework for Encrypted Internet and Malicious Traffic Classification.',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -36,5 +36,7 @@ setup(
         'pyasn',
         'click',
         'runstats',
+        'networkx',
+        'gensim'
     ],
 )

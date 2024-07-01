@@ -2,11 +2,6 @@ from nfstream import NFPlugin
 import numpy as np
 from runstats import *
 from scapy.all import IP, IPv6, raw
-from pypacker.layer3 import ip
-from pypacker.layer3 import ip6
-import pandas as pd
-import ast
-import copy
 
 class TGNN(NFPlugin):
     ''' TGNN | A simple graph feature extractor.
