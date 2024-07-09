@@ -1,9 +1,9 @@
+from __future__ import annotations
 import networkx as nx
 import numpy as np
 import random
 from math import copysign
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
-from __future__ import annotations
 
 
 
